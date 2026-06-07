@@ -38,7 +38,7 @@ function TabBar({ tab, setTab, cartCount }) {
               <Ic size={23} sw={on ? 2 : 1.7} />
               {id === 'shop' && cartCount > 0 && <span className="lg-cartbadge">{cartCount}</span>}
             </span>
-            <span style={{ fontFamily: 'var(--font-body)', fontSize: 10.5, fontWeight: on ? 700 : 500, letterSpacing: 0.2 }}>{label}</span>
+            <span style={{ fontFamily: 'var(--font-head)', fontSize: 11, fontWeight: on ? 700 : 500, letterSpacing: 0.2 }}>{label}</span>
           </button>
         );
       })}

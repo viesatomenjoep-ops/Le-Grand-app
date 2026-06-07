@@ -13,7 +13,7 @@ function QuickAction({ icon, label, onClick }) {
       alignItems: 'center', gap: 8, cursor: 'pointer', color: 'var(--cream)'
     }}>
       <span style={{ color: 'var(--gold)' }}>{icon}</span>
-      <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 600, letterSpacing: 0.2 }}>{label}</span>
+      <span style={{ fontFamily: 'var(--font-head)', fontSize: 13, fontWeight: 600, letterSpacing: 0.2 }}>{label}</span>
     </button>);
 
 }
