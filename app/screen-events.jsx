@@ -6,7 +6,7 @@ function EventCard({ ev, onClick }) {
       width: '100%', textAlign: 'left', background: 'none', border: 'none', padding: 0, cursor: 'pointer',
     }}>
       <div style={{ position: 'relative', borderRadius: 'var(--r-lg)', overflow: 'hidden' }}>
-        <Photo id={`event-${ev.id}`} placeholder={ev.titel} radius={20}
+        <Photo id={`event-${ev.id}`} placeholder={ev.titel} radius={20} src={ev.img}
           style={{ width: '100%', height: 196, display: 'block' }} />
         <div className="lg-photo-fade" />
         <div style={{ position: 'absolute', top: 12, left: 12, display: 'flex', gap: 8 }}>
@@ -54,7 +54,7 @@ function EventDetail({ ev, onBack, go }) {
   return (
     <div>
       <div style={{ position: 'relative', height: 360 }}>
-        <Photo id={`event-hero-${ev.id}`} radius={0} placeholder={ev.titel}
+        <Photo id={`event-hero-${ev.id}`} radius={0} placeholder={ev.titel} src={ev.img}
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />
         <div className="lg-hero-scrim" />
         <button className="lg-press lg-glassbtn" onClick={onBack} style={{ position: 'absolute', top: 58, left: 16 }}><IcChevL size={20} /></button>

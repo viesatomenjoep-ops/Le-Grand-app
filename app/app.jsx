@@ -67,12 +67,12 @@ function App() {
   const top = overlay[overlay.length - 1];
 
   // ── cart ──
-  const addToCart = (id, qty = 1) => setCart((c) => {
-    const ex = c.find((i) => i.id === id);
-    if (ex) return c.map((i) => i.id === id ? { ...i, qty: i.qty + qty } : i);
-    return [...c, { id, qty }];
+  const addToCart = (id, qty = 1, size = null) => setCart((c) => {
+    const ex = c.find((i) => i.id === id && i.size === size);
+    if (ex) return c.map((i) => (i.id === id && i.size === size) ? { ...i, qty: i.qty + qty } : i);
+    return [...c, { id, qty, size }];
   });
-  const setQty = (id, qty) => setCart((c) => qty <= 0 ? c.filter((i) => i.id !== id) : c.map((i) => i.id === id ? { ...i, qty } : i));
+  const setQty = (id, size, qty) => setCart((c) => qty <= 0 ? c.filter((i) => !(i.id === id && i.size === size)) : c.map((i) => (i.id === id && i.size === size) ? { ...i, qty } : i));
   const cartCount = cart.reduce((s, i) => s + i.qty, 0);
 
   useEffect(() => { if (mainRef.current) mainRef.current.scrollTop = 0; }, [tab]);
@@ -87,7 +87,7 @@ function App() {
     switch (top.t) {
       case 'dame': {
         const d = DAMES.find((x) => x.id === top.id);
-        return <DameDetail dame={d} onBack={pop} go={go} />;
+        return <DameDetail dame={d} onBack={pop} reserve={() => push({ t: 'reserveren' })} />;
       }
       case 'reserveren':
         return <ReserverenScreen go={go} topInset={TI} />;

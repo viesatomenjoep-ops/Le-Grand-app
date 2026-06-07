@@ -56,7 +56,7 @@ function MeerScreen({ go, openInfo, openVacatures, topInset }) {
         <SectionHead title="Snel naar" />
         <Card pad={6}>
           <MeerRow icon={<IcHeart size={20} />} label="Onze dames" sub="Bekijk wie aanwezig is" onClick={() => go('dames')} />
-          <MeerRow icon={<IcSpark size={20} />} label="Events" sub="Strippers Night, thema-avonden" onClick={() => go('events')} />
+          <MeerRow icon={<IcStar size={20} />} label="Events" sub="Strippers Night, thema-avonden" onClick={() => go('events')} />
           <MeerRow icon={<IcBag size={20} />} label="Webshop" sub="Badjas, slippers & meer" onClick={() => go('shop')} last />
         </Card>
       </div>

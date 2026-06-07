@@ -64,7 +64,7 @@ function InfoBit({ label, value }) {
   );
 }
 
-function DameDetail({ dame, onBack, go }) {
+function DameDetail({ dame, onBack, reserve }) {
   const dagen = dame.dagen.map(d => d.charAt(0).toUpperCase() + d.slice(1));
   return (
     <div>
@@ -141,7 +141,7 @@ function DameDetail({ dame, onBack, go }) {
         <a href={VENUE.telHref} style={{ textDecoration: 'none' }}>
           <Btn variant="dark" leftIcon={<IcPhone size={18} />}>Bel</Btn>
         </a>
-        <Btn variant="primary" full onClick={() => go('reserveren')} rightIcon={<IcArrowR size={18} />}>Reserveer een avond</Btn>
+        <Btn variant="primary" full onClick={reserve} rightIcon={<IcArrowR size={18} />}>Reserveer een avond</Btn>
       </div>
       <div style={{ height: 96 }} />
     </div>

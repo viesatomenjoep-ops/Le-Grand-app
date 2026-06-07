@@ -52,7 +52,7 @@ function ShopScreen({ openProduct, openCart, addToCart, cartCount, topInset }) {
 
       <div style={{ padding: '0 18px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
         {PRODUCTS.map(p => (
-          <ProductGridCard key={p.id} p={p} onClick={() => openProduct(p.id)} onAdd={() => addToCart(p.id, 1)} />
+          <ProductGridCard key={p.id} p={p} onClick={() => openProduct(p.id)} onAdd={() => addToCart(p.id, 1, p.maten ? p.maten[0] : null)} />
         ))}
       </div>
 
@@ -84,9 +84,10 @@ function QtyStepper({ qty, set, min = 1 }) {
 }
 
 function ProductDetail({ product, onBack, addToCart, openCart, cartCount }) {
-  const [qty, setQty] = React.useState(1);
-  const [added, setAdded] = React.useState(false);
   const p = product;
+  const [qty, setQty] = React.useState(1);
+  const [size, setSize] = React.useState(p.maten ? p.maten[0] : null);
+  const [added, setAdded] = React.useState(false);
   return (
     <div>
       <div style={{ position: 'relative', height: 380 }}>
@@ -107,6 +108,21 @@ function ProductDetail({ product, onBack, addToCart, openCart, cartCount }) {
         </div>
         <p style={{ margin: '14px 0 22px', fontFamily: 'var(--font-body)', fontSize: 14.5, lineHeight: 1.6, color: 'var(--cream-dim)' }}>{p.desc}</p>
 
+        {p.maten && (
+          <div style={{ marginBottom: 20 }}>
+            <span style={{ display: 'block', fontFamily: 'var(--font-head)', fontSize: 16, fontWeight: 600, color: 'var(--cream)', marginBottom: 10 }}>Kies een maat</span>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+              {p.maten.map(m => (
+                <button key={m} className="lg-press" onClick={() => setSize(m)} style={{
+                  padding: '8px 16px', borderRadius: 'var(--r-pill)', background: size === m ? 'var(--gold-grad)' : 'transparent',
+                  color: size === m ? '#1c1505' : 'var(--cream-dim)', border: '1px solid ' + (size === m ? 'transparent' : 'var(--hair-strong)'),
+                  fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 700, cursor: 'pointer'
+                }}>{m}</button>
+              ))}
+            </div>
+          </div>
+        )}
+
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18 }}>
           <span style={{ fontFamily: 'var(--font-head)', fontSize: 16, fontWeight: 600, color: 'var(--cream)' }}>Aantal</span>
           <QtyStepper qty={qty} set={setQty} />
@@ -121,7 +137,7 @@ function ProductDetail({ product, onBack, addToCart, openCart, cartCount }) {
       <div className="lg-actionbar">
         {added
           ? <Btn variant="cream" full onClick={openCart} leftIcon={<IcBag size={18} />}>Bekijk winkelmand</Btn>
-          : <Btn variant="primary" full onClick={() => { addToCart(p.id, qty); setAdded(true); }} leftIcon={<IcPlus size={18} />}>In winkelmand · €{p.prijs * qty}</Btn>}
+          : <Btn variant="primary" full onClick={() => { addToCart(p.id, qty, size); setAdded(true); }} leftIcon={<IcPlus size={18} />}>In winkelmand · €{p.prijs * qty}</Btn>}
       </div>
       <div style={{ height: 96 }} />
     </div>
@@ -129,7 +145,7 @@ function ProductDetail({ product, onBack, addToCart, openCart, cartCount }) {
 }
 
 function CartScreen({ cart, setQty, onBack, openCheckout, openShop }) {
-  const items = cart.map(c => ({ ...PRODUCTS.find(p => p.id === c.id), qty: c.qty }));
+  const items = cart.map(c => ({ ...PRODUCTS.find(p => p.id === c.id), qty: c.qty, size: c.size }));
   const sub = items.reduce((s, i) => s + i.prijs * i.qty, 0);
   const shipping = sub > 0 ? 4.95 : 0;
   const total = sub + shipping;
@@ -146,17 +162,19 @@ function CartScreen({ cart, setQty, onBack, openCheckout, openShop }) {
       ) : (
         <React.Fragment>
           <div style={{ padding: '4px 18px 0', display: 'flex', flexDirection: 'column', gap: 12 }}>
-            {items.map(i => (
-              <Card key={i.id} pad={12} style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+            {items.map((i, idx) => (
+              <Card key={`${i.id}-${i.size}-${idx}`} pad={12} style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
                 <Photo id={`cart-${i.slot}`} placeholder="" radius={12} src={i.img} style={{ width: 64, height: 64, flexShrink: 0 }} />
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontFamily: 'var(--font-head)', fontSize: 15, fontWeight: 600, color: 'var(--cream)', lineHeight: 1.15 }}>{i.naam}</div>
+                  <div style={{ fontFamily: 'var(--font-head)', fontSize: 15, fontWeight: 600, color: 'var(--cream)', lineHeight: 1.15 }}>
+                    {i.naam} {i.size && <span style={{ fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 400, color: 'var(--cream-dim)' }}> (Maat {i.size})</span>}
+                  </div>
                   <div style={{ fontFamily: 'var(--font-head)', fontSize: 15, fontWeight: 700, color: 'var(--gold)', marginTop: 3 }}>€{i.prijs}</div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
-                  <button className="lg-press" onClick={() => setQty(i.id, i.qty - 1)} style={qbtn}>{i.qty === 1 ? <IcTrash size={15} /> : <IcMinus size={15} />}</button>
+                  <button className="lg-press" onClick={() => setQty(i.id, i.size, i.qty - 1)} style={qbtn}>{i.qty === 1 ? <IcTrash size={15} /> : <IcMinus size={15} />}</button>
                   <span style={{ fontFamily: 'var(--font-head)', fontSize: 16, fontWeight: 700, color: 'var(--cream)', minWidth: 16, textAlign: 'center' }}>{i.qty}</span>
-                  <button className="lg-press" onClick={() => setQty(i.id, i.qty + 1)} style={qbtn}><IcPlus size={15} /></button>
+                  <button className="lg-press" onClick={() => setQty(i.id, i.size, i.qty + 1)} style={qbtn}><IcPlus size={15} /></button>
                 </div>
               </Card>
             ))}
