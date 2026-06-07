@@ -119,7 +119,7 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
             <Btn variant="glass" onClick={() => go('dames')} size="lg" style={{ flex: 1 }}>Onze dames</Btn>
           </div>
 
-          <div style={{ paddingBottom: '8vh', display: 'flex', gap: 10, width: '100%' }}>
+          <div style={{ paddingBottom: '25vh', display: 'flex', gap: 10, width: '100%' }}>
             <QuickAction icon={<IcHeart size={23} />} label="Dames" onClick={() => go('dames')} />
             <QuickAction icon={<IcCal size={23} />} label="Reserveren" onClick={reserve} />
             <QuickAction icon={<IcStar size={23} />} label="Events" onClick={() => go('events')} />
