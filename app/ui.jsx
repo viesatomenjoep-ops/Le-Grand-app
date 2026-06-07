@@ -58,7 +58,7 @@ function Tag({ children, tone = 'gold', style }) {
   const tones = {
     gold:  { background: 'var(--gold-glow)', color: 'var(--gold)', boxShadow: 'inset 0 0 0 1px var(--gold-line)' },
     panel: { background: 'var(--panel-3)', color: 'var(--cream-dim)', boxShadow: 'inset 0 0 0 1px var(--hair)' },
-    live:  { background: 'rgba(86,160,109,0.16)', color: '#7FC98E', boxShadow: 'inset 0 0 0 1px rgba(86,160,109,0.3)' },
+    live:  { background: '#ffffff', color: '#56A06D', boxShadow: 'none' },
     glass: { background: 'rgba(255,255,255,0.12)', color: 'var(--cream)', backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)' },
     solid: { background: 'var(--gold)', color: '#1c1505' },
   };
