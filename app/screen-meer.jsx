@@ -42,12 +42,12 @@ function MeerScreen({ go, reserve, openInfo, openVacatures, topInset }) {
 
       {/* Informatie */}
       <div style={{ padding: '26px 18px 0' }}>
-        <SectionHead title="Informatie" />
+        <SectionHead title={t('info_title')} />
         <Card pad={6}>
-          <MeerRow icon={<IcWaves size={20} />} label="Faciliteiten & wellness" sub="Sauna, jacuzzi, zwembad, suites" onClick={() => openInfo('fac')} />
-          <MeerRow icon={<IcGift size={20} />} label="Tarieven" sub="All-in entree & arrangementen" onClick={() => openInfo('tar')} />
-          <MeerRow icon={<IcClock size={20} />} label="Openingstijden" sub={`Vandaag · ${th.uren}`} onClick={() => openInfo('open')} />
-          <MeerRow icon={<IcBriefcase size={20} />} label="Vacatures" sub="Kom ons team versterken" onClick={openVacatures} last />
+          <MeerRow icon={<IcWaves size={20} />} label={t('fac_wellness')} sub={t('fac_wellness_sub')} onClick={() => openInfo('fac')} />
+          <MeerRow icon={<IcGift size={20} />} label={t('rates')} sub={t('rates_sub')} onClick={() => openInfo('tar')} />
+          <MeerRow icon={<IcClock size={20} />} label={t('opening_hours')} sub={t('opening_hours_sub')} onClick={() => openInfo('open')} />
+          <MeerRow icon={<IcBriefcase size={20} />} label={t('vacatures_title')} sub={t('vacatures_sub')} onClick={openVacatures} last />
         </Card>
       </div>
 
@@ -57,54 +57,39 @@ function MeerScreen({ go, reserve, openInfo, openVacatures, topInset }) {
 
       {/* Snel naar */}
       <div style={{ padding: '32px 18px 0' }}>
-        <SectionHead title="Snel naar" />
+        <SectionHead title={t('fast_to')} />
         <Card pad={6}>
-          <MeerRow icon={<IcHeart size={20} />} label="Onze dames" sub="Bekijk wie aanwezig is" onClick={() => go('dames')} />
-          <MeerRow icon={<IcStar size={20} />} label="Events" sub="Strippers Night, thema-avonden" onClick={() => go('events')} />
-          <MeerRow icon={<IcBag size={20} />} label="Webshop" sub="Badjas, slippers & meer" onClick={() => go('shop')} last />
+          <MeerRow icon={<IcHeart size={20} />} label={t('dames_title')} sub={t('dames_sub')} onClick={() => go('dames')} />
+          <MeerRow icon={<IcStar size={20} />} label={t('events_title')} sub={t('events_sub')} onClick={() => go('events')} />
+          <MeerRow icon={<IcBag size={20} />} label={t('shop_title')} sub={t('shop_sub')} onClick={() => go('shop')} last />
         </Card>
       </div>
 
       {/* Voorkeuren */}
       <div style={{ padding: '24px 18px 0' }}>
-        <SectionHead title="Voorkeuren / Preferences" />
+        <SectionHead title={t('preferences')} />
         <Card pad={16} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 600, color: 'var(--cream)' }}>Kies je taal</div>
+          <div style={{ fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 600, color: 'var(--cream)' }}>{t('choose_lang')}</div>
           <LanguageSelector />
         </Card>
       </div>
 
       {/* Contact */}
       <div style={{ padding: '24px 18px 0' }}>
-        <SectionHead title="Contact" />
+        <SectionHead title={t('contact_title')} />
         <Card pad={0} style={{ overflow: 'hidden', marginBottom: 16 }}>
           <a href={VENUE.maps} target="_blank" rel="noreferrer" className="lg-press" style={{ display: 'block', position: 'relative' }}>
             <img src="app/assets/spa-photo.webp" alt="Le Grand" style={{ width: '100%', height: 180, objectFit: 'cover', display: 'block' }} />
             <div className="lg-hero-scrim" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.85), transparent)' }} />
             <div style={{ position: 'absolute', bottom: 12, left: 16, display: 'flex', alignItems: 'center', gap: 8, color: '#fff', fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: 16 }}>
               <IcPin size={18} style={{ color: 'var(--gold)' }} />
-              Route naar de club in Maps
+              {t('route_maps')}
             </div>
           </a>
-        </Card>
-        <Card pad={16}>
-          <a href={VENUE.maps} target="_blank" rel="noreferrer" className="lg-press" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 12, padding: '4px 0' }}>
-            <IcPin size={19} style={{ color: 'var(--gold)', flexShrink: 0 }} />
-            <div style={{ flex: 1 }}>
-              <div style={{ fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 600, color: 'var(--cream)' }}>{VENUE.adres}</div>
-              <div style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--cream-dim)' }}>Open in Maps</div>
-            </div>
-            <IcChevR size={16} style={{ color: 'var(--cream-faint)' }} />
-          </a>
-          <div style={{ height: 1, background: 'var(--hair)', margin: '11px 0' }} />
-          <a href={VENUE.telHref} className="lg-press" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 12, padding: '4px 0' }}>
-            <IcPhone size={19} style={{ color: 'var(--gold)', flexShrink: 0 }} />
-            <div style={{ flex: 1 }}>
-              <div style={{ fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 600, color: 'var(--cream)' }}>{VENUE.tel}</div>
-              <div style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--cream-dim)' }}>Bel ons</div>
-            </div>
-            <IcChevR size={16} style={{ color: 'var(--cream-faint)' }} />
-          </a>
+          <div style={{ padding: '8px 16px' }}>
+            <MeerRow icon={<IcPin size={20} />} label={VENUE.adres} sub={VENUE.plaats} onClick={() => window.open(VENUE.mapHref, '_blank')} />
+            <MeerRow icon={<IcPhone size={20} />} label={VENUE.tel} sub={t('call_us')} onClick={() => window.location.href = VENUE.telHref} last />
+          </div>
         </Card>
         <div style={{ display: 'flex', gap: 9, marginTop: 12 }}>
           {[['Instagram', VENUE.socials.instagram, 'https://instagram.com/'], ['TikTok', VENUE.socials.tiktok, 'https://tiktok.com/@'], ['Facebook', VENUE.socials.facebook, 'https://facebook.com/']].map(([n, h, url]) => (
@@ -119,7 +104,7 @@ function MeerScreen({ go, reserve, openInfo, openVacatures, topInset }) {
       {/* Footer */}
       <div style={{ padding: '32px 18px 0', textAlign: 'center' }}>
         <img src="app/assets/legrand-logo.webp" alt="Le Grand" style={{ width: 100, opacity: 0.85, margin: '0 auto' }} />
-        <p style={{ margin: '12px 0 0', fontFamily: 'var(--font-body)', fontSize: 11, color: 'var(--cream-faint)', letterSpacing: 0.3 }}>Toegang vanaf 18 jaar · Saunaclub Le Grand · Zundert</p>
+        <p style={{ margin: '12px 0 0', fontFamily: 'var(--font-body)', fontSize: 11, color: 'var(--cream-faint)', letterSpacing: 0.3 }}>{t('access_18')}</p>
       </div>
       <TabSpacer />
     </div>

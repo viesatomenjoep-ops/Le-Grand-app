@@ -77,6 +77,11 @@ function VacatureDetail({ v, onBack }) {
         <a href={VENUE.telHref} style={{ textDecoration: 'none' }}><Btn variant="dark" leftIcon={<IcPhone size={18} />}>Bel</Btn></a>
         <a href={mailto} style={{ textDecoration: 'none', flex: 1 }}><Btn variant="primary" full rightIcon={<IcArrowR size={18} />}>Solliciteer nu</Btn></a>
       </div>
+
+      <div style={{ padding: '32px 0 16px', display: 'flex', justifyContent: 'center', opacity: 0.6 }}>
+        <img src="app/assets/legrand-logo.webp" alt="Le Grand" style={{ width: 100 }} />
+      </div>
+
       <div style={{ height: 96 }} />
     </div>
   );

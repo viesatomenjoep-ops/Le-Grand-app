@@ -171,9 +171,13 @@ const extras2 = {
 };
 Object.keys(extras2).forEach(lang => Object.assign(T[lang], extras2[lang]));
 
-['pt','it','da','sv','fi','pl','hu','bg','cs','hr','el','et','lt','no'].forEach(lang => {
-  T[lang] = { ...T.en };
-  Object.assign(T[lang], extras.en, extras2.en); // Fallback extra keys to English
-});
+const extras3 = {
+  nl: { crowd_title: 'Live drukte in de club', crowd_quiet: 'Rustig', crowd_moderate: 'Gezellig druk', crowd_busy: 'Erg druk', crowd_quiet_desc: 'Alle ruimte in de sauna’s en zwembaden.', crowd_moderate_desc: 'Er is momenteel voldoende ruimte in de sauna’s en zwembaden. Geen wachtrijen.', crowd_busy_desc: 'Gezellig druk. Houd rekening met iets minder ruimte.' },
+  en: { crowd_title: 'Live crowd in the club', crowd_quiet: 'Quiet', crowd_moderate: 'Pleasantly busy', crowd_busy: 'Very busy', crowd_quiet_desc: 'Plenty of space in the saunas and pools.', crowd_moderate_desc: 'There is currently plenty of space in the saunas and pools. No queues.', crowd_busy_desc: 'Pleasantly busy. Please expect a bit less space.' },
+  de: { crowd_title: 'Live Auslastung im Club', crowd_quiet: 'Ruhig', crowd_moderate: 'Angenehm besucht', crowd_busy: 'Sehr gut besucht', crowd_quiet_desc: 'Viel Platz in den Saunen und Pools.', crowd_moderate_desc: 'Derzeit gibt es ausreichend Platz in den Saunen und Pools. Keine Warteschlangen.', crowd_busy_desc: 'Angenehm besucht. Bitte etwas weniger Platz einplanen.' },
+  fr: { crowd_title: 'Affluence en direct au club', crowd_quiet: 'Calme', crowd_moderate: 'Agréablement animé', crowd_busy: 'Très animé', crowd_quiet_desc: 'Beaucoup d\'espace dans les saunas et piscines.', crowd_moderate_desc: 'Il y a actuellement beaucoup d\'espace dans les saunas et les piscines. Pas de files d\'attente.', crowd_busy_desc: 'Agréablement animé. Prévoyez un peu moins d\'espace.' },
+  es: { crowd_title: 'Afluencia en vivo en el club', crowd_quiet: 'Tranquilo', crowd_moderate: 'Agradablemente concurrido', crowd_busy: 'Muy concurrido', crowd_quiet_desc: 'Mucho espacio en las saunas y piscinas.', crowd_moderate_desc: 'Actualmente hay mucho espacio en las saunas y piscinas. Sin colas.', crowd_busy_desc: 'Agradablemente concurrido. Por favor, espere un poco menos de espacio.' }
+};
+Object.keys(extras3).forEach(lang => Object.assign(T[lang], extras3[lang]));
 
 window.TRANSLATIONS = T;

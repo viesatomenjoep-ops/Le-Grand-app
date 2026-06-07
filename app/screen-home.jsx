@@ -60,7 +60,7 @@ function FacRow({ f }) {
 
 }
 
-function GenericSlider({ items, renderItem }) {
+function GenericSlider({ items, renderItem, itemWidth = 'calc(100vw - 46px)' }) {
   const ref = React.useRef(null);
   
   const scrollL = () => {
@@ -74,9 +74,9 @@ function GenericSlider({ items, renderItem }) {
 
   return (
     <div style={{ position: 'relative' }}>
-      <div ref={ref} className="lg-hscroll" style={{ display: 'flex', scrollSnapType: 'x mandatory', gap: 20, marginLeft: -18, marginRight: -18, padding: '0 20px', scrollBehavior: 'smooth' }}>
+      <div ref={ref} className="lg-hscroll" style={{ display: 'flex', scrollSnapType: 'x mandatory', gap: 14, margin: '0 -18px', padding: '0 18px', scrollBehavior: 'smooth' }}>
         {items.map((item, i) => (
-          <div key={i} style={{ scrollSnapAlign: 'center', flex: '0 0 calc(100vw - 40px)', boxSizing: 'border-box' }}>
+          <div key={i} style={{ scrollSnapAlign: 'center', flex: `0 0 ${itemWidth}`, boxSizing: 'border-box' }}>
             {renderItem(item, i)}
           </div>
         ))}
@@ -89,6 +89,31 @@ function GenericSlider({ items, renderItem }) {
       )}
     </div>
   );
+}
+
+function CrowdMeter() {
+  const { t } = useTranslation();
+  // We simulate a crowd level (could be dynamic)
+  const fill = 65; 
+  return (
+    <Card pad={16} style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 14 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <LiveDot />
+            <span style={{ fontFamily: 'var(--font-head)', fontSize: 16, fontWeight: 600, color: 'var(--cream)' }}>{t('crowd_title')}</span>
+         </div>
+         <span style={{ fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 600, color: 'var(--gold)' }}>{t('crowd_moderate')}</span>
+      </div>
+      <div style={{ height: 8, background: 'var(--panel-3)', borderRadius: 4, overflow: 'hidden' }}>
+         <div style={{ height: '100%', width: `${fill}%`, background: 'var(--gold-grad)', borderRadius: 4 }} />
+      </div>
+      <div style={{ fontFamily: 'var(--font-body)', fontSize: 12.5, color: 'var(--cream-dim)' }}>
+         {t('crowd_moderate_desc')}
+      </div>
+    </Card>
+  );
+}
+
 function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
   const { t } = useTranslation();
   const th = todayHours();
@@ -142,7 +167,11 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
         </div>
       </div>
       <div style={{ padding: '0 18px 4px' }}>
+        {/* Crowd Meter */}
+        <CrowdMeter />
+        
         {/* Aanwezig vandaag */}
+        <div style={{ marginTop: 24 }} />
         <SectionHead eyebrow={t('today_in_club')} title={t('who_is_present')} action={t('all_ladies')} onAction={() => go('dames')} />
         <GenericSlider 
           items={[...aanwezig, { isMore: true }]} 
@@ -205,17 +234,24 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
         <GenericSlider
           items={EVENTS}
           renderItem={(e) => (
-            <Card key={e.id} pad={16} onClick={() => openEvent(e.id)} style={{ width: '100%' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-                <Tag tone="gold">{t(evTagMap[e.tag] || e.tag)}</Tag>
-                <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--cream-faint)' }}>{t(evDatumMap[e.datum] || e.datum)}</span>
+            <button key={e.id} className="lg-press" onClick={() => openEvent(e.id)} style={{ width: '100%', background: 'var(--panel)', border: '1px solid var(--hair)', borderRadius: 'var(--r-lg)', overflow: 'hidden', textAlign: 'left', cursor: 'pointer', padding: 0 }}>
+              <div style={{ position: 'relative', height: 160 }}>
+                <Photo id={`home-evt-${e.id}`} src={e.img} placeholder={t(evTitleMap[e.titel] || e.titel)} radius={0} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                <div style={{ position: 'absolute', top: 12, left: 12 }}>
+                  <Tag tone="gold">{t(evTagMap[e.tag] || e.tag)}</Tag>
+                </div>
               </div>
-              <h3 style={{ margin: 0, fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: 20, color: 'var(--cream)' }}>{t(evTitleMap[e.titel] || e.titel)}</h3>
-              <p style={{ margin: '6px 0 0', fontFamily: 'var(--font-body)', fontSize: 13, lineHeight: 1.5, color: 'var(--cream-dim)' }}>{t(evDescMap[e.titel] || e.desc).slice(0, 92)}…</p>
-              <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', gap: 7, color: 'var(--gold)', fontFamily: 'var(--font-body)', fontSize: 12.5, fontWeight: 600 }}>
-                <IcClock size={15} />{e.tijd}
+              <div style={{ padding: 16 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--cream-faint)' }}>{t(evDatumMap[e.datum] || e.datum)}</span>
+                </div>
+                <h3 style={{ margin: 0, fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: 20, color: 'var(--cream)' }}>{t(evTitleMap[e.titel] || e.titel)}</h3>
+                <p style={{ margin: '6px 0 0', fontFamily: 'var(--font-body)', fontSize: 13, lineHeight: 1.5, color: 'var(--cream-dim)' }}>{t(evDescMap[e.titel] || e.desc).slice(0, 92)}…</p>
+                <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', gap: 7, color: 'var(--gold)', fontFamily: 'var(--font-body)', fontSize: 12.5, fontWeight: 600 }}>
+                  <IcClock size={15} />{e.tijd}
+                </div>
               </div>
-            </Card>
+            </button>
           )}
         />
       </div>
@@ -261,9 +297,8 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
       </div>
 
       <TabSpacer />
-    </div>);
-}    </div>);
-
+    </div>
+  );
 }
 
 Object.assign(window, { HomeScreen });

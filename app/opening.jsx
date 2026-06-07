@@ -40,8 +40,8 @@ function OpeningScreen({ variant = 'photo', onEnter }) {
             </React.Fragment>
           ) : (
             <React.Fragment>
-              <h2 className="lg-open-deny-title">Tot ziens</h2>
-              <p className="lg-open-note" style={{ maxWidth: 280 }}>Je moet 18 jaar of ouder zijn om deze app te bekijken. Kom gerust terug wanneer dat zo is.</p>
+              <h2 className="lg-open-deny-title">{t('gate_deny_title')}</h2>
+              <p className="lg-open-note" style={{ maxWidth: 280 }}>{t('gate_deny_text')}</p>
             </React.Fragment>
           )}
         </div>
@@ -49,13 +49,13 @@ function OpeningScreen({ variant = 'photo', onEnter }) {
         {!denied ? (
           <div className="lg-open-gate">
             <div className="lg-open-divider"><span /><IcCrown size={20} /><span /></div>
-            <p className="lg-open-note">Deze plek is uitsluitend voor volwassenen. Bevestig je leeftijd om verder te gaan.</p>
-            <Btn variant="primary" size="lg" full onClick={onEnter}>Ik ben 18 jaar of ouder</Btn>
-            <button className="lg-press lg-open-under" onClick={() => setDenied(true)}>Ik ben jonger dan 18</button>
+            <p className="lg-open-note">{t('gate_text')}</p>
+            <Btn variant="primary" size="lg" full onClick={onEnter}>{t('gate_yes')}</Btn>
+            <button className="lg-press lg-open-under" onClick={() => setDenied(true)}>{t('gate_no')}</button>
           </div>
         ) : (
           <div className="lg-open-gate">
-            <button className="lg-press lg-open-under" onClick={() => setDenied(false)}>Terug</button>
+            <button className="lg-press lg-open-under" onClick={() => setDenied(false)}>{t('gate_back')}</button>
           </div>
         )}
       </div>
