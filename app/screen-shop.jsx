@@ -15,7 +15,7 @@ function ProductGridCard({ p, onClick, onAdd }) {
   return (
     <div className="lg-card lg-press" onClick={onClick} style={{ background: 'var(--panel)', borderRadius: 'var(--r-lg)', border: '1px solid var(--hair)', overflow: 'hidden', cursor: 'pointer', display: 'flex', flexDirection: 'column' }}>
       <div style={{ position: 'relative' }}>
-        <Photo id={`grid-${p.slot}`} placeholder={p.naam} radius={0}
+        <Photo id={`grid-${p.slot}`} placeholder={p.naam} radius={0} src={p.img}
           style={{ width: '100%', aspectRatio: '1 / 1', display: 'block' }} />
         {p.deal && <div style={{ position: 'absolute', top: 9, left: 9 }}><Tag tone="solid">Deal</Tag></div>}
       </div>
@@ -90,7 +90,7 @@ function ProductDetail({ product, onBack, addToCart, openCart, cartCount }) {
   return (
     <div>
       <div style={{ position: 'relative', height: 380 }}>
-        <Photo id={`hero-${p.slot}`} radius={0} placeholder={p.naam}
+        <Photo id={`hero-${p.slot}`} radius={0} placeholder={p.naam} src={p.img}
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />
         <div className="lg-hero-scrim" style={{ background: 'linear-gradient(to bottom, rgba(8,7,5,0.5), rgba(8,7,5,0.1) 40%, rgba(8,7,5,0.85))' }} />
         <button className="lg-press lg-glassbtn" onClick={onBack} style={{ position: 'absolute', top: 58, left: 16 }}><IcChevL size={20} /></button>
@@ -148,7 +148,7 @@ function CartScreen({ cart, setQty, onBack, openCheckout, openShop }) {
           <div style={{ padding: '4px 18px 0', display: 'flex', flexDirection: 'column', gap: 12 }}>
             {items.map(i => (
               <Card key={i.id} pad={12} style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-                <Photo id={`cart-${i.slot}`} placeholder="" radius={12} style={{ width: 64, height: 64, flexShrink: 0 }} />
+                <Photo id={`cart-${i.slot}`} placeholder="" radius={12} src={i.img} style={{ width: 64, height: 64, flexShrink: 0 }} />
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ fontFamily: 'var(--font-head)', fontSize: 15, fontWeight: 600, color: 'var(--cream)', lineHeight: 1.15 }}>{i.naam}</div>
                   <div style={{ fontFamily: 'var(--font-head)', fontSize: 15, fontWeight: 700, color: 'var(--gold)', marginTop: 3 }}>€{i.prijs}</div>

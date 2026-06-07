@@ -64,10 +64,10 @@ const VACATURES = [
 // ── Webshop ──
 const SHIP_NOTE = 'Je bestelling wordt altijd discreet bij je thuis afgeleverd in een neutrale, blanco doos. Snel, zorgvuldig en volledig vertrouwelijk.';
 const PRODUCTS = [
-  { id: 'badjas', naam: 'Le Grand Badjas', prijs: 55, cat: 'Textiel', slot: 'shop-badjas',
+  { id: 'badjas', naam: 'Le Grand Badjas', prijs: 55, cat: 'Textiel', slot: 'shop-badjas', img: 'app/assets/shop-badjas.png',
     kort: 'Zachte, luxe badjas met geborduurd logo.',
     desc: 'Onze comfortabele badjas van hoogwaardige badstof, geborduurd met het Le Grand-logo. Heerlijk zacht — perfect voor in de club of thuis.' },
-  { id: 'slippers', naam: 'Badslippers', prijs: 25, cat: 'Textiel', slot: 'shop-slippers',
+  { id: 'slippers', naam: 'Badslippers', prijs: 25, cat: 'Textiel', slot: 'shop-slippers', img: 'app/assets/shop-slippers.png',
     kort: 'Comfortabele slippers met antislipzool.',
     desc: 'Stevige, comfortabele badslippers met antislipzool. Ideaal voor in de spa en daarbuiten.' },
 ];
