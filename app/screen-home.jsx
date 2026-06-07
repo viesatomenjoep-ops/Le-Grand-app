@@ -183,7 +183,7 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
         <CrowdMeter />
         
         {/* Aanwezig vandaag */}
-        <div style={{ marginTop: 16 }} />
+        <div style={{ marginTop: 56 }} />
         <SectionHead eyebrow={t('today_in_club')} title={t('who_is_present')} action={t('all_ladies')} onAction={() => go('dames')} />
         <GenericSlider 
           items={[...aanwezig, { isMore: true }]} 
