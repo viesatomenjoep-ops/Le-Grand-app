@@ -96,7 +96,7 @@ function CrowdMeter() {
   // We simulate a crowd level (could be dynamic)
   const fill = 65; 
   return (
-    <Card pad={16} style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 6 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 6, marginBottom: 8 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <LiveDot />
@@ -110,7 +110,7 @@ function CrowdMeter() {
       <div style={{ fontFamily: 'var(--font-body)', fontSize: 12.5, color: 'var(--cream-dim)' }}>
          {t('crowd_moderate_desc')}
       </div>
-    </Card>
+    </div>
   );
 }
 
