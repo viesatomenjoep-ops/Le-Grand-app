@@ -51,7 +51,7 @@ function MeerScreen({ go, reserve, openInfo, openVacatures, topInset }) {
       </div>
 
       <div style={{ padding: '40px 0 0', display: 'flex', justifyContent: 'center', opacity: 0.6 }}>
-        <img src="app/assets/legrand-logo.webp" alt="Le Grand" style={{ width: 56 }} />
+        <img src="app/assets/legrand-logo.webp" alt="Le Grand" style={{ width: 100 }} />
       </div>
 
       {/* Snel naar */}
@@ -67,6 +67,16 @@ function MeerScreen({ go, reserve, openInfo, openVacatures, topInset }) {
       {/* Contact */}
       <div style={{ padding: '24px 18px 0' }}>
         <SectionHead title="Contact" />
+        <Card pad={0} style={{ overflow: 'hidden', marginBottom: 16 }}>
+          <a href={VENUE.maps} target="_blank" rel="noreferrer" className="lg-press" style={{ display: 'block', position: 'relative' }}>
+            <img src="app/assets/exterior.jpg" alt="Le Grand" style={{ width: '100%', height: 180, objectFit: 'cover', display: 'block' }} />
+            <div className="lg-hero-scrim" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.85), transparent)' }} />
+            <div style={{ position: 'absolute', bottom: 12, left: 16, display: 'flex', alignItems: 'center', gap: 8, color: '#fff', fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: 16 }}>
+              <IcPin size={18} style={{ color: 'var(--gold)' }} />
+              Route naar de club in Maps
+            </div>
+          </a>
+        </Card>
         <Card pad={16}>
           <a href={VENUE.maps} target="_blank" rel="noreferrer" className="lg-press" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 12, padding: '4px 0' }}>
             <IcPin size={19} style={{ color: 'var(--gold)', flexShrink: 0 }} />
@@ -98,7 +108,7 @@ function MeerScreen({ go, reserve, openInfo, openVacatures, topInset }) {
 
       {/* Footer */}
       <div style={{ padding: '32px 18px 0', textAlign: 'center' }}>
-        <img src="app/assets/legrand-logo.webp" alt="Le Grand" style={{ width: 92, opacity: 0.85, margin: '0 auto' }} />
+        <img src="app/assets/legrand-logo.webp" alt="Le Grand" style={{ width: 100, opacity: 0.85, margin: '0 auto' }} />
         <p style={{ margin: '12px 0 0', fontFamily: 'var(--font-body)', fontSize: 11, color: 'var(--cream-faint)', letterSpacing: 0.3 }}>Toegang vanaf 18 jaar · Saunaclub Le Grand · Zundert</p>
       </div>
       <TabSpacer />

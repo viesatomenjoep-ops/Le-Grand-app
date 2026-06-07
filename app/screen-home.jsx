@@ -242,7 +242,7 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
           <IcChevR size={18} style={{ color: 'var(--cream-faint)' }} />
         </Card>
         <div style={{ textAlign: 'center', marginTop: 32, opacity: 0.6 }}>
-          <img src="app/assets/legrand-logo.webp" alt="Le Grand" style={{ width: 56 }} />
+          <img src="app/assets/legrand-logo.webp" alt="Le Grand" style={{ width: 100 }} />
         </div>
       </div>
 
