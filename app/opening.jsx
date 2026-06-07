@@ -44,7 +44,7 @@ function OpeningScreen({ variant = 'photo', onEnter }) {
 
         {!denied ? (
           <div className="lg-open-gate">
-            <div className="lg-open-divider"><span /><IcSpark size={15} /><span /></div>
+            <div className="lg-open-divider"><span /><IcCrown size={20} /><span /></div>
             <p className="lg-open-note">Deze plek is uitsluitend voor volwassenen. Bevestig je leeftijd om verder te gaan.</p>
             <Btn variant="primary" size="lg" full onClick={onEnter}>Ik ben 18 jaar of ouder</Btn>
             <button className="lg-press lg-open-under" onClick={() => setDenied(true)}>Ik ben jonger dan 18</button>

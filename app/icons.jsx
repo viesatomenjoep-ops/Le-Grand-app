@@ -44,10 +44,11 @@ const IcTruck  = (p) => <Icon {...p}><path d="M2 6h11v9H2zM13 9h4l3 3v3h-7z"/><c
 const IcTrash  = (p) => <Icon {...p}><path d="M4 7h16M9 7V5h6v2M6 7l1 13h10l1-13"/></Icon>;
 const IcMusic  = (p) => <Icon {...p}><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></Icon>;
 const IcFlame  = (p) => <Icon {...p}><path d="M12 3c1 3.5 5 4.8 5 9a5 5 0 0 1-10 0c0-1.8.8-3 1.6-3.8C9 9.5 9 10.6 10 11c0-2.4 1-4 2-5.8.3-.7 0-1.5 0-2.2Z"/></Icon>;
+const IcCrown  = (p) => <Icon {...p}><path d="M3 18h18v2H3v-2Z" /><path d="M4.5 16h15l1.5-9-5 3-4-5-4 5-5-3 1.5 9Z" /></Icon>;
 
 Object.assign(window, {
   Icon, IcHome, IcLeaf, IcCal, IcUser, IcClock, IcChevR, IcChevL, IcChevDown, IcArrowR,
   IcStar, IcPin, IcPlus, IcMinus, IcCheck, IcHeart, IcFire, IcDrop, IcSpark, IcX,
   IcBell, IcPhone, IcWaves, IcUsers, IcGift, IcMenu, IcSearch, IcTherm, IcInfo, IcSteam,
-  IcBag, IcBriefcase, IcTruck, IcTrash, IcMusic, IcFlame,
+  IcBag, IcBriefcase, IcTruck, IcTrash, IcMusic, IcFlame, IcCrown,
 });
