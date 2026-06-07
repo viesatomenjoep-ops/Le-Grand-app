@@ -51,7 +51,7 @@ function DamesScreen({ openDame, topInset }) {
           <Chip id="nu" label="Nu aanwezig" count={DAMES.filter(d => d.nu).length} />
         </div>
       </div>
-      <div style={{ padding: '0 18px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+      <div className="lg-grid-dames" style={{ padding: '0 18px' }}>
         {list.map(d => <DameCard key={d.id} dame={d} onClick={() => openDame(d.id)} />)}
       </div>
       <TabSpacer />

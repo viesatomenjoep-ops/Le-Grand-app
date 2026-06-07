@@ -50,7 +50,7 @@ function ShopScreen({ openProduct, openCart, addToCart, cartCount, topInset }) {
         Alles voor jouw bezoek aan de club — discreet thuisbezorgd.
       </p>
 
-      <div style={{ padding: '0 18px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+      <div className="lg-grid-dames" style={{ padding: '0 18px' }}>
         {PRODUCTS.map(p => (
           <ProductGridCard key={p.id} p={p} onClick={() => openProduct(p.id)} onAdd={() => addToCart(p.id, 1, p.maten ? p.maten[0] : null)} />
         ))}
