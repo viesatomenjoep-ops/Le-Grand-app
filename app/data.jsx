@@ -2,9 +2,9 @@
 
 // ── Onze dames — respectful directory (photos are user-filled image-slots) ──
 const DAMES = [
-  { id: 'ada',      name: 'Ada',      land: 'Roemenië',  leeftijd: 30, talen: ['RO','EN','DE'], dagen: ['wo','do','vr'], nu: true,  note: 'Warm, attent en een fijne gesprekspartner.' },
-  { id: 'alina',    name: 'Alina',    land: 'Roemenië',  leeftijd: 32, talen: ['RO','EN'],      dagen: ['ma','di','wo'], nu: true,  note: 'Rustig gezelschap met oog voor detail.' },
-  { id: 'angela',   name: 'Angela',   land: 'Frankrijk', leeftijd: 25, talen: ['FR','EN','NL'], dagen: ['do','vr','za'], nu: true,  note: 'Speels, charmant en altijd goedgehumeurd.' },
+  { id: 'ada',      name: 'Ada',      land: 'Roemenië',  leeftijd: 30, talen: ['RO','EN','DE'], dagen: ['wo','do','vr'], nu: true,  img: 'app/assets/dame-ada.png', note: 'Warm, attent en een fijne gesprekspartner.' },
+  { id: 'alina',    name: 'Alina',    land: 'Roemenië',  leeftijd: 32, talen: ['RO','EN'],      dagen: ['ma','di','wo'], nu: true,  img: 'app/assets/dame-alina.png', note: 'Rustig gezelschap met oog voor detail.' },
+  { id: 'angela',   name: 'Angela',   land: 'Frankrijk', leeftijd: 25, talen: ['FR','EN','NL'], dagen: ['do','vr','za'], nu: true,  img: 'app/assets/dame-angela.png', note: 'Speels, charmant en altijd goedgehumeurd.' },
   { id: 'anna',     name: 'Anna',     land: 'Roemenië',  leeftijd: 34, talen: ['RO','EN'],      dagen: ['vr','za','zo'], nu: false, note: 'Elegant en op haar gemak in elk gezelschap.' },
   { id: 'carol',    name: 'Carol',    land: 'Spanje',    leeftijd: 28, talen: ['ES','EN'],      dagen: ['wo','do','vr'], nu: true,  note: 'Zonnig temperament uit het zuiden.' },
   { id: 'claudia',  name: 'Claudia',  land: 'Colombia',  leeftijd: 34, talen: ['ES','FR','EN'], dagen: ['do','vr','za'], nu: false, note: 'Wereldwijs en gemakkelijk in de omgang.' },

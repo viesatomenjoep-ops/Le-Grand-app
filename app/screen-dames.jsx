@@ -6,7 +6,7 @@ function DameCard({ dame, onClick }) {
       background: 'none', border: 'none', padding: 0, textAlign: 'left', cursor: 'pointer', width: '100%',
     }}>
       <div style={{ position: 'relative', borderRadius: 18, overflow: 'hidden' }}>
-        <Photo id={`grid-dame-${dame.id}`} placeholder="Voeg foto toe" radius={18}
+        <Photo id={`grid-dame-${dame.id}`} placeholder="Voeg foto toe" radius={18} src={dame.img}
           style={{ width: '100%', aspectRatio: '3 / 4', display: 'block' }} />
         <div className="lg-photo-fade" />
         {dame.nu && <div style={{ position: 'absolute', top: 9, left: 9 }}><Tag tone="live"><LiveDot />Aanwezig</Tag></div>}
@@ -70,7 +70,7 @@ function DameDetail({ dame, onBack, go }) {
     <div>
       {/* Hero photo */}
       <div style={{ position: 'relative', height: 520 }}>
-        <Photo id={`detail-dame-${dame.id}`} radius={0} placeholder={`Foto van ${dame.name}`}
+        <Photo id={`detail-dame-${dame.id}`} radius={0} placeholder={`Foto van ${dame.name}`} src={dame.img}
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />
         <div className="lg-hero-scrim" />
         {/* back */}
