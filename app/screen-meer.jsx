@@ -52,7 +52,7 @@ function MeerScreen({ go, openInfo, openVacatures, topInset }) {
       </div>
 
       {/* Snel naar */}
-      <div style={{ padding: '24px 18px 0' }}>
+      <div style={{ padding: '24px 18px 0', marginTop: '20vh' }}>
         <SectionHead title="Snel naar" />
         <Card pad={6}>
           <MeerRow icon={<IcHeart size={20} />} label="Onze dames" sub="Bekijk wie aanwezig is" onClick={() => go('dames')} />

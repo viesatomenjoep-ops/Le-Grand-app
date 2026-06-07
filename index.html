@@ -60,8 +60,8 @@
     border-top: 1px solid var(--hair-strong); }
 
   /* Press feedback */
-  .lg-press { transition: transform .12s ease, filter .12s ease; -webkit-tap-highlight-color: transparent; }
-  .lg-press:active { transform: scale(0.97); filter: brightness(1.06); }
+  .lg-press { transition: transform .12s ease, filter .12s ease; -webkit-tap-highlight-color: transparent; touch-action: pan-y; }
+  .lg-press:active { filter: brightness(1.15); }
 
   .lg-eyebrow { font-family: var(--font-body); font-size: 11px; font-weight: 700; letter-spacing: 2.4px;
     text-transform: uppercase; color: var(--gold); margin-bottom: 7px; }

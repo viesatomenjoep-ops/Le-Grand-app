@@ -2,22 +2,26 @@
 
 function DameCard({ dame, onClick }) {
   return (
-    <button className="lg-press" onClick={onClick} style={{
-      background: 'none', border: 'none', padding: 0, textAlign: 'left', cursor: 'pointer', width: '100%',
+    <div className="lg-press" onClick={onClick} style={{
+      width: '100%', background: 'none', border: 'none', padding: 0, textAlign: 'left', cursor: 'pointer'
     }}>
-      <div style={{ position: 'relative', borderRadius: 18, overflow: 'hidden' }}>
+      <div style={{ position: 'relative' }}>
         <Photo id={`grid-dame-${dame.id}`} placeholder="Voeg foto toe" radius={18} src={dame.img}
           style={{ width: '100%', aspectRatio: '3 / 4', display: 'block' }} />
         <div className="lg-photo-fade" />
-        {dame.nu && <div style={{ position: 'absolute', top: 9, left: 9 }}><Tag tone="live"><LiveDot />Aanwezig</Tag></div>}
-        <div style={{ position: 'absolute', left: 11, right: 11, bottom: 9 }}>
-          <div style={{ fontFamily: 'var(--font-head)', fontSize: 19, fontWeight: 600, color: '#fff', lineHeight: 1.1 }}>
-            {dame.name}<span style={{ fontFamily: 'var(--font-body)', fontSize: 12.5, fontWeight: 500, color: 'rgba(255,255,255,0.8)' }}>  ·  {dame.leeftijd}</span>
+        {dame.nu &&
+          <div style={{ position: 'absolute', top: 10, left: 10 }}>
+            <Tag tone="live"><LiveDot />Vandaag aanwezig</Tag>
           </div>
-          <div style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'rgba(255,255,255,0.78)', marginTop: 2 }}>{dame.land}</div>
-        </div>
+        }
       </div>
-    </button>
+      <div style={{ marginTop: 10, padding: '0 4px' }}>
+        <div style={{ fontFamily: 'var(--font-head)', fontSize: 18, fontWeight: 600, color: 'var(--cream)', lineHeight: 1.1 }}>
+          {dame.name}<span style={{ fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 500, color: 'var(--cream-faint)' }}>  ·  {dame.leeftijd}</span>
+        </div>
+        <div style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--cream-dim)', marginTop: 2 }}>{dame.land}</div>
+      </div>
+    </div>
   );
 }
 

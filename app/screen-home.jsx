@@ -20,7 +20,7 @@ function QuickAction({ icon, label, onClick }) {
 
 function DameMini({ dame, onClick, height = 168 }) {
   return (
-    <button className="lg-press" onClick={onClick} style={{
+    <div className="lg-press" onClick={onClick} style={{
       width: '100%', flexShrink: 0, background: 'none', border: 'none', padding: 0, textAlign: 'left', cursor: 'pointer'
     }}>
       <div style={{ position: 'relative' }}>
@@ -39,7 +39,7 @@ function DameMini({ dame, onClick, height = 168 }) {
         </div>
         <div style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--cream-dim)', marginTop: 1 }}>{dame.land}</div>
       </div>
-    </button>);
+    </div>);
 }
 
 function FacRow({ f }) {
@@ -95,7 +95,7 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
   return (
     <div>
       {/* Full-screen Hero + Quick Actions */}
-      <div style={{ position: 'relative', height: 'calc(100vh - 80px)', minHeight: 560, display: 'flex', flexDirection: 'column', marginBottom: 220 }}>
+      <div style={{ position: 'relative', height: 'calc(100vh - 80px)', minHeight: 560, display: 'flex', flexDirection: 'column', marginBottom: 20 }}>
         <div style={{ position: 'absolute', inset: 0 }}>
           <Photo id="home-hero" radius={0} src="app/assets/spa-photo.webp" placeholder="Sfeerbeeld"
           style={{ width: '100%', height: '100%' }} />
@@ -119,7 +119,7 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
             <Btn variant="glass" onClick={() => go('dames')} size="lg" style={{ flex: 1 }}>Onze dames</Btn>
           </div>
 
-          <div style={{ paddingBottom: '15vh', display: 'flex', gap: 10, width: '100%' }}>
+          <div style={{ paddingBottom: '5vh', display: 'flex', gap: 10, width: '100%' }}>
             <QuickAction icon={<IcHeart size={23} />} label="Dames" onClick={() => go('dames')} />
             <QuickAction icon={<IcCal size={23} />} label="Reserveren" onClick={reserve} />
             <QuickAction icon={<IcStar size={23} />} label="Events" onClick={() => go('events')} />
