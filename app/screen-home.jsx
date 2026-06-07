@@ -134,7 +134,7 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
   return (
     <div>
       {/* Full-screen Hero + Quick Actions */}
-      <div style={{ position: 'relative', height: 'calc(100vh - 80px)', minHeight: 560, display: 'flex', flexDirection: 'column', marginBottom: 20 }}>
+      <div style={{ position: 'relative', height: 'calc(100vh - 80px)', minHeight: 560, display: 'flex', flexDirection: 'column', marginBottom: 10 }}>
         <div style={{ position: 'absolute', inset: 0 }}>
           <Photo id="home-hero" radius={0} src="app/assets/spa-photo.webp" placeholder="Sfeerbeeld"
           style={{ width: '100%', height: '100%' }} />
@@ -153,12 +153,12 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
             {t('home_subtitle')}
           </p>
 
-          <div style={{ marginTop: 'auto', marginBottom: 24, display: 'flex', gap: 12, width: '100%' }}>
+          <div style={{ marginTop: 'auto', marginBottom: 16, display: 'flex', gap: 12, width: '100%' }}>
             <Btn variant="primary" onClick={reserve} size="lg" style={{ flex: 1 }} rightIcon={<IcArrowR size={20} />}>{t('btn_reserve')}</Btn>
             <Btn variant="glass" onClick={() => go('dames')} size="lg" style={{ flex: 1 }}>{t('dames_title')}</Btn>
           </div>
 
-          <div style={{ paddingBottom: '5vh', display: 'flex', gap: 10, width: '100%' }}>
+          <div style={{ paddingBottom: '16px', display: 'flex', gap: 10, width: '100%' }}>
             <QuickAction icon={<IcHeart size={23} />} label={t('nav_dames')} onClick={() => go('dames')} />
             <QuickAction icon={<IcCal size={23} />} label={t('btn_reserve')} onClick={reserve} />
             <QuickAction icon={<IcStar size={23} />} label={t('nav_events')} onClick={() => go('events')} />
