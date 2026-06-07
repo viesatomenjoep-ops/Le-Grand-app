@@ -117,7 +117,7 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
         </div>
       </div>
 
-      <div style={{ padding: '0 18px', height: 'calc(50vh - 80px)', minHeight: 140, display: 'flex', alignItems: 'center' }}>
+      <div style={{ padding: '0 18px 12vh', height: 'calc(50vh - 80px)', minHeight: 140, display: 'flex', alignItems: 'center', boxSizing: 'border-box' }}>
         {/* Quick actions */}
         <div style={{ display: 'flex', gap: 10, width: '100%' }}>
           <QuickAction icon={<IcHeart size={23} />} label="Dames" onClick={() => go('dames')} />
