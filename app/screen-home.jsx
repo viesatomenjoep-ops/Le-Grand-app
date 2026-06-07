@@ -57,40 +57,31 @@ function FacRow({ f }) {
 
 }
 
-function GenericSlider({ items, renderItem, itemsPerSlide = 1 }) {
+function GenericSlider({ items, renderItem }) {
   const ref = React.useRef(null);
-  const slides = [];
-  for (let i = 0; i < items.length; i += itemsPerSlide) {
-    slides.push(items.slice(i, i + itemsPerSlide));
-  }
-  const [idx, setIdx] = React.useState(0);
-  const n = slides.length;
-
-  const onScroll = () => {
-    const el = ref.current; if (!el) return;
-    setIdx(Math.max(0, Math.min(n - 1, Math.round(el.scrollLeft / el.clientWidth))));
+  
+  const scrollL = () => {
+    if (ref.current) ref.current.scrollBy({ left: -ref.current.clientWidth * 0.8, behavior: 'smooth' });
   };
-  const goTo = (i) => {
-    const el = ref.current; if (!el) return;
-    const t = Math.max(0, Math.min(n - 1, i));
-    el.scrollTo({ left: t * el.clientWidth, behavior: 'smooth' });
+  const scrollR = () => {
+    if (ref.current) ref.current.scrollBy({ left: ref.current.clientWidth * 0.8, behavior: 'smooth' });
   };
 
   const navBtn = { width: 34, height: 34, borderRadius: 10, background: 'var(--panel)', border: '1px solid var(--hair)', color: 'var(--cream)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', flexShrink: 0 };
 
   return (
     <div style={{ position: 'relative' }}>
-      <div ref={ref} onScroll={onScroll} className="lg-hscroll" style={{ display: 'flex', scrollSnapType: 'x mandatory', marginLeft: -18, marginRight: -18, padding: '0 18px', scrollBehavior: 'smooth' }}>
-        {slides.map((slideItems, i) => (
-          <div key={i} style={{ flex: '0 0 100%', scrollSnapAlign: 'center', display: 'flex', gap: 14, boxSizing: 'border-box' }}>
-            {slideItems.map((item, j) => renderItem(item, i * itemsPerSlide + j))}
+      <div ref={ref} className="lg-hscroll" style={{ display: 'flex', scrollSnapType: 'x mandatory', gap: 14, marginLeft: -18, marginRight: -18, padding: '0 18px', scrollBehavior: 'smooth' }}>
+        {items.map((item, i) => (
+          <div key={i} style={{ scrollSnapAlign: 'start', flexShrink: 0 }}>
+            {renderItem(item, i)}
           </div>
         ))}
       </div>
-      {n > 1 && (
+      {items.length > 1 && (
         <div style={{ display: 'flex', justifyContent: 'center', gap: 12, marginTop: 16, alignItems: 'center' }}>
-          <button className="lg-press" onClick={() => goTo(idx - 1)} style={navBtn}><IcChevL size={16} /></button>
-          <button className="lg-press" onClick={() => goTo(idx + 1)} style={navBtn}><IcChevR size={16} /></button>
+          <button className="lg-press" onClick={scrollL} style={navBtn}><IcChevL size={16} /></button>
+          <button className="lg-press" onClick={scrollR} style={navBtn}><IcChevR size={16} /></button>
         </div>
       )}
     </div>
@@ -104,24 +95,24 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
   return (
     <div>
       {/* Hero */}
-      <div style={{ position: 'relative', height: 430 }}>
+      <div style={{ position: 'relative', height: 350 }}>
         <Photo id="home-hero" radius={0} src="app/assets/spa-photo.webp" placeholder="Sfeerbeeld"
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />
         <div className="lg-hero-scrim" />
-        <div style={{ position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '0 20px 26px' }}>
-          <img src="app/assets/legrand-logo.webp" alt="Le Grand" style={{ width: 116, marginBottom: 'auto', marginTop: 60, filter: 'drop-shadow(0 4px 18px rgba(0,0,0,0.6))' }} />
-          <div style={{ marginBottom: 12 }}>
+        <div style={{ position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '0 20px 22px' }}>
+          <img src="app/assets/legrand-logo.webp" alt="Le Grand" style={{ width: 104, marginBottom: 'auto', marginTop: 45, filter: 'drop-shadow(0 4px 18px rgba(0,0,0,0.6))' }} />
+          <div style={{ marginBottom: 10 }}>
             <Tag tone="live"><LiveDot />Nu geopend · tot {th.uren.split('–')[1].trim()}</Tag>
           </div>
-          <h1 style={{ margin: 0, fontWeight: 500, fontSize: 38, lineHeight: 1.05, color: 'var(--cream)', letterSpacing: 0.3, fontFamily: 'var(--font-head)' }}>
+          <h1 style={{ margin: 0, fontWeight: 500, fontSize: 34, lineHeight: 1.05, color: 'var(--cream)', letterSpacing: 0.3, fontFamily: 'var(--font-head)' }}>
             Een avond van<br /><span style={{ fontStyle: 'italic', color: 'var(--gold-light)', fontFamily: 'var(--font-head)' }}>pure verwennerij</span>
           </h1>
-          <p style={{ margin: '12px 0 18px', fontFamily: 'var(--font-body)', fontSize: 14.5, lineHeight: 1.5, color: 'var(--cream-dim)', maxWidth: 320 }}>
-            Exclusieve saunaclub in Zundert. Stijlvolle faciliteiten, charmant gezelschap en totale discretie.
+          <p style={{ margin: '8px 0 16px', fontFamily: 'var(--font-body)', fontSize: 13.5, lineHeight: 1.4, color: 'var(--cream-dim)', maxWidth: 320 }}>
+            Exclusieve saunaclub in Zundert.
           </p>
           <div style={{ display: 'flex', gap: 10 }}>
-            <Btn variant="primary" onClick={reserve} rightIcon={<IcArrowR size={18} />}>Reserveren</Btn>
-            <Btn variant="glass" onClick={() => go('dames')}>Onze dames</Btn>
+            <Btn variant="primary" onClick={reserve} size="sm" rightIcon={<IcArrowR size={16} />}>Reserveren</Btn>
+            <Btn variant="glass" onClick={() => go('dames')} size="sm">Onze dames</Btn>
           </div>
         </div>
       </div>
@@ -131,7 +122,7 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
         <div style={{ display: 'flex', gap: 10, marginBottom: 28 }}>
           <QuickAction icon={<IcHeart size={23} />} label="Dames" onClick={() => go('dames')} />
           <QuickAction icon={<IcCal size={23} />} label="Reserveren" onClick={reserve} />
-          <QuickAction icon={<IcMusic size={23} />} label="Events" onClick={() => go('events')} />
+          <QuickAction icon={<IcStar size={23} />} label="Events" onClick={() => go('events')} />
           <QuickAction icon={<IcBag size={23} />} label="Shop" onClick={() => go('shop')} />
         </div>
 
@@ -141,12 +132,11 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
       <div style={{ padding: '0 18px 4px' }}>
         <GenericSlider 
           items={[...aanwezig, { isMore: true }]} 
-          itemsPerSlide={2} 
           renderItem={(d) => {
             if (d.isMore) {
               return (
                 <button key="more" className="lg-press" onClick={() => go('dames')} style={{
-                  flex: 1, height: 168, marginTop: 0,
+                  width: 140, height: 168, marginTop: 0,
                   background: 'var(--panel)', border: '1px solid var(--hair)', borderRadius: 16,
                   color: 'var(--gold)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8, cursor: 'pointer'
                 }}>
@@ -155,7 +145,7 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
               );
             }
             return (
-              <div key={d.id} style={{ flex: 1, minWidth: 0 }}>
+              <div key={d.id} style={{ width: 140 }}>
                  <DameMini dame={d} onClick={() => openDame(d.id)} />
               </div>
             );
@@ -200,9 +190,8 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
         <SectionHead eyebrow="Binnenkort" title="Events" action="Alle events" onAction={() => go('events')} />
         <GenericSlider
           items={EVENTS}
-          itemsPerSlide={1}
           renderItem={(e) => (
-            <Card key={e.id} pad={16} onClick={() => openEvent(e.id)} style={{ width: '100%' }}>
+            <Card key={e.id} pad={16} onClick={() => openEvent(e.id)} style={{ width: 270 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
                 <Tag tone="gold">{e.tag}</Tag>
                 <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--cream-faint)' }}>{e.datum}</span>
@@ -222,13 +211,12 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
         <SectionHead eyebrow="Webshop" title="Mee naar huis" action="Naar winkel" onAction={() => go('shop')} />
         <GenericSlider
           items={PRODUCTS}
-          itemsPerSlide={2}
           renderItem={(p) => (
-            <button key={p.id} className="lg-press" onClick={() => openProduct(p.id)} style={{ flex: 1, minWidth: 0, background: 'var(--panel)', border: '1px solid var(--hair)', borderRadius: 'var(--r-lg)', overflow: 'hidden', textAlign: 'left', cursor: 'pointer', padding: 0 }}>
-              <Photo id={`home-prod-${p.slot}`} placeholder={p.naam} radius={0} style={{ width: '100%', height: 120, display: 'block' }} />
-              <div style={{ padding: 12 }}>
-                <div style={{ fontFamily: 'var(--font-head)', fontSize: 14, fontWeight: 600, color: 'var(--cream)', lineHeight: 1.15, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.naam}</div>
-                <div style={{ fontFamily: 'var(--font-head)', fontSize: 16, fontWeight: 700, color: 'var(--gold)', marginTop: 4 }}>€{p.prijs}</div>
+            <button key={p.id} className="lg-press" onClick={() => openProduct(p.id)} style={{ width: 140, background: 'var(--panel)', border: '1px solid var(--hair)', borderRadius: 'var(--r-lg)', overflow: 'hidden', textAlign: 'left', cursor: 'pointer', padding: 0 }}>
+              <Photo id={`home-prod-${p.slot}`} placeholder={p.naam} radius={0} style={{ width: '100%', height: 110, display: 'block' }} />
+              <div style={{ padding: 10 }}>
+                <div style={{ fontFamily: 'var(--font-head)', fontSize: 13.5, fontWeight: 600, color: 'var(--cream)', lineHeight: 1.15, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.naam}</div>
+                <div style={{ fontFamily: 'var(--font-head)', fontSize: 15, fontWeight: 700, color: 'var(--gold)', marginTop: 4 }}>€{p.prijs}</div>
               </div>
             </button>
           )}
