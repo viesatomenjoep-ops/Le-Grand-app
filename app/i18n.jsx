@@ -95,10 +95,10 @@ function LanguageSelector({ style }) {
 
       {open && (
         <div style={{
-          position: 'absolute', bottom: 'calc(100% + 8px)', right: 0,
+          position: 'absolute', top: 'calc(100% + 8px)', right: 0,
           background: 'var(--panel-2)', border: '1px solid var(--hair)', borderRadius: 'var(--r-md)',
           padding: '6px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4,
-          boxShadow: '0 8px 32px rgba(0,0,0,0.4)', zIndex: 100, minWidth: 200, maxHeight: 300, overflowY: 'auto'
+          boxShadow: '0 8px 32px rgba(0,0,0,0.6)', zIndex: 100, minWidth: 200, maxHeight: 300, overflowY: 'auto'
         }}>
           {LANGUAGES.map(l => (
             <button key={l.code} onClick={() => { setLang(l.code); setOpen(false); }} style={{
