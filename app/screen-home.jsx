@@ -99,8 +99,8 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
         <Photo id="home-hero" radius={0} src="app/assets/spa-photo.webp" placeholder="Sfeerbeeld"
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />
         <div className="lg-hero-scrim" />
-        <div style={{ position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '0 20px 28px' }}>
-          <img src="app/assets/legrand-logo.webp" alt="Le Grand" style={{ width: 160, marginBottom: 'auto', marginTop: 50, filter: 'drop-shadow(0 4px 18px rgba(0,0,0,0.6))' }} />
+        <div style={{ position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '0 20px 16px' }}>
+          <img src="app/assets/legrand-logo.webp" alt="Le Grand" style={{ width: 160, marginTop: 'auto', marginBottom: 28, filter: 'drop-shadow(0 4px 18px rgba(0,0,0,0.6))' }} />
           <div style={{ marginBottom: 12 }}>
             <Tag tone="live"><LiveDot />Nu geopend · tot {th.uren.split('–')[1].trim()}</Tag>
           </div>
@@ -117,7 +117,7 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
         </div>
       </div>
 
-      <div style={{ padding: '45px 18px 0', marginBottom: '220px' }}>
+      <div style={{ padding: '12px 18px 0', marginBottom: '220px' }}>
         {/* Quick actions */}
         <div style={{ display: 'flex', gap: 10 }}>
           <QuickAction icon={<IcHeart size={23} />} label="Dames" onClick={() => go('dames')} />
