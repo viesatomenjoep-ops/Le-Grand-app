@@ -95,29 +95,29 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
   return (
     <div>
       {/* Hero */}
-      <div style={{ position: 'relative', height: 350 }}>
+      <div style={{ position: 'relative', height: '65vh', minHeight: 450 }}>
         <Photo id="home-hero" radius={0} src="app/assets/spa-photo.webp" placeholder="Sfeerbeeld"
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />
         <div className="lg-hero-scrim" />
-        <div style={{ position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '0 20px 22px' }}>
-          <img src="app/assets/legrand-logo.webp" alt="Le Grand" style={{ width: 104, marginBottom: 'auto', marginTop: 45, filter: 'drop-shadow(0 4px 18px rgba(0,0,0,0.6))' }} />
-          <div style={{ marginBottom: 10 }}>
+        <div style={{ position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '0 20px 28px' }}>
+          <img src="app/assets/legrand-logo.webp" alt="Le Grand" style={{ width: 160, marginBottom: 'auto', marginTop: 50, filter: 'drop-shadow(0 4px 18px rgba(0,0,0,0.6))' }} />
+          <div style={{ marginBottom: 12 }}>
             <Tag tone="live"><LiveDot />Nu geopend · tot {th.uren.split('–')[1].trim()}</Tag>
           </div>
-          <h1 style={{ margin: 0, fontWeight: 500, fontSize: 34, lineHeight: 1.05, color: 'var(--cream)', letterSpacing: 0.3, fontFamily: 'var(--font-head)' }}>
+          <h1 style={{ margin: 0, fontWeight: 500, fontSize: 36, lineHeight: 1.05, color: 'var(--cream)', letterSpacing: 0.3, fontFamily: 'var(--font-head)' }}>
             Een avond van<br /><span style={{ fontStyle: 'italic', color: 'var(--gold-light)', fontFamily: 'var(--font-head)' }}>pure verwennerij</span>
           </h1>
-          <p style={{ margin: '8px 0 16px', fontFamily: 'var(--font-body)', fontSize: 13.5, lineHeight: 1.4, color: 'var(--cream-dim)', maxWidth: 320 }}>
+          <p style={{ margin: '10px 0 20px', fontFamily: 'var(--font-body)', fontSize: 14.5, lineHeight: 1.4, color: 'var(--cream-dim)', maxWidth: 320 }}>
             Exclusieve saunaclub in Zundert.
           </p>
-          <div style={{ display: 'flex', gap: 10 }}>
-            <Btn variant="primary" onClick={reserve} size="sm" rightIcon={<IcArrowR size={16} />}>Reserveren</Btn>
-            <Btn variant="glass" onClick={() => go('dames')} size="sm">Onze dames</Btn>
+          <div style={{ display: 'flex', gap: 12 }}>
+            <Btn variant="primary" onClick={reserve} size="lg" style={{ flex: 1 }} rightIcon={<IcArrowR size={20} />}>Reserveren</Btn>
+            <Btn variant="glass" onClick={() => go('dames')} size="lg" style={{ flex: 1 }}>Onze dames</Btn>
           </div>
         </div>
       </div>
 
-      <div style={{ padding: '22px 18px 0', marginBottom: '220px' }}>
+      <div style={{ padding: '45px 18px 0', marginBottom: '220px' }}>
         {/* Quick actions */}
         <div style={{ display: 'flex', gap: 10 }}>
           <QuickAction icon={<IcHeart size={23} />} label="Dames" onClick={() => go('dames')} />
