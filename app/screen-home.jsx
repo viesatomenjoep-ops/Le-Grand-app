@@ -21,11 +21,11 @@ function QuickAction({ icon, label, onClick }) {
 function DameMini({ dame, onClick }) {
   return (
     <button className="lg-press" onClick={onClick} style={{
-      width: 132, flexShrink: 0, background: 'none', border: 'none', padding: 0, textAlign: 'left', cursor: 'pointer'
+      width: '100%', flexShrink: 0, background: 'none', border: 'none', padding: 0, textAlign: 'left', cursor: 'pointer'
     }}>
       <div style={{ position: 'relative' }}>
         <Photo id={`home-dame-${dame.id}`} placeholder="Voeg foto toe" radius={16}
-        style={{ width: 132, height: 168, display: 'block' }} />
+        style={{ width: '100%', height: 168, display: 'block' }} />
         {dame.nu &&
         <div style={{ position: 'absolute', top: 8, left: 8 }}>
             <Tag tone="live"><LiveDot />Aanwezig</Tag>
@@ -40,7 +40,6 @@ function DameMini({ dame, onClick }) {
         <div style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--cream-dim)', marginTop: 1 }}>{dame.land}</div>
       </div>
     </button>);
-
 }
 
 function FacRow({ f }) {
@@ -56,6 +55,46 @@ function FacRow({ f }) {
       </div>
     </Card>);
 
+}
+
+function GenericSlider({ items, renderItem, itemsPerSlide = 1 }) {
+  const ref = React.useRef(null);
+  const slides = [];
+  for (let i = 0; i < items.length; i += itemsPerSlide) {
+    slides.push(items.slice(i, i + itemsPerSlide));
+  }
+  const [idx, setIdx] = React.useState(0);
+  const n = slides.length;
+
+  const onScroll = () => {
+    const el = ref.current; if (!el) return;
+    setIdx(Math.max(0, Math.min(n - 1, Math.round(el.scrollLeft / el.clientWidth))));
+  };
+  const goTo = (i) => {
+    const el = ref.current; if (!el) return;
+    const t = Math.max(0, Math.min(n - 1, i));
+    el.scrollTo({ left: t * el.clientWidth, behavior: 'smooth' });
+  };
+
+  const navBtn = { width: 34, height: 34, borderRadius: 10, background: 'var(--panel)', border: '1px solid var(--hair)', color: 'var(--cream)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', flexShrink: 0 };
+
+  return (
+    <div style={{ position: 'relative' }}>
+      <div ref={ref} onScroll={onScroll} className="lg-hscroll" style={{ display: 'flex', scrollSnapType: 'x mandatory', marginLeft: -18, marginRight: -18, padding: '0 18px', scrollBehavior: 'smooth' }}>
+        {slides.map((slideItems, i) => (
+          <div key={i} style={{ flex: '0 0 100%', scrollSnapAlign: 'center', display: 'flex', gap: 14, boxSizing: 'border-box' }}>
+            {slideItems.map((item, j) => renderItem(item, i * itemsPerSlide + j))}
+          </div>
+        ))}
+      </div>
+      {n > 1 && (
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 12, marginTop: 16, alignItems: 'center' }}>
+          <button className="lg-press" onClick={() => goTo(idx - 1)} style={navBtn}><IcChevL size={16} /></button>
+          <button className="lg-press" onClick={() => goTo(idx + 1)} style={navBtn}><IcChevR size={16} /></button>
+        </div>
+      )}
+    </div>
+  );
 }
 
 function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
@@ -92,22 +131,36 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
         <div style={{ display: 'flex', gap: 10, marginBottom: 28 }}>
           <QuickAction icon={<IcUsers size={23} />} label="Dames" onClick={() => go('dames')} />
           <QuickAction icon={<IcCal size={23} />} label="Reserveren" onClick={reserve} />
-          <QuickAction icon={<IcSpark size={23} />} label="Events" onClick={() => go('events')} />
+          <QuickAction icon={<IcMusic size={23} />} label="Events" onClick={() => go('events')} />
           <QuickAction icon={<IcBag size={23} />} label="Shop" onClick={() => go('shop')} />
         </div>
 
         {/* Aanwezig vandaag */}
         <SectionHead eyebrow="Vandaag in de club" title="Wie is er aanwezig" action="Alle dames" onAction={() => go('dames')} />
       </div>
-      <div className="lg-hscroll" style={{ padding: '0 18px 4px', display: 'flex', gap: 14 }}>
-        {aanwezig.map((d) => <DameMini key={d.id} dame={d} onClick={() => openDame(d.id)} />)}
-        <button className="lg-press" onClick={() => go('dames')} style={{
-          width: 132, flexShrink: 0, height: 168, marginTop: 0, alignSelf: 'flex-start',
-          background: 'var(--panel)', border: '1px solid var(--hair)', borderRadius: 16,
-          color: 'var(--gold)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8, cursor: 'pointer'
-        }}>
-          <IcArrowR size={22} /><span style={{ fontFamily: 'var(--font-body)', fontSize: 12.5, fontWeight: 600 }}>Bekijk alle</span>
-        </button>
+      <div style={{ padding: '0 18px 4px' }}>
+        <GenericSlider 
+          items={[...aanwezig, { isMore: true }]} 
+          itemsPerSlide={2} 
+          renderItem={(d) => {
+            if (d.isMore) {
+              return (
+                <button key="more" className="lg-press" onClick={() => go('dames')} style={{
+                  flex: 1, height: 168, marginTop: 0,
+                  background: 'var(--panel)', border: '1px solid var(--hair)', borderRadius: 16,
+                  color: 'var(--gold)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8, cursor: 'pointer'
+                }}>
+                  <IcArrowR size={22} /><span style={{ fontFamily: 'var(--font-body)', fontSize: 12.5, fontWeight: 600 }}>Bekijk alle</span>
+                </button>
+              );
+            }
+            return (
+              <div key={d.id} style={{ flex: 1, minWidth: 0 }}>
+                 <DameMini dame={d} onClick={() => openDame(d.id)} />
+              </div>
+            );
+          }}
+        />
       </div>
 
       <div style={{ padding: '30px 18px 0' }}>
@@ -145,9 +198,11 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
       {/* Events */}
       <div style={{ padding: '30px 18px 0' }}>
         <SectionHead eyebrow="Binnenkort" title="Events" action="Alle events" onAction={() => go('events')} />
-        <div className="lg-hscroll" style={{ display: 'flex', gap: 12, marginLeft: -18, marginRight: -18, padding: '0 18px' }}>
-          {EVENTS.map((e) =>
-          <Card key={e.id} pad={16} onClick={() => openEvent(e.id)} style={{ width: 260, flexShrink: 0 }}>
+        <GenericSlider
+          items={EVENTS}
+          itemsPerSlide={1}
+          renderItem={(e) => (
+            <Card key={e.id} pad={16} onClick={() => openEvent(e.id)} style={{ width: '100%' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
                 <Tag tone="gold">{e.tag}</Tag>
                 <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--cream-faint)' }}>{e.datum}</span>
@@ -159,15 +214,17 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
               </div>
             </Card>
           )}
-        </div>
+        />
       </div>
 
       {/* Webshop teaser */}
       <div style={{ padding: '30px 18px 0' }}>
         <SectionHead eyebrow="Webshop" title="Mee naar huis" action="Naar winkel" onAction={() => go('shop')} />
-        <div className="lg-hscroll" style={{ display: 'flex', gap: 12, marginLeft: -18, marginRight: -18, padding: '0 18px' }}>
-          {PRODUCTS.map((p) =>
-            <button key={p.id} className="lg-press" onClick={() => openProduct(p.id)} style={{ width: 150, flexShrink: 0, background: 'var(--panel)', border: '1px solid var(--hair)', borderRadius: 'var(--r-lg)', overflow: 'hidden', textAlign: 'left', cursor: 'pointer', padding: 0 }}>
+        <GenericSlider
+          items={PRODUCTS}
+          itemsPerSlide={2}
+          renderItem={(p) => (
+            <button key={p.id} className="lg-press" onClick={() => openProduct(p.id)} style={{ flex: 1, minWidth: 0, background: 'var(--panel)', border: '1px solid var(--hair)', borderRadius: 'var(--r-lg)', overflow: 'hidden', textAlign: 'left', cursor: 'pointer', padding: 0 }}>
               <Photo id={`home-prod-${p.slot}`} placeholder={p.naam} radius={0} style={{ width: '100%', height: 120, display: 'block' }} />
               <div style={{ padding: 12 }}>
                 <div style={{ fontFamily: 'var(--font-head)', fontSize: 14, fontWeight: 600, color: 'var(--cream)', lineHeight: 1.15, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.naam}</div>
@@ -175,7 +232,7 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
               </div>
             </button>
           )}
-        </div>
+        />
       </div>
 
       {/* Reviews */}

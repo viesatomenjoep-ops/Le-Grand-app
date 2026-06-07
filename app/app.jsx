@@ -18,7 +18,7 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 const TABS = [
   ['home', 'Home', IcHome],
   ['dames', 'Dames', IcUsers],
-  ['events', 'Events', IcSpark],
+  ['events', 'Events', IcMusic],
   ['shop', 'Shop', IcBag],
   ['meer', 'Meer', IcMenu],
 ];
