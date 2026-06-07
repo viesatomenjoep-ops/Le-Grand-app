@@ -88,7 +88,12 @@ const extras2 = {
     happy_hours:'Happy Hours', mo_th_from:'Ma–do vanaf 11:00', full_access:'Volledige toegang faciliteiten', inc_bathrobe_only:'Badjas & handdoek inbegrepen',
     all_in_drinks:'All-in drankjes', per_2_hours:'Per 2 uur', per_suite:'per suite', own_jacuzzi:'Eigen jacuzzi & lounge', bottle_champagne:'Fles champagne',
     fully_discreet:'Volledig discreet', open_7_days:'Geopend 7 dagen', find_us:'Vind ons', loc_contact:'Locatie & contact', call_res:'Bel voor reserveringen',
-    send_msg:'Stuur ons een bericht', access_18_short:'Toegang vanaf 18 jaar', id_required:'Geldig legitimatiebewijs verplicht. Wij hechten veel waarde aan discretie, respect en een veilige sfeer voor iedereen.'
+    send_msg:'Stuur ons een bericht', access_18_short:'Toegang vanaf 18 jaar', id_required:'Geldig legitimatiebewijs verplicht. Wij hechten veel waarde aan discretie, respect en een veilige sfeer voor iedereen.',
+    booked_full:'Volgeboekt', almost_full:'Bijna vol', available:'Beschikbaar', party:'Gezelschap', guest:'gast', guests:'gasten',
+    total_ind:'Totaal indicatie', fname:'Naam', fname_ph:'Voor- en achternaam', phone:'Telefoon',
+    booking_terms:'Door te bevestigen ga je akkoord met onze huisregels. Je gegevens worden vertrouwelijk behandeld.', confirm_booking:'Bevestig reservering',
+    req_sent:'Aanvraag verzonden', thanks:'Bedankt', confirm_24h:'We bevestigen je reservering binnen 24 uur per telefoon.',
+    booking_no:'Reserveringsnr.', back_home:'Terug naar home', new_res:'Nieuwe reservering', step_1_of_4:'Stap {n} van 4',
   },
   en: {
     fac_wellness:'Facilities & wellness', fac_wellness_sub:'Sauna, jacuzzi, pool, suites',
@@ -102,7 +107,12 @@ const extras2 = {
     happy_hours:'Happy Hours', mo_th_from:'Mon–Thu from 11:00', full_access:'Full access to facilities', inc_bathrobe_only:'Bathrobe & towel included',
     all_in_drinks:'All-in drinks', per_2_hours:'Per 2 hours', per_suite:'per suite', own_jacuzzi:'Private jacuzzi & lounge', bottle_champagne:'Bottle of champagne',
     fully_discreet:'Fully discreet', open_7_days:'Open 7 days', find_us:'Find us', loc_contact:'Location & contact', call_res:'Call for reservations',
-    send_msg:'Send us a message', access_18_short:'Access from 18 years', id_required:'Valid ID required. We value discretion, respect and a safe atmosphere for everyone.'
+    send_msg:'Send us a message', access_18_short:'Access from 18 years', id_required:'Valid ID required. We value discretion, respect and a safe atmosphere for everyone.',
+    booked_full:'Fully booked', almost_full:'Almost full', available:'Available', party:'Party', guest:'guest', guests:'guests',
+    total_ind:'Total indication', fname:'Name', fname_ph:'First and last name', phone:'Phone',
+    booking_terms:'By confirming you agree to our house rules. Your data is treated confidentially.', confirm_booking:'Confirm booking',
+    req_sent:'Request sent', thanks:'Thank you', confirm_24h:'We will confirm your reservation within 24 hours by phone.',
+    booking_no:'Booking no.', back_home:'Back to home', new_res:'New reservation', step_1_of_4:'Step {n} of 4',
   },
   de: {
     fac_wellness:'Einrichtungen & Wellness', fac_wellness_sub:'Sauna, Whirlpool, Pool, Suiten', rates:'Preise', rates_sub:'All-in Eintritt & Pakete',
@@ -115,7 +125,12 @@ const extras2 = {
     inc_saunas:'Alle Saunen, Whirlpool & Pool', happy_hours:'Happy Hours', mo_th_from:'Mo–Do ab 11:00', full_access:'Voller Zugang zu den Einrichtungen',
     inc_bathrobe_only:'Bademantel & Handtuch inbegriffen', all_in_drinks:'All-in Getränke', per_2_hours:'Pro 2 Stunden', per_suite:'pro Suite', own_jacuzzi:'Eigener Whirlpool & Lounge',
     bottle_champagne:'Flasche Champagner', fully_discreet:'Völlig diskret', open_7_days:'7 Tage geöffnet', find_us:'Finde uns', loc_contact:'Standort & Kontakt',
-    call_res:'Anrufen für Reservierungen', send_msg:'Sende uns eine Nachricht', access_18_short:'Zutritt ab 18 Jahren', id_required:'Gültiger Ausweis erforderlich. Wir legen Wert auf Diskretion, Respekt und eine sichere Atmosphäre für alle.'
+    call_res:'Anrufen für Reservierungen', send_msg:'Sende uns eine Nachricht', access_18_short:'Zutritt ab 18 Jahren', id_required:'Gültiger Ausweis erforderlich. Wir legen Wert auf Diskretion, Respekt und eine sichere Atmosphäre für alle.',
+    booked_full:'Ausgebucht', almost_full:'Fast voll', available:'Verfügbar', party:'Begleitung', guest:'Gast', guests:'Gäste',
+    total_ind:'Preisindikation', fname:'Name', fname_ph:'Vor- und Nachname', phone:'Telefon',
+    booking_terms:'Mit der Bestätigung akzeptieren Sie unsere Hausregeln. Ihre Daten werden vertraulich behandelt.', confirm_booking:'Buchung bestätigen',
+    req_sent:'Anfrage gesendet', thanks:'Danke', confirm_24h:'Wir bestätigen Ihre Reservierung innerhalb von 24 Stunden telefonisch.',
+    booking_no:'Buchungsnr.', back_home:'Zurück zur Startseite', new_res:'Neue Reservierung', step_1_of_4:'Schritt {n} von 4',
   },
   fr: {
     fac_wellness:'Installations et bien-être', fac_wellness_sub:'Sauna, jacuzzi, piscine, suites', rates:'Tarifs', rates_sub:'Entrée tout compris & forfaits',
@@ -128,7 +143,12 @@ const extras2 = {
     inc_saunas:'Tous les saunas, jacuzzi & piscine', happy_hours:'Happy Hours', mo_th_from:'Lun-Jeu à partir de 11:00', full_access:'Accès complet aux installations',
     inc_bathrobe_only:'Peignoir & serviette inclus', all_in_drinks:'Boissons tout compris', per_2_hours:'Pour 2 heures', per_suite:'par suite', own_jacuzzi:'Jacuzzi privé & salon',
     bottle_champagne:'Bouteille de champagne', fully_discreet:'Totalement discret', open_7_days:'Ouvert 7 jours', find_us:'Trouvez-nous', loc_contact:'Lieu & contact',
-    call_res:'Appeler pour réserver', send_msg:'Envoyez-nous un message', access_18_short:'Accès à partir de 18 ans', id_required:'Pièce d\'identité valide requise. Nous valorisons la discrétion, le respect et une atmosphère sûre pour tous.'
+    call_res:'Appeler pour réserver', send_msg:'Envoyez-nous un message', access_18_short:'Accès à partir de 18 ans', id_required:'Pièce d\'identité valide requise. Nous valorisons la discrétion, le respect et une atmosphère sûre pour tous.',
+    booked_full:'Complet', almost_full:'Presque complet', available:'Disponible', party:'Groupe', guest:'invité', guests:'invités',
+    total_ind:'Indication de prix', fname:'Nom', fname_ph:'Prénom et nom', phone:'Téléphone',
+    booking_terms:'En confirmant, vous acceptez nos règles. Vos données sont traitées de manière confidentielle.', confirm_booking:'Confirmer la réservation',
+    req_sent:'Demande envoyée', thanks:'Merci', confirm_24h:'Nous confirmerons votre réservation dans les 24 heures par téléphone.',
+    booking_no:'Réservation n°', back_home:'Retour à l\'accueil', new_res:'Nouvelle réservation', step_1_of_4:'Étape {n} sur 4',
   },
   es: {
     fac_wellness:'Instalaciones y bienestar', fac_wellness_sub:'Sauna, jacuzzi, piscina, suites', rates:'Tarifas', rates_sub:'Entrada todo incluido y paquetes',
@@ -141,7 +161,12 @@ const extras2 = {
     inc_saunas:'Todas las saunas, jacuzzi y piscina', happy_hours:'Happy Hours', mo_th_from:'Lun-Jue a partir de las 11:00', full_access:'Acceso completo a las instalaciones',
     inc_bathrobe_only:'Albornoz y toalla incluidos', all_in_drinks:'Bebidas todo incluido', per_2_hours:'Por 2 horas', per_suite:'por suite', own_jacuzzi:'Jacuzzi privado y sala de estar',
     bottle_champagne:'Botella de champán', fully_discreet:'Totalmente discreto', open_7_days:'Abierto 7 días', find_us:'Encuéntranos', loc_contact:'Ubicación y contacto',
-    call_res:'Llamar para reservar', send_msg:'Envíanos un mensaje', access_18_short:'Acceso a partir de 18 años', id_required:'Identificación válida requerida. Valoramos la discreción, el respeto y un ambiente seguro para todos.'
+    call_res:'Llamar para reservar', send_msg:'Envíanos un mensaje', access_18_short:'Acceso a partir de 18 años', id_required:'Identificación válida requerida. Valoramos la discreción, el respeto y un ambiente seguro para todos.',
+    booked_full:'Completo', almost_full:'Casi lleno', available:'Disponible', party:'Grupo', guest:'invitado', guests:'invitados',
+    total_ind:'Indicación total', fname:'Nombre', fname_ph:'Nombre y apellido', phone:'Teléfono',
+    booking_terms:'Al confirmar aceptas nuestras normas. Tus datos se tratan de forma confidencial.', confirm_booking:'Confirmar reserva',
+    req_sent:'Solicitud enviada', thanks:'Gracias', confirm_24h:'Confirmaremos tu reserva en 24 horas por teléfono.',
+    booking_no:'Reserva n.º', back_home:'Volver al inicio', new_res:'Nueva reserva', step_1_of_4:'Paso {n} de 4',
   }
 };
 Object.keys(extras2).forEach(lang => Object.assign(T[lang], extras2[lang]));

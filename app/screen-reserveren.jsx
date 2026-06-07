@@ -66,6 +66,7 @@ function Calendar({ value, onPick }) {
 }
 
 function StepperNum({ value, set, min = 1, max = 8 }) {
+  const { t } = useTranslation();
   const btn = (dis, on, ic) => (
     <button className="lg-press" disabled={dis} onClick={on} style={{
       width: 42, height: 42, borderRadius: 12, background: 'var(--panel-3)', border: '1px solid var(--hair-strong)',
@@ -75,13 +76,14 @@ function StepperNum({ value, set, min = 1, max = 8 }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
       {btn(value <= min, () => set(value - 1), <IcMinus size={18} />)}
-      <span style={{ fontFamily: 'var(--font-head)', fontSize: 22, fontWeight: 600, color: 'var(--cream)' }}>{value} {value === 1 ? 'gast' : 'gasten'}</span>
+      <span style={{ fontFamily: 'var(--font-head)', fontSize: 22, fontWeight: 600, color: 'var(--cream)' }}>{value} {value === 1 ? t('guest') : t('guests')}</span>
       {btn(value >= max, () => set(value + 1), <IcPlus size={18} />)}
     </div>
   );
 }
 
 function ReserverenScreen({ go, topInset }) {
+  const { t } = useTranslation();
   const [step, setStep] = React.useState(0);
   const [date, setDate] = React.useState(null);
   const [time, setTime] = React.useState(null);
@@ -91,30 +93,34 @@ function ReserverenScreen({ go, topInset }) {
   const [tel, setTel] = React.useState('');
   const [done, setDone] = React.useState(false);
 
-  const labels = ['Datum', 'Tijd', 'Arrangement', 'Bevestig'];
-  const arrangement = TARIEVEN.find(t => t.id === arr);
+  const labels = [t('step_date') || 'Datum', t('step_time') || 'Tijd', t('step_package') || 'Arrangement', t('step_confirm') || 'Bevestig'];
+  const arrangement = TARIEVEN.find(tr => tr.id === arr);
   const fmtDate = (d) => d ? `${d.getDate()} ${MONTHS_NL[d.getMonth()]}` : '';
   const canNext = [date, time, arr, naam && tel][step];
+
+  const tarNameMap = { 'Dagentree': 'day_entry', 'Happy Hours': 'happy_hours', 'Privé Suite': 'priv_suites' };
+  const tarSubMap = { 'Hele dag · all-in': 'all_day', 'Ma–do vanaf 11:00': 'mo_th_from', 'Per 2 uur': 'per_2_hours' };
+  const tarUnitMap = { 'p.p.': 'pp', 'per suite': 'per_suite' };
 
   if (done) {
     return (
       <div style={{ padding: (topInset + 30) + 'px 24px 0', textAlign: 'center', minHeight: 560, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         <div className="lg-check"><IcCheck size={40} /></div>
-        <h1 style={{ margin: '24px 0 8px', fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: 30, color: 'var(--cream)' }}>Aanvraag verzonden</h1>
+        <h1 style={{ margin: '24px 0 8px', fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: 30, color: 'var(--cream)' }}>{t('req_sent')}</h1>
         <p style={{ margin: 0, fontFamily: 'var(--font-body)', fontSize: 14.5, lineHeight: 1.55, color: 'var(--cream-dim)', maxWidth: 300 }}>
-          Bedankt, {naam.split(' ')[0] || 'gast'}. We bevestigen je reservering binnen 24 uur per telefoon.
+          {t('thanks')}, {naam.split(' ')[0] || t('guest')}. {t('confirm_24h')}
         </p>
         <Card pad={18} style={{ width: '100%', maxWidth: 320, margin: '26px 0', textAlign: 'left' }}>
-          <Row k="Reserveringsnr." v={'LG-' + Math.floor(1000 + Math.random() * 9000)} />
+          <Row k={t('booking_no')} v={'LG-' + Math.floor(1000 + Math.random() * 9000)} />
           <Sep />
-          <Row k="Datum" v={`${fmtDate(date)} · ${time}`} />
+          <Row k={t('step_date') || 'Datum'} v={`${fmtDate(date)} · ${time}`} />
           <Sep />
-          <Row k="Gezelschap" v={`${pers} ${pers === 1 ? 'gast' : 'gasten'}`} />
+          <Row k={t('party')} v={`${pers} ${pers === 1 ? t('guest') : t('guests')}`} />
           <Sep />
-          <Row k="Arrangement" v={arrangement?.name} gold />
+          <Row k={t('step_package') || 'Arrangement'} v={t(tarNameMap[arrangement?.name] || arrangement?.name)} gold />
         </Card>
-        <Btn variant="primary" full onClick={() => go('home')}>Terug naar home</Btn>
-        <button className="lg-press" onClick={() => { setDone(false); setStep(0); setDate(null); setTime(null); setArr(null); setNaam(''); setTel(''); }} style={{ marginTop: 14, background: 'none', border: 'none', color: 'var(--cream-dim)', fontFamily: 'var(--font-body)', fontSize: 13.5, cursor: 'pointer' }}>Nieuwe reservering</button>
+        <Btn variant="primary" full onClick={() => go('home')}>{t('back_home')}</Btn>
+        <button className="lg-press" onClick={() => { setDone(false); setStep(0); setDate(null); setTime(null); setArr(null); setNaam(''); setTel(''); }} style={{ marginTop: 14, background: 'none', border: 'none', color: 'var(--cream-dim)', fontFamily: 'var(--font-body)', fontSize: 13.5, cursor: 'pointer' }}>{t('new_res')}</button>
         <TabSpacer />
       </div>
     );
@@ -126,8 +132,8 @@ function ReserverenScreen({ go, topInset }) {
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 18 }}>
           <button className="lg-press" onClick={() => step === 0 ? go('home') : setStep(step - 1)} style={{ background: 'var(--panel)', border: '1px solid var(--hair)', borderRadius: 12, width: 38, height: 38, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--cream)', cursor: 'pointer', flexShrink: 0 }}><IcChevL size={18} /></button>
           <div>
-            <div className="lg-eyebrow" style={{ margin: 0 }}>Stap {step + 1} van 4 · {labels[step]}</div>
-            <h1 style={{ margin: 0, fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: 26, color: 'var(--cream)' }}>Reserveren</h1>
+            <div className="lg-eyebrow" style={{ margin: 0 }}>{(t('step_1_of_4') || '').replace('{n}', step + 1)} · {labels[step]}</div>
+            <h1 style={{ margin: 0, fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: 26, color: 'var(--cream)' }}>{t('btn_reserve').split(' ')[0]}</h1>
           </div>
         </div>
         <Stepper step={step} labels={labels} />
@@ -138,7 +144,7 @@ function ReserverenScreen({ go, topInset }) {
           <div>
             <Calendar value={date} onPick={setDate} />
             <p style={{ fontFamily: 'var(--font-body)', fontSize: 12.5, color: 'var(--cream-dim)', textAlign: 'center', marginTop: 14, lineHeight: 1.5 }}>
-              Reserveringen zijn mogelijk tot 2 uur voor sluiting.
+              {t('res_close_note') || 'Reserveringen zijn mogelijk tot 2 uur voor sluiting.'}
             </p>
           </div>
         )}
@@ -146,54 +152,59 @@ function ReserverenScreen({ go, topInset }) {
         {step === 1 && (
           <div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 22 }}>
-              {SLOT_TIMES.map(t => {
-                const full = FULL_SLOTS.includes(t);
-                const busy = BUSY_SLOTS.includes(t);
-                const sel = time === t;
+              {SLOT_TIMES.map(tm => {
+                const full = FULL_SLOTS.includes(tm);
+                const busy = BUSY_SLOTS.includes(tm);
+                const sel = time === tm;
                 return (
-                  <button key={t} className="lg-press" disabled={full} onClick={() => setTime(t)} style={{
+                  <button key={tm} className="lg-press" disabled={full} onClick={() => setTime(tm)} style={{
                     padding: '15px 12px', borderRadius: 14, cursor: full ? 'default' : 'pointer', textAlign: 'left',
                     background: sel ? 'var(--gold-glow)' : 'var(--panel)',
                     border: '1px solid ' + (sel ? 'var(--gold)' : 'var(--hair)'), opacity: full ? 0.45 : 1,
                   }}>
-                    <div style={{ fontFamily: 'var(--font-head)', fontSize: 19, fontWeight: 600, color: sel ? 'var(--gold)' : 'var(--cream)' }}>{t}</div>
+                    <div style={{ fontFamily: 'var(--font-head)', fontSize: 19, fontWeight: 600, color: sel ? 'var(--gold)' : 'var(--cream)' }}>{tm}</div>
                     <div style={{ fontFamily: 'var(--font-body)', fontSize: 11.5, fontWeight: 600, marginTop: 3, color: full ? 'var(--cream-faint)' : busy ? '#D9A441' : '#7FC98E' }}>
-                      {full ? 'Volgeboekt' : busy ? 'Bijna vol' : 'Beschikbaar'}
+                      {full ? t('booked_full') : busy ? t('almost_full') : t('available')}
                     </div>
                   </button>
                 );
               })}
             </div>
-            <SectionHead title="Gezelschap" />
+            <SectionHead title={t('party')} />
             <Card pad={16}><StepperNum value={pers} set={setPers} /></Card>
           </div>
         )}
 
         {step === 2 && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            {TARIEVEN.map(t => {
-              const sel = arr === t.id;
+            {TARIEVEN.map(tData => {
+              const sel = arr === tData.id;
+              const pkMap = {
+                'Badjas, handdoek & slippers': 'inc_bathrobe', 'Onbeperkt fris, bier, wijn & buffet': 'inc_drinks', 'Alle sauna’s, jacuzzi & zwembad': 'inc_saunas',
+                'Volledige toegang faciliteiten': 'full_access', 'Badjas & handdoek inbegrepen': 'inc_bathrobe_only', 'All-in drankjes': 'all_in_drinks',
+                'Eigen jacuzzi & lounge': 'own_jacuzzi', 'Fles champagne': 'bottle_champagne', 'Volledig discreet': 'fully_discreet'
+              };
               return (
-                <button key={t.id} className="lg-press" onClick={() => setArr(t.id)} style={{
+                <button key={tData.id} className="lg-press" onClick={() => setArr(tData.id)} style={{
                   textAlign: 'left', cursor: 'pointer', borderRadius: 'var(--r-lg)', padding: 17,
                   background: sel ? 'var(--gold-glow)' : 'var(--panel)',
                   border: '1px solid ' + (sel ? 'var(--gold)' : 'var(--hair)'), position: 'relative',
                 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
                     <div style={{ flex: 1, minWidth: 0 }}>
-                      {t.featured && <div style={{ marginBottom: 7 }}><Tag tone="solid">Meest gekozen</Tag></div>}
-                      <h3 style={{ margin: 0, fontFamily: 'var(--font-head)', fontSize: 20, fontWeight: 600, lineHeight: 1.1, color: 'var(--cream)' }}>{t.name}</h3>
-                      <div style={{ fontFamily: 'var(--font-body)', fontSize: 12.5, color: 'var(--cream-dim)', marginTop: 3 }}>{t.sub}</div>
+                      {tData.featured && <div style={{ marginBottom: 7 }}><Tag tone="solid">{t('most_chosen')}</Tag></div>}
+                      <h3 style={{ margin: 0, fontFamily: 'var(--font-head)', fontSize: 20, fontWeight: 600, lineHeight: 1.1, color: 'var(--cream)' }}>{t(tarNameMap[tData.name] || tData.name)}</h3>
+                      <div style={{ fontFamily: 'var(--font-body)', fontSize: 12.5, color: 'var(--cream-dim)', marginTop: 3 }}>{t(tarSubMap[tData.sub] || tData.sub)}</div>
                     </div>
                     <div style={{ textAlign: 'right', flexShrink: 0, whiteSpace: 'nowrap' }}>
-                      <div style={{ fontFamily: 'var(--font-head)', fontSize: 25, fontWeight: 700, lineHeight: 1, color: 'var(--gold)' }}>€{t.price}</div>
-                      <div style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: 'var(--cream-faint)', marginTop: 3 }}>{t.unit}</div>
+                      <div style={{ fontFamily: 'var(--font-head)', fontSize: 25, fontWeight: 700, lineHeight: 1, color: 'var(--gold)' }}>€{tData.price}</div>
+                      <div style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: 'var(--cream-faint)', marginTop: 3 }}>{t(tarUnitMap[tData.unit] || tData.unit)}</div>
                     </div>
                   </div>
                   <div style={{ marginTop: 13, display: 'flex', flexDirection: 'column', gap: 7 }}>
-                    {t.perks.map(p => (
+                    {tData.perks.map(p => (
                       <div key={p} style={{ display: 'flex', alignItems: 'center', gap: 9, fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--cream-dim)' }}>
-                        <IcCheck size={15} style={{ color: 'var(--gold)', flexShrink: 0 }} />{p}
+                        <IcCheck size={15} style={{ color: 'var(--gold)', flexShrink: 0 }} />{t(pkMap[p] || p)}
                       </div>
                     ))}
                   </div>
@@ -206,20 +217,20 @@ function ReserverenScreen({ go, topInset }) {
         {step === 3 && (
           <div>
             <Card pad={18} style={{ marginBottom: 16 }}>
-              <Row k="Datum" v={`${fmtDate(date)} · ${time}`} />
+              <Row k={t('step_date') || 'Datum'} v={`${fmtDate(date)} · ${time}`} />
               <Sep />
-              <Row k="Gezelschap" v={`${pers} ${pers === 1 ? 'gast' : 'gasten'}`} />
+              <Row k={t('party')} v={`${pers} ${pers === 1 ? t('guest') : t('guests')}`} />
               <Sep />
-              <Row k="Arrangement" v={arrangement?.name} gold />
+              <Row k={t('step_package') || 'Arrangement'} v={t(tarNameMap[arrangement?.name] || arrangement?.name)} gold />
               <Sep />
-              <Row k="Totaal indicatie" v={`€${arrangement ? arrangement.price * (arrangement.unit === 'p.p.' ? pers : 1) : 0}`} big />
+              <Row k={t('total_ind')} v={`€${arrangement ? arrangement.price * (arrangement.unit === 'p.p.' ? pers : 1) : 0}`} big />
             </Card>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 8 }}>
-              <Field label="Naam" value={naam} onChange={setNaam} placeholder="Voor- en achternaam" />
-              <Field label="Telefoon" value={tel} onChange={setTel} placeholder="+31 6 ..." type="tel" />
+              <Field label={t('fname')} value={naam} onChange={setNaam} placeholder={t('fname_ph')} />
+              <Field label={t('phone')} value={tel} onChange={setTel} placeholder="+31 6 ..." type="tel" />
             </div>
             <p style={{ fontFamily: 'var(--font-body)', fontSize: 11.5, color: 'var(--cream-faint)', lineHeight: 1.5, marginTop: 4 }}>
-              Door te bevestigen ga je akkoord met onze huisregels. Je gegevens worden vertrouwelijk behandeld.
+              {t('booking_terms')}
             </p>
           </div>
         )}
@@ -229,7 +240,7 @@ function ReserverenScreen({ go, topInset }) {
         <Btn variant="primary" full disabled={!canNext}
           onClick={() => step < 3 ? setStep(step + 1) : setDone(true)}
           rightIcon={step < 3 ? <IcArrowR size={18} /> : null}>
-          {step < 3 ? 'Doorgaan' : 'Bevestig reservering'}
+          {step < 3 ? (t('btn_continue') || 'Doorgaan') : t('confirm_booking')}
         </Btn>
       </div>
       <div style={{ height: 96 }} />

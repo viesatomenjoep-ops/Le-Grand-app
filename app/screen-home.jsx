@@ -19,6 +19,9 @@ function QuickAction({ icon, label, onClick }) {
 }
 
 function DameMini({ dame, onClick, height = 168 }) {
+  const { t } = useTranslation();
+  const cMap = { 'Roemenië': 'c_ro', 'Frankrijk': 'c_fr', 'Spanje': 'c_es', 'Colombia': 'c_co', 'Moldavië': 'c_md', 'Turkije': 'c_tr', 'Bulgarije': 'c_bg' };
+  const landStr = cMap[dame.land] ? t(cMap[dame.land]) : dame.land;
   return (
     <div className="lg-press" onClick={onClick} style={{
       width: '100%', flexShrink: 0, background: 'none', border: 'none', padding: 0, textAlign: 'left', cursor: 'pointer'
@@ -28,7 +31,7 @@ function DameMini({ dame, onClick, height = 168 }) {
         style={{ width: '100%', height, display: 'block' }} />
         {dame.nu &&
         <div style={{ position: 'absolute', top: 8, left: 8 }}>
-            <Tag tone="live"><LiveDot />Aanwezig</Tag>
+            <Tag tone="live"><LiveDot />{t('present')}</Tag>
           </div>
         }
         <div className="lg-photo-fade" />
@@ -37,7 +40,7 @@ function DameMini({ dame, onClick, height = 168 }) {
         <div style={{ fontFamily: 'var(--font-head)', fontSize: 17, fontWeight: 600, color: 'var(--cream)', lineHeight: 1.1 }}>
           {dame.name}<span style={{ fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 500, color: 'var(--cream-faint)' }}>  ·  {dame.leeftijd}</span>
         </div>
-        <div style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--cream-dim)', marginTop: 1 }}>{dame.land}</div>
+        <div style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--cream-dim)', marginTop: 1 }}>{landStr}</div>
       </div>
     </div>);
 }
@@ -86,12 +89,23 @@ function GenericSlider({ items, renderItem }) {
       )}
     </div>
   );
-}
-
 function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
+  const { t } = useTranslation();
   const th = todayHours();
   const featured = TARIEVEN.find((t) => t.featured) || TARIEVEN[0];
   const aanwezig = DAMES.filter((d) => d.nu);
+
+  const facNameMap = { 'Finse Sauna': 'finnish_sauna', 'Stoombad': 'steam_bath', 'Jacuzzi': 'jacuzzi', 'Verwarmd Zwembad': 'heated_pool', 'Bar & Lounge': 'bar_lounge', 'Privé Suites': 'priv_suites' };
+  const facDescMap = { 'Finse Sauna': 'finnish_sauna_desc', 'Stoombad': 'steam_bath_desc', 'Jacuzzi': 'jacuzzi_desc', 'Verwarmd Zwembad': 'heated_pool_desc', 'Bar & Lounge': 'bar_lounge_desc', 'Privé Suites': 'priv_suites_desc' };
+  const tarNameMap = { 'Dagentree': 'day_entry', 'Happy Hours': 'happy_hours', 'Privé Suite': 'priv_suites' };
+  const tarSubMap = { 'Hele dag · all-in': 'all_day', 'Ma–do vanaf 11:00': 'mo_th_from', 'Per 2 uur': 'per_2_hours' };
+  const tarUnitMap = { 'p.p.': 'pp', 'per suite': 'per_suite' };
+  const evTagMap = { 'Vaste avond': 'regular_night', 'Buiten': 'outside', 'Thema-avond': 'theme_night' };
+  const evTitleMap = { 'Strippers Night': 'strippers_night', 'BBQ Time bij Le Grand': 'bbq_time', 'Orange Summer Party': 'orange_party' };
+  const evDescMap = { 'Strippers Night': 'strippers_night_desc', 'BBQ Time bij Le Grand': 'bbq_time_desc', 'Orange Summer Party': 'orange_party_desc' };
+  const evDatumMap = { 'Wekelijks': 'weekly', 'Op aankondiging': 'on_announcement' };
+  const prodNameMap = { 'Le Grand Badjas': 'bathrobe', 'Badslippers': 'slippers' };
+
   return (
     <div>
       {/* Full-screen Hero + Quick Actions */}
@@ -105,31 +119,31 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
         <div style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '45px 20px 0' }}>
           <img src="app/assets/legrand-logo.webp" alt="Le Grand" style={{ width: 160, marginBottom: 20, filter: 'drop-shadow(0 4px 18px rgba(0,0,0,0.6))' }} />
           <div style={{ marginBottom: 12 }}>
-            <Tag tone="live"><LiveDot />Nu geopend · tot {th.uren.split('–')[1].trim()}</Tag>
+            <Tag tone="live"><LiveDot />{t('now_open')} · {t('until')} {th.uren.split('–')[1].trim()}</Tag>
           </div>
           <h1 style={{ margin: 0, fontWeight: 500, fontSize: 34, lineHeight: 1.05, color: 'var(--cream)', letterSpacing: 0.3, fontFamily: 'var(--font-head)' }}>
-            Een avond van<br /><span style={{ fontStyle: 'italic', color: 'var(--gold-light)', fontFamily: 'var(--font-head)' }}>pure verwennerij</span>
+            {t('home_title1')}<br /><span style={{ fontStyle: 'italic', color: 'var(--gold-light)', fontFamily: 'var(--font-head)' }}>{t('home_title2')}</span>
           </h1>
           <p style={{ margin: '10px 0 0', fontFamily: 'var(--font-body)', fontSize: 14.5, lineHeight: 1.4, color: 'var(--cream-dim)', maxWidth: 320 }}>
-            Exclusieve saunaclub in Zundert.
+            {t('home_subtitle')}
           </p>
 
           <div style={{ marginTop: 'auto', marginBottom: 24, display: 'flex', gap: 12, width: '100%' }}>
-            <Btn variant="primary" onClick={reserve} size="lg" style={{ flex: 1 }} rightIcon={<IcArrowR size={20} />}>Reserveren</Btn>
-            <Btn variant="glass" onClick={() => go('dames')} size="lg" style={{ flex: 1 }}>Onze dames</Btn>
+            <Btn variant="primary" onClick={reserve} size="lg" style={{ flex: 1 }} rightIcon={<IcArrowR size={20} />}>{t('btn_reserve')}</Btn>
+            <Btn variant="glass" onClick={() => go('dames')} size="lg" style={{ flex: 1 }}>{t('dames_title')}</Btn>
           </div>
 
           <div style={{ paddingBottom: '5vh', display: 'flex', gap: 10, width: '100%' }}>
-            <QuickAction icon={<IcHeart size={23} />} label="Dames" onClick={() => go('dames')} />
-            <QuickAction icon={<IcCal size={23} />} label="Reserveren" onClick={reserve} />
-            <QuickAction icon={<IcStar size={23} />} label="Events" onClick={() => go('events')} />
-            <QuickAction icon={<IcBag size={23} />} label="Shop" onClick={() => go('shop')} />
+            <QuickAction icon={<IcHeart size={23} />} label={t('nav_dames')} onClick={() => go('dames')} />
+            <QuickAction icon={<IcCal size={23} />} label={t('btn_reserve')} onClick={reserve} />
+            <QuickAction icon={<IcStar size={23} />} label={t('nav_events')} onClick={() => go('events')} />
+            <QuickAction icon={<IcBag size={23} />} label={t('nav_shop')} onClick={() => go('shop')} />
           </div>
         </div>
       </div>
       <div style={{ padding: '0 18px 4px' }}>
         {/* Aanwezig vandaag */}
-        <SectionHead eyebrow="Vandaag in de club" title="Wie is er aanwezig" action="Alle dames" onAction={() => go('dames')} />
+        <SectionHead eyebrow={t('today_in_club')} title={t('who_is_present')} action={t('all_ladies')} onAction={() => go('dames')} />
         <GenericSlider 
           items={[...aanwezig, { isMore: true }]} 
           renderItem={(d) => {
@@ -140,7 +154,7 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
                   background: 'var(--panel)', border: '1px solid var(--hair)', borderRadius: 16,
                   color: 'var(--gold)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8, cursor: 'pointer'
                 }}>
-                  <IcArrowR size={22} /><span style={{ fontFamily: 'var(--font-body)', fontSize: 12.5, fontWeight: 600 }}>Bekijk alle</span>
+                  <IcArrowR size={22} /><span style={{ fontFamily: 'var(--font-body)', fontSize: 12.5, fontWeight: 600 }}>{t('view_all')}</span>
                 </button>
               );
             }
@@ -155,9 +169,9 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
 
       <div style={{ padding: '30px 18px 0' }}>
         {/* Faciliteiten */}
-        <SectionHead eyebrow="Onze wellness" title="Faciliteiten" action="Meer" onAction={() => go('meer')} />
+        <SectionHead eyebrow={t('our_wellness')} title={t('facilities')} action={t('nav_meer')} onAction={() => go('meer')} />
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-          {FACILITEITEN.slice(0, 3).map((f) => <FacRow key={f.id} f={f} />)}
+          {FACILITEITEN.slice(0, 3).map((f) => <FacRow key={f.id} f={{...f, name: t(facNameMap[f.name] || f.name), desc: t(facDescMap[f.name] || f.desc)}} />)}
         </div>
       </div>
 
@@ -168,17 +182,17 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
           background: 'var(--gold-grad)', padding: 20, color: '#231a06'
         }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <div style={{ fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 700, letterSpacing: 1.4, textTransform: 'uppercase', opacity: 0.7 }}>Meest gekozen</div>
+            <div style={{ fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 700, letterSpacing: 1.4, textTransform: 'uppercase', opacity: 0.7 }}>{t('most_chosen')}</div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, marginTop: 6 }}>
-              <h3 style={{ margin: 0, fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: 26 }}>{featured.name}</h3>
+              <h3 style={{ margin: 0, fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: 26 }}>{t(tarNameMap[featured.name] || featured.name)}</h3>
             </div>
-            <div style={{ fontFamily: 'var(--font-body)', fontSize: 13.5, marginTop: 2, opacity: 0.8 }}>{featured.sub}</div>
+            <div style={{ fontFamily: 'var(--font-body)', fontSize: 13.5, marginTop: 2, opacity: 0.8 }}>{t(tarSubMap[featured.sub] || featured.sub)}</div>
             <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginTop: 16 }}>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
                 <span style={{ fontFamily: 'var(--font-head)', fontWeight: 700, fontSize: 34 }}>€{featured.price}</span>
-                <span style={{ fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 600, opacity: 0.75 }}>{featured.unit}</span>
+                <span style={{ fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 600, opacity: 0.75 }}>{t(tarUnitMap[featured.unit] || featured.unit)}</span>
               </div>
-              <span className="lg-goldcta">Reserveer<IcArrowR size={17} /></span>
+              <span className="lg-goldcta">{t('btn_reserve').split(' ')[0]}<IcArrowR size={17} /></span>
             </div>
           </div>
           <div className="lg-gold-sheen" />
@@ -187,17 +201,17 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
 
       {/* Events */}
       <div style={{ padding: '30px 18px 0' }}>
-        <SectionHead eyebrow="Binnenkort" title="Events" action="Alle events" onAction={() => go('events')} />
+        <SectionHead eyebrow={t('soon')} title={t('events_title')} action={t('all_events')} onAction={() => go('events')} />
         <GenericSlider
           items={EVENTS}
           renderItem={(e) => (
             <Card key={e.id} pad={16} onClick={() => openEvent(e.id)} style={{ width: '100%' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-                <Tag tone="gold">{e.tag}</Tag>
-                <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--cream-faint)' }}>{e.datum}</span>
+                <Tag tone="gold">{t(evTagMap[e.tag] || e.tag)}</Tag>
+                <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--cream-faint)' }}>{t(evDatumMap[e.datum] || e.datum)}</span>
               </div>
-              <h3 style={{ margin: 0, fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: 20, color: 'var(--cream)' }}>{e.titel}</h3>
-              <p style={{ margin: '6px 0 0', fontFamily: 'var(--font-body)', fontSize: 13, lineHeight: 1.5, color: 'var(--cream-dim)' }}>{e.desc.slice(0, 92)}…</p>
+              <h3 style={{ margin: 0, fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: 20, color: 'var(--cream)' }}>{t(evTitleMap[e.titel] || e.titel)}</h3>
+              <p style={{ margin: '6px 0 0', fontFamily: 'var(--font-body)', fontSize: 13, lineHeight: 1.5, color: 'var(--cream-dim)' }}>{t(evDescMap[e.titel] || e.desc).slice(0, 92)}…</p>
               <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', gap: 7, color: 'var(--gold)', fontFamily: 'var(--font-body)', fontSize: 12.5, fontWeight: 600 }}>
                 <IcClock size={15} />{e.tijd}
               </div>
@@ -208,16 +222,16 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
 
       {/* Webshop teaser */}
       <div style={{ padding: '30px 18px 0' }}>
-        <SectionHead eyebrow="Webshop" title="Mee naar huis" action="Naar winkel" onAction={() => go('shop')} />
+        <SectionHead eyebrow={t('webshop')} title={t('take_home')} action={t('to_shop')} onAction={() => go('shop')} />
         <GenericSlider
           items={PRODUCTS}
           renderItem={(p) => (
             <button key={p.id} className="lg-press" onClick={() => openProduct(p.id)} style={{ width: '100%', background: 'var(--panel)', border: '1px solid var(--hair)', borderRadius: 'var(--r-lg)', overflow: 'hidden', textAlign: 'left', cursor: 'pointer', padding: 0 }}>
               <div style={{ padding: 12 }}>
-                <Photo id={`home-prod-${p.slot}`} fit="contain" placeholder={p.naam} radius={12} src={p.img} style={{ width: '100%', height: 240, display: 'block' }} />
+                <Photo id={`home-prod-${p.slot}`} fit="contain" placeholder={t(prodNameMap[p.naam] || p.naam)} radius={12} src={p.img} style={{ width: '100%', height: 240, display: 'block' }} />
               </div>
               <div style={{ padding: 14 }}>
-                <div style={{ fontFamily: 'var(--font-head)', fontSize: 16, fontWeight: 600, color: 'var(--cream)', lineHeight: 1.15, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.naam}</div>
+                <div style={{ fontFamily: 'var(--font-head)', fontSize: 16, fontWeight: 600, color: 'var(--cream)', lineHeight: 1.15, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{t(prodNameMap[p.naam] || p.naam)}</div>
                 <div style={{ fontFamily: 'var(--font-head)', fontSize: 18, fontWeight: 700, color: 'var(--gold)', marginTop: 4 }}>€{p.prijs}</div>
               </div>
             </button>
@@ -227,7 +241,7 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
 
       {/* Reviews */}
       <div style={{ padding: '30px 18px 0' }}>
-        <SectionHead eyebrow="Gastervaringen" title="Wat gasten zeggen" />
+        <SectionHead eyebrow={t('guest_exp')} title={t('what_guests_say')} />
         <ReviewsSlider />
       </div>
 
@@ -237,7 +251,7 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
           <ServiceIcon name="gift" size={44} tone="panel" />
           <div style={{ flex: 1 }}>
             <div style={{ fontFamily: 'var(--font-head)', fontSize: 15.5, fontWeight: 600, color: 'var(--cream)' }}>{VENUE.adres}</div>
-            <div style={{ fontFamily: 'var(--font-body)', fontSize: 12.5, color: 'var(--cream-dim)', marginTop: 2 }}>Vandaag · {th.dag} {th.uren}</div>
+            <div style={{ fontFamily: 'var(--font-body)', fontSize: 12.5, color: 'var(--cream-dim)', marginTop: 2 }}>{t('today')} · {th.dag} {th.uren}</div>
           </div>
           <IcChevR size={18} style={{ color: 'var(--cream-faint)' }} />
         </Card>
@@ -248,6 +262,7 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
 
       <TabSpacer />
     </div>);
+}    </div>);
 
 }
 
