@@ -96,7 +96,7 @@ function CrowdMeter() {
   // We simulate a crowd level (could be dynamic)
   const fill = 65; 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 6, marginBottom: 8 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 0, marginBottom: 16 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <LiveDot />
@@ -165,12 +165,12 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
             </p>
           </div>
 
-          <div style={{ marginTop: 24, marginBottom: 14, display: 'flex', gap: 10, width: '100%' }}>
+          <div style={{ marginTop: 16, marginBottom: 16, display: 'flex', gap: 10, width: '100%' }}>
             <Btn variant="primary" onClick={reserve} size="lg" style={{ flex: 1, fontSize: 15 }} rightIcon={<IcArrowR size={18} />}>{t('btn_reserve')}</Btn>
             <Btn variant="glass" onClick={() => go('dames')} size="lg" style={{ flex: 1, fontSize: 15 }}>{t('dames_title')}</Btn>
           </div>
 
-          <div style={{ paddingBottom: '24px', display: 'flex', gap: 8, width: '100%' }}>
+          <div style={{ paddingBottom: '16px', display: 'flex', gap: 8, width: '100%' }}>
             <QuickAction icon={<IcHeart size={21} />} label={t('nav_dames')} onClick={() => go('dames')} />
             <QuickAction icon={<IcCal size={21} />} label={t('btn_reserve')} onClick={reserve} />
             <QuickAction icon={<IcStar size={21} />} label={t('nav_events')} onClick={() => go('events')} />
