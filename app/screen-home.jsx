@@ -71,9 +71,9 @@ function GenericSlider({ items, renderItem }) {
 
   return (
     <div style={{ position: 'relative' }}>
-      <div ref={ref} className="lg-hscroll" style={{ display: 'flex', scrollSnapType: 'x mandatory', gap: 14, marginLeft: -18, marginRight: -18, padding: '0 18px', scrollBehavior: 'smooth' }}>
+      <div ref={ref} className="lg-hscroll" style={{ display: 'flex', scrollSnapType: 'x mandatory', gap: 20, marginLeft: -18, marginRight: -18, padding: '0 20px', scrollBehavior: 'smooth' }}>
         {items.map((item, i) => (
-          <div key={i} style={{ scrollSnapAlign: 'center', flex: '0 0 100%', boxSizing: 'border-box' }}>
+          <div key={i} style={{ scrollSnapAlign: 'center', flex: '0 0 calc(100vw - 40px)', boxSizing: 'border-box' }}>
             {renderItem(item, i)}
           </div>
         ))}
