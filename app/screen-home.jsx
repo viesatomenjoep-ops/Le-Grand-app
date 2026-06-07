@@ -18,14 +18,14 @@ function QuickAction({ icon, label, onClick }) {
 
 }
 
-function DameMini({ dame, onClick }) {
+function DameMini({ dame, onClick, height = 168 }) {
   return (
     <button className="lg-press" onClick={onClick} style={{
       width: '100%', flexShrink: 0, background: 'none', border: 'none', padding: 0, textAlign: 'left', cursor: 'pointer'
     }}>
       <div style={{ position: 'relative' }}>
         <Photo id={`home-dame-${dame.id}`} placeholder="Voeg foto toe" radius={16}
-        style={{ width: '100%', height: 168, display: 'block' }} />
+        style={{ width: '100%', height, display: 'block' }} />
         {dame.nu &&
         <div style={{ position: 'absolute', top: 8, left: 8 }}>
             <Tag tone="live"><LiveDot />Aanwezig</Tag>
@@ -61,10 +61,10 @@ function GenericSlider({ items, renderItem }) {
   const ref = React.useRef(null);
   
   const scrollL = () => {
-    if (ref.current) ref.current.scrollBy({ left: -ref.current.clientWidth * 0.8, behavior: 'smooth' });
+    if (ref.current) ref.current.scrollBy({ left: -ref.current.clientWidth, behavior: 'smooth' });
   };
   const scrollR = () => {
-    if (ref.current) ref.current.scrollBy({ left: ref.current.clientWidth * 0.8, behavior: 'smooth' });
+    if (ref.current) ref.current.scrollBy({ left: ref.current.clientWidth, behavior: 'smooth' });
   };
 
   const navBtn = { width: 34, height: 34, borderRadius: 10, background: 'var(--panel)', border: '1px solid var(--hair)', color: 'var(--cream)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', flexShrink: 0 };
@@ -73,7 +73,7 @@ function GenericSlider({ items, renderItem }) {
     <div style={{ position: 'relative' }}>
       <div ref={ref} className="lg-hscroll" style={{ display: 'flex', scrollSnapType: 'x mandatory', gap: 14, marginLeft: -18, marginRight: -18, padding: '0 18px', scrollBehavior: 'smooth' }}>
         {items.map((item, i) => (
-          <div key={i} style={{ scrollSnapAlign: 'start', flexShrink: 0 }}>
+          <div key={i} style={{ scrollSnapAlign: 'center', flex: '0 0 100%', boxSizing: 'border-box' }}>
             {renderItem(item, i)}
           </div>
         ))}
@@ -117,26 +117,25 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
         </div>
       </div>
 
-      <div style={{ padding: '22px 18px 0' }}>
+      <div style={{ padding: '22px 18px 0', marginBottom: '220px' }}>
         {/* Quick actions */}
-        <div style={{ display: 'flex', gap: 10, marginBottom: 28 }}>
+        <div style={{ display: 'flex', gap: 10 }}>
           <QuickAction icon={<IcHeart size={23} />} label="Dames" onClick={() => go('dames')} />
           <QuickAction icon={<IcCal size={23} />} label="Reserveren" onClick={reserve} />
           <QuickAction icon={<IcStar size={23} />} label="Events" onClick={() => go('events')} />
           <QuickAction icon={<IcBag size={23} />} label="Shop" onClick={() => go('shop')} />
         </div>
-
-        {/* Aanwezig vandaag */}
-        <SectionHead eyebrow="Vandaag in de club" title="Wie is er aanwezig" action="Alle dames" onAction={() => go('dames')} />
       </div>
       <div style={{ padding: '0 18px 4px' }}>
+        {/* Aanwezig vandaag */}
+        <SectionHead eyebrow="Vandaag in de club" title="Wie is er aanwezig" action="Alle dames" onAction={() => go('dames')} />
         <GenericSlider 
           items={[...aanwezig, { isMore: true }]} 
           renderItem={(d) => {
             if (d.isMore) {
               return (
                 <button key="more" className="lg-press" onClick={() => go('dames')} style={{
-                  width: 140, height: 168, marginTop: 0,
+                  width: '100%', height: 380, marginTop: 0,
                   background: 'var(--panel)', border: '1px solid var(--hair)', borderRadius: 16,
                   color: 'var(--gold)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8, cursor: 'pointer'
                 }}>
@@ -145,8 +144,8 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
               );
             }
             return (
-              <div key={d.id} style={{ width: 140 }}>
-                 <DameMini dame={d} onClick={() => openDame(d.id)} />
+              <div key={d.id} style={{ width: '100%' }}>
+                 <DameMini dame={d} onClick={() => openDame(d.id)} height={380} />
               </div>
             );
           }}
@@ -191,7 +190,7 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
         <GenericSlider
           items={EVENTS}
           renderItem={(e) => (
-            <Card key={e.id} pad={16} onClick={() => openEvent(e.id)} style={{ width: 270 }}>
+            <Card key={e.id} pad={16} onClick={() => openEvent(e.id)} style={{ width: '100%' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
                 <Tag tone="gold">{e.tag}</Tag>
                 <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--cream-faint)' }}>{e.datum}</span>
@@ -212,11 +211,11 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
         <GenericSlider
           items={PRODUCTS}
           renderItem={(p) => (
-            <button key={p.id} className="lg-press" onClick={() => openProduct(p.id)} style={{ width: 140, background: 'var(--panel)', border: '1px solid var(--hair)', borderRadius: 'var(--r-lg)', overflow: 'hidden', textAlign: 'left', cursor: 'pointer', padding: 0 }}>
-              <Photo id={`home-prod-${p.slot}`} placeholder={p.naam} radius={0} style={{ width: '100%', height: 110, display: 'block' }} />
-              <div style={{ padding: 10 }}>
-                <div style={{ fontFamily: 'var(--font-head)', fontSize: 13.5, fontWeight: 600, color: 'var(--cream)', lineHeight: 1.15, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.naam}</div>
-                <div style={{ fontFamily: 'var(--font-head)', fontSize: 15, fontWeight: 700, color: 'var(--gold)', marginTop: 4 }}>€{p.prijs}</div>
+            <button key={p.id} className="lg-press" onClick={() => openProduct(p.id)} style={{ width: '100%', background: 'var(--panel)', border: '1px solid var(--hair)', borderRadius: 'var(--r-lg)', overflow: 'hidden', textAlign: 'left', cursor: 'pointer', padding: 0 }}>
+              <Photo id={`home-prod-${p.slot}`} placeholder={p.naam} radius={0} style={{ width: '100%', height: 260, display: 'block' }} />
+              <div style={{ padding: 14 }}>
+                <div style={{ fontFamily: 'var(--font-head)', fontSize: 16, fontWeight: 600, color: 'var(--cream)', lineHeight: 1.15, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.naam}</div>
+                <div style={{ fontFamily: 'var(--font-head)', fontSize: 18, fontWeight: 700, color: 'var(--gold)', marginTop: 4 }}>€{p.prijs}</div>
               </div>
             </button>
           )}
