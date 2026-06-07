@@ -32,23 +32,12 @@ function OpeningScreen({ variant = 'photo', onEnter }) {
         <div className="lg-open-top">
           <img src="app/assets/legrand-logo.webp" alt="Le Grand" className="lg-open-logo" style={{ width: 140, margin: '0 auto', display: 'block', filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.5))' }} />
           {!denied ? (
-            <div style={{
-              background: 'rgba(15, 12, 8, 0.45)',
-              backdropFilter: 'blur(8px)',
-              WebkitBackdropFilter: 'blur(8px)',
-              padding: '24px 20px',
-              borderRadius: '16px',
-              border: '1px solid rgba(255, 255, 255, 0.07)',
-              boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
-              maxWidth: 340,
-              marginTop: 16,
-              animation: 'lg-fade-up 1s ease .55s both'
-            }}>
-              <div className="lg-open-eyebrow" style={{ animation: 'none', marginBottom: 10 }}>Saunaclub · Zundert</div>
-              <h1 className="lg-open-tagline" style={{ animation: 'none', margin: 0, textShadow: 'none', fontSize: 34 }}>
+            <React.Fragment>
+              <div className="lg-open-eyebrow">Saunaclub · Zundert</div>
+              <h1 className="lg-open-tagline" style={{ fontFamily: 'var(--font-head)', fontSize: 36, fontWeight: 500, margin: '16px 0', letterSpacing: 0.5, lineHeight: 1.1, textShadow: '0 2px 12px rgba(0,0,0,0.4)' }}>
                 {t('welkom_title')}
               </h1>
-            </div>
+            </React.Fragment>
           ) : (
             <React.Fragment>
               <h2 className="lg-open-deny-title">{t('gate_deny_title')}</h2>
