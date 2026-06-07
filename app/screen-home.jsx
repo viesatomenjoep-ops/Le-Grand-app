@@ -96,7 +96,7 @@ function CrowdMeter() {
   // We simulate a crowd level (could be dynamic)
   const fill = 65; 
   return (
-    <Card pad={16} style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 14 }}>
+    <Card pad={16} style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 2 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <LiveDot />
@@ -134,7 +134,7 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
   return (
     <div>
       {/* Full-screen Hero + Quick Actions */}
-      <div style={{ position: 'relative', minHeight: 420, display: 'flex', flexDirection: 'column', marginBottom: 10 }}>
+      <div style={{ position: 'relative', minHeight: 420, display: 'flex', flexDirection: 'column', marginBottom: 0 }}>
         <div style={{ position: 'absolute', inset: 0 }}>
           <Photo id="home-hero" radius={0} src="app/assets/spa-photo.webp" placeholder="Sfeerbeeld"
           style={{ width: '100%', height: '100%', objectPosition: 'top' }} />
