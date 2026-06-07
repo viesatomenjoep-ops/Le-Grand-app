@@ -94,12 +94,15 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
   const aanwezig = DAMES.filter((d) => d.nu);
   return (
     <div>
-      {/* Hero */}
-      <div style={{ position: 'relative', height: '50vh', minHeight: 420 }}>
-        <Photo id="home-hero" radius={0} src="app/assets/spa-photo.webp" placeholder="Sfeerbeeld"
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />
-        <div className="lg-hero-scrim" />
-        <div style={{ position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '45px 20px 16px' }}>
+      {/* Full-screen Hero + Quick Actions */}
+      <div style={{ position: 'relative', height: 'calc(100vh - 80px)', minHeight: 560, display: 'flex', flexDirection: 'column', marginBottom: 220 }}>
+        <div style={{ position: 'absolute', inset: 0 }}>
+          <Photo id="home-hero" radius={0} src="app/assets/spa-photo.webp" placeholder="Sfeerbeeld"
+          style={{ width: '100%', height: '100%' }} />
+          <div className="lg-hero-scrim" />
+        </div>
+        
+        <div style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '45px 20px 0' }}>
           <img src="app/assets/legrand-logo.webp" alt="Le Grand" style={{ width: 160, marginBottom: 20, filter: 'drop-shadow(0 4px 18px rgba(0,0,0,0.6))' }} />
           <div style={{ marginBottom: 12 }}>
             <Tag tone="live"><LiveDot />Nu geopend · tot {th.uren.split('–')[1].trim()}</Tag>
@@ -110,20 +113,18 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
           <p style={{ margin: '10px 0 0', fontFamily: 'var(--font-body)', fontSize: 14.5, lineHeight: 1.4, color: 'var(--cream-dim)', maxWidth: 320 }}>
             Exclusieve saunaclub in Zundert.
           </p>
-          <div style={{ marginTop: 'auto', display: 'flex', gap: 12, width: '100%' }}>
+
+          <div style={{ marginTop: 'auto', marginBottom: 24, display: 'flex', gap: 12, width: '100%' }}>
             <Btn variant="primary" onClick={reserve} size="lg" style={{ flex: 1 }} rightIcon={<IcArrowR size={20} />}>Reserveren</Btn>
             <Btn variant="glass" onClick={() => go('dames')} size="lg" style={{ flex: 1 }}>Onze dames</Btn>
           </div>
-        </div>
-      </div>
 
-      <div style={{ padding: '0 18px 12vh', height: 'calc(50vh - 80px)', minHeight: 140, display: 'flex', alignItems: 'center', boxSizing: 'border-box' }}>
-        {/* Quick actions */}
-        <div style={{ display: 'flex', gap: 10, width: '100%' }}>
-          <QuickAction icon={<IcHeart size={23} />} label="Dames" onClick={() => go('dames')} />
-          <QuickAction icon={<IcCal size={23} />} label="Reserveren" onClick={reserve} />
-          <QuickAction icon={<IcStar size={23} />} label="Events" onClick={() => go('events')} />
-          <QuickAction icon={<IcBag size={23} />} label="Shop" onClick={() => go('shop')} />
+          <div style={{ paddingBottom: '8vh', display: 'flex', gap: 10, width: '100%' }}>
+            <QuickAction icon={<IcHeart size={23} />} label="Dames" onClick={() => go('dames')} />
+            <QuickAction icon={<IcCal size={23} />} label="Reserveren" onClick={reserve} />
+            <QuickAction icon={<IcStar size={23} />} label="Events" onClick={() => go('events')} />
+            <QuickAction icon={<IcBag size={23} />} label="Shop" onClick={() => go('shop')} />
+          </div>
         </div>
       </div>
       <div style={{ padding: '0 18px 4px' }}>
