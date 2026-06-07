@@ -3,7 +3,7 @@
 const ICONMAP = {
   fire: IcFire, therm: IcTherm, steam: IcSteam, waves: IcWaves,
   drop: IcDrop, leaf: IcLeaf, spark: IcSpark, gift: IcGift,
-  music: IcMusic, flame: IcFlame, bag: IcBag,
+  music: IcMusic, flame: IcFlame, bag: IcBag, coffee: IcCoffee, broom: IcBroom
 };
 
 // Tinted icon medallion used across cards

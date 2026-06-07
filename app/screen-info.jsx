@@ -1,5 +1,5 @@
 // screen-info.jsx — Bezoek & info: faciliteiten, tarieven, openingstijden, contact
-function InfoScreen({ onBack }) {
+function InfoScreen({ section, onBack }) {
   const { t } = useTranslation();
   const todayIdx = (new Date().getDay() + 6) % 7;
 
@@ -9,11 +9,14 @@ function InfoScreen({ onBack }) {
   const tarSubMap = { 'Hele dag · all-in': 'all_day', 'Ma–do vanaf 11:00': 'mo_th_from', 'Per 2 uur': 'per_2_hours' };
   const tarUnitMap = { 'p.p.': 'pp', 'per suite': 'per_suite' };
 
+  const title = section === 'tar' ? t('rates') : section === 'open' ? t('opening_hours') : section === 'fac' ? t('facilities') : t('info_title');
+
   return (
     <div>
-      <OverlayHeader title={t('info_title')} onBack={onBack} />
+      <OverlayHeader title={title} onBack={onBack} />
 
       {/* Faciliteiten */}
+      {(!section || section === 'fac') && (
       <div style={{ padding: '6px 18px 0' }}>
         <SectionHead eyebrow={t('our_wellness')} title={t('facilities')} />
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -31,9 +34,11 @@ function InfoScreen({ onBack }) {
           ))}
         </div>
       </div>
+      )}
 
       {/* Tarieven */}
-      <div style={{ padding: '30px 18px 0' }}>
+      {(!section || section === 'tar') && (
+      <div style={{ padding: (!section ? 30 : 6) + 'px 18px 0' }}>
         <SectionHead eyebrow={t('all_in_concept')} title={t('rates')} />
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {TARIEVEN.map(tData => {
@@ -67,9 +72,11 @@ function InfoScreen({ onBack }) {
           })}
         </div>
       </div>
+      )}
 
       {/* Openingstijden */}
-      <div style={{ padding: '30px 18px 0' }}>
+      {(!section || section === 'open') && (
+      <div style={{ padding: (!section ? 30 : 6) + 'px 18px 0' }}>
         <SectionHead eyebrow={t('open_7_days')} title={t('opening_hours')} />
         <Card pad={6}>
           {OPENING.map((o, i) => {
@@ -85,8 +92,10 @@ function InfoScreen({ onBack }) {
           })}
         </Card>
       </div>
+      )}
 
       {/* Locatie & contact */}
+      {(!section) && (
       <div style={{ padding: '30px 18px 0' }}>
         <SectionHead eyebrow={t('find_us')} title={t('loc_contact')} />
         <Card pad={0} style={{ overflow: 'hidden' }}>
@@ -110,8 +119,10 @@ function InfoScreen({ onBack }) {
           <Social label="TikTok" handle={'@' + VENUE.socials.tiktok} />
         </div>
       </div>
+      )}
 
       {/* Huisregels */}
+      {(!section) && (
       <div style={{ padding: '26px 18px 0' }}>
         <div style={{ background: 'var(--panel-2)', borderRadius: 'var(--r-md)', border: '1px solid var(--hair)', padding: 16, display: 'flex', gap: 12, alignItems: 'flex-start' }}>
           <IcInfo size={19} style={{ color: 'var(--gold)', flexShrink: 0, marginTop: 1 }} />
@@ -123,6 +134,7 @@ function InfoScreen({ onBack }) {
           </div>
         </div>
       </div>
+      )}
 
       <TabSpacer />
     </div>

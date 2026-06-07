@@ -40,6 +40,8 @@ const IcInfo   = (p) => <Icon {...p}><circle cx="12" cy="12" r="8.5"/><path d="M
 const IcSteam  = (p) => <Icon {...p}><path d="M8 12c0-2 2-2 2-4s-2-2-2-4M12 12c0-2 2-2 2-4s-2-2-2-4M16 12c0-2 2-2 2-4s-2-2-2-4"/><path d="M5 15h14v2a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-2Z"/></Icon>;
 const IcBag    = (p) => <Icon {...p}><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></Icon>;
 const IcBriefcase = (p) => <Icon {...p}><rect x="3" y="7.5" width="18" height="12" rx="2"/><path d="M8 7.5V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1.5M3 12h18"/></Icon>;
+const IcCoffee = (p) => <Icon {...p}><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><path d="M6 2v3"/><path d="M10 2v3"/><path d="M14 2v3"/></Icon>;
+const IcBroom = (p) => <Icon {...p}><path d="M3 21l8-8M11 13l4-4M15 9l5-5c.8-.8 2-.8 2.8 0 .8.8.8 2 0 2.8l-5 5-4 4M15 9l-4 4M16.5 7.5L12 12"/></Icon>;
 const IcTruck  = (p) => <Icon {...p}><path d="M2 6h11v9H2zM13 9h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></Icon>;
 const IcTrash  = (p) => <Icon {...p}><path d="M4 7h16M9 7V5h6v2M6 7l1 13h10l1-13"/></Icon>;
 const IcMusic  = (p) => <Icon {...p}><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></Icon>;
