@@ -1,6 +1,9 @@
 // screen-dames.jsx — Onze dames roster + detail (respectful, non-explicit; photos are user-filled)
 
 function DameCard({ dame, onClick }) {
+  const { t } = useTranslation();
+  const cMap = { 'Roemenië': 'c_ro', 'Frankrijk': 'c_fr', 'Spanje': 'c_es', 'Colombia': 'c_co', 'Moldavië': 'c_md', 'Turkije': 'c_tr', 'Bulgarije': 'c_bg' };
+  const landStr = cMap[dame.land] ? t(cMap[dame.land]) : dame.land;
   return (
     <div className="lg-press" onClick={onClick} style={{
       width: '100%', background: 'none', border: 'none', padding: 0, textAlign: 'left', cursor: 'pointer'
@@ -11,7 +14,7 @@ function DameCard({ dame, onClick }) {
         <div className="lg-photo-fade" />
         {dame.nu &&
           <div style={{ position: 'absolute', top: 10, left: 10 }}>
-            <Tag tone="live"><LiveDot />Vandaag aanwezig</Tag>
+            <Tag tone="live"><LiveDot />{t('today_present')}</Tag>
           </div>
         }
       </div>
@@ -19,13 +22,14 @@ function DameCard({ dame, onClick }) {
         <div style={{ fontFamily: 'var(--font-head)', fontSize: 18, fontWeight: 600, color: 'var(--cream)', lineHeight: 1.1 }}>
           {dame.name}<span style={{ fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 500, color: 'var(--cream-faint)' }}>  ·  {dame.leeftijd}</span>
         </div>
-        <div style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--cream-dim)', marginTop: 2 }}>{dame.land}</div>
+        <div style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--cream-dim)', marginTop: 2 }}>{landStr}</div>
       </div>
     </div>
   );
 }
 
 function DamesScreen({ openDame, topInset }) {
+  const { t } = useTranslation();
   const [filter, setFilter] = React.useState('alle');
   const list = filter === 'nu' ? DAMES.filter(d => d.nu) : DAMES;
   const Chip = ({ id, label, count }) => (
@@ -42,18 +46,23 @@ function DamesScreen({ openDame, topInset }) {
     <div>
       <div style={{ padding: (topInset + 8) + 'px 20px 4px' }}>
         <div className="lg-eyebrow">Saunaclub Le Grand</div>
-        <h1 style={{ margin: '2px 0 4px', fontFamily: 'var(--font-head)', fontWeight: 500, fontSize: 34, color: 'var(--cream)', letterSpacing: 0.3 }}>Onze dames</h1>
+        <h1 style={{ margin: '2px 0 4px', fontFamily: 'var(--font-head)', fontWeight: 500, fontSize: 34, color: 'var(--cream)', letterSpacing: 0.3 }}>{t('dames_title')}</h1>
         <p style={{ margin: '0 0 16px', fontFamily: 'var(--font-body)', fontSize: 13.5, lineHeight: 1.5, color: 'var(--cream-dim)' }}>
-          Een aantal van onze vaste dames. Om privacyredenen staan niet alle dames online — kom gerust langs om kennis te maken.
+          {t('dames_subtitle_long')}
         </p>
         <div style={{ display: 'flex', gap: 9, marginBottom: 18 }}>
-          <Chip id="alle" label="Alle dames" count={DAMES.length} />
-          <Chip id="nu" label="Nu aanwezig" count={DAMES.filter(d => d.nu).length} />
+          <Chip id="alle" label={t('dames_filter_all')} count={DAMES.length} />
+          <Chip id="nu" label={t('dames_filter_now')} count={DAMES.filter(d => d.nu).length} />
         </div>
       </div>
       <div className="lg-grid-dames" style={{ padding: '0 18px' }}>
         {list.map(d => <DameCard key={d.id} dame={d} onClick={() => openDame(d.id)} />)}
       </div>
+
+      <div style={{ padding: '32px 0 16px', display: 'flex', justifyContent: 'center', opacity: 0.6 }}>
+        <img src="app/assets/legrand-logo.webp" alt="Le Grand" style={{ width: 100 }} />
+      </div>
+
       <TabSpacer />
     </div>
   );
@@ -69,6 +78,9 @@ function InfoBit({ label, value }) {
 }
 
 function DameDetail({ dame, onBack, reserve }) {
+  const { t } = useTranslation();
+  const cMap = { 'Roemenië': 'c_ro', 'Frankrijk': 'c_fr', 'Spanje': 'c_es', 'Colombia': 'c_co', 'Moldavië': 'c_md', 'Turkije': 'c_tr', 'Bulgarije': 'c_bg' };
+  const landStr = cMap[dame.land] ? t(cMap[dame.land]) : dame.land;
   const dagen = dame.dagen.map(d => d.charAt(0).toUpperCase() + d.slice(1));
   return (
     <div>
@@ -85,12 +97,12 @@ function DameDetail({ dame, onBack, reserve }) {
           <IcHeart size={19} />
         </button>
         <div style={{ position: 'absolute', left: 20, right: 20, bottom: 22 }}>
-          {dame.nu && <div style={{ marginBottom: 10 }}><Tag tone="live"><LiveDot />Vandaag aanwezig</Tag></div>}
+          {dame.nu && <div style={{ marginBottom: 10 }}><Tag tone="live"><LiveDot />{t('today_present')}</Tag></div>}
           <h1 style={{ margin: 0, fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: 38, color: '#fff', letterSpacing: 0.3, lineHeight: 1.05 }}>
-            {dame.name}<span style={{ fontFamily: 'var(--font-body)', fontSize: 16, fontWeight: 400, color: 'rgba(255,255,255,0.82)' }}>   {dame.leeftijd} jaar</span>
+            {dame.name}<span style={{ fontFamily: 'var(--font-body)', fontSize: 16, fontWeight: 400, color: 'rgba(255,255,255,0.82)' }}>   {dame.leeftijd}</span>
           </h1>
           <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginTop: 6, color: 'rgba(255,255,255,0.85)', fontFamily: 'var(--font-body)', fontSize: 14 }}>
-            <IcPin size={16} style={{ color: 'var(--gold-light)' }} />{dame.land}
+            <IcPin size={16} style={{ color: 'var(--gold-light)' }} />{landStr}
           </div>
         </div>
       </div>

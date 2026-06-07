@@ -12,15 +12,18 @@ function CartIconButton({ count, onClick }) {
 }
 
 function ProductGridCard({ p, onClick, onAdd }) {
+  const { t } = useTranslation();
+  const nameMap = { 'Le Grand Badjas': 'bathrobe', 'Badslippers': 'slippers' };
+  const pNaam = t(nameMap[p.naam] || p.naam);
   return (
     <div className="lg-card lg-press" onClick={onClick} style={{ background: 'var(--panel)', borderRadius: 'var(--r-lg)', border: '1px solid var(--hair)', overflow: 'hidden', cursor: 'pointer', display: 'flex', flexDirection: 'column' }}>
       <div style={{ position: 'relative' }}>
-        <Photo id={`grid-${p.slot}`} fit="contain" placeholder={p.naam} radius={0} src={p.img}
+        <Photo id={`grid-${p.slot}`} fit="contain" placeholder={pNaam} radius={0} src={p.img}
           style={{ width: '100%', aspectRatio: '1 / 1', display: 'block' }} />
         {p.deal && <div style={{ position: 'absolute', top: 9, left: 9 }}><Tag tone="solid">Deal</Tag></div>}
       </div>
       <div style={{ padding: 13, display: 'flex', flexDirection: 'column', flex: 1 }}>
-        <div style={{ fontFamily: 'var(--font-head)', fontSize: 15.5, fontWeight: 600, color: 'var(--cream)', lineHeight: 1.15 }}>{p.naam}</div>
+        <div style={{ fontFamily: 'var(--font-head)', fontSize: 15.5, fontWeight: 600, color: 'var(--cream)', lineHeight: 1.15 }}>{pNaam}</div>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 7, marginTop: 6 }}>
           <span style={{ fontFamily: 'var(--font-head)', fontSize: 18, fontWeight: 700, color: 'var(--gold)' }}>€{p.prijs}</span>
           {p.van && <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--cream-faint)', textDecoration: 'line-through' }}>€{p.van}</span>}
@@ -30,24 +33,25 @@ function ProductGridCard({ p, onClick, onAdd }) {
           marginTop: 11, height: 38, borderRadius: 'var(--r-pill)', background: 'var(--gold-grad)', color: '#1c1505',
           border: 'none', fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: 13, cursor: 'pointer',
           display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
-        }}><IcPlus size={16} />In winkelmand</button>
+        }}><IcPlus size={16} />{t('in_cart')}</button>
       </div>
     </div>
   );
 }
 
 function ShopScreen({ openProduct, openCart, addToCart, cartCount, topInset }) {
+  const { t } = useTranslation();
   return (
     <div>
       <div style={{ padding: (topInset + 8) + 'px 20px 4px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <div>
-          <div className="lg-eyebrow">Webshop</div>
-          <h1 style={{ margin: '2px 0 0', fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: 34, color: 'var(--cream)', letterSpacing: 0.3 }}>Winkel</h1>
+          <div className="lg-eyebrow">{t('webshop')}</div>
+          <h1 style={{ margin: '2px 0 0', fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: 34, color: 'var(--cream)', letterSpacing: 0.3 }}>{t('shop_title')}</h1>
         </div>
         <div style={{ marginTop: 8 }}><CartIconButton count={cartCount} onClick={openCart} /></div>
       </div>
       <p style={{ margin: '6px 20px 18px', fontFamily: 'var(--font-body)', fontSize: 13.5, lineHeight: 1.55, color: 'var(--cream-dim)' }}>
-        Alles voor jouw bezoek aan de club — discreet thuisbezorgd.
+        {t('shop_intro')}
       </p>
 
       <div className="lg-grid-dames" style={{ padding: '0 18px' }}>
@@ -57,13 +61,17 @@ function ShopScreen({ openProduct, openCart, addToCart, cartCount, topInset }) {
       </div>
 
       <div style={{ padding: '26px 18px 0' }}>
+        <SectionHead title={t('discrete_shipping_title')} />
         <Card pad={16} style={{ display: 'flex', gap: 13, alignItems: 'flex-start' }}>
-          <ServiceIcon name="bag" size={44} tone="panel" />
-          <div>
-            <div style={{ fontFamily: 'var(--font-head)', fontSize: 15.5, fontWeight: 600, color: 'var(--cream)' }}>Discrete verzending</div>
-            <p style={{ margin: '4px 0 0', fontFamily: 'var(--font-body)', fontSize: 12.5, lineHeight: 1.5, color: 'var(--cream-dim)' }}>{SHIP_NOTE}</p>
+          <IcCheck size={24} style={{ color: 'var(--gold)', flexShrink: 0, marginTop: 2 }} />
+          <div style={{ fontFamily: 'var(--font-body)', fontSize: 13, lineHeight: 1.5, color: 'var(--cream-dim)' }}>
+            <span style={{ color: 'var(--cream)', fontWeight: 600 }}>{t('anonymous')}</span> {t('discrete_shipping_desc')}
           </div>
         </Card>
+      </div>
+
+      <div style={{ padding: '32px 0 16px', display: 'flex', justifyContent: 'center', opacity: 0.6 }}>
+        <img src="app/assets/legrand-logo.webp" alt="Le Grand" style={{ width: 100 }} />
       </div>
       <TabSpacer />
     </div>

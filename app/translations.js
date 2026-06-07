@@ -147,6 +147,7 @@ const extras2 = {
 Object.keys(extras2).forEach(lang => Object.assign(T[lang], extras2[lang]));
 
 ['pt','it','da','sv','fi','pl','hu','bg','cs','hr','el','et','lt','no'].forEach(lang => {
+  T[lang] = { ...T.en };
   Object.assign(T[lang], extras.en, extras2.en); // Fallback extra keys to English
 });
 
