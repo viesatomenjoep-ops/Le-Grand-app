@@ -51,7 +51,7 @@ function MeerScreen({ go, reserve, openInfo, openVacatures, topInset }) {
         </Card>
       </div>
 
-      <div style={{ padding: '40px 0 0', display: 'flex', justifyContent: 'center', opacity: 0.6 }}>
+      <div style={{ padding: '16px 0 0', display: 'flex', justifyContent: 'center', opacity: 0.6 }}>
         <img src="app/assets/legrand-logo.webp" alt="Le Grand" style={{ width: 100 }} />
       </div>
 
@@ -79,7 +79,7 @@ function MeerScreen({ go, reserve, openInfo, openVacatures, topInset }) {
         <SectionHead title="Contact" />
         <Card pad={0} style={{ overflow: 'hidden', marginBottom: 16 }}>
           <a href={VENUE.maps} target="_blank" rel="noreferrer" className="lg-press" style={{ display: 'block', position: 'relative' }}>
-            <img src="app/assets/exterior.jpg" alt="Le Grand" style={{ width: '100%', height: 180, objectFit: 'cover', display: 'block' }} />
+            <img src="app/assets/spa-photo.webp" alt="Le Grand" style={{ width: '100%', height: 180, objectFit: 'cover', display: 'block' }} />
             <div className="lg-hero-scrim" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.85), transparent)' }} />
             <div style={{ position: 'absolute', bottom: 12, left: 16, display: 'flex', alignItems: 'center', gap: 8, color: '#fff', fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: 16 }}>
               <IcPin size={18} style={{ color: 'var(--gold)' }} />

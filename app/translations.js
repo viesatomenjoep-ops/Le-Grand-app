@@ -1,173 +1,153 @@
-window.TRANSLATIONS = {
+const T = {};
+T.nl={
+nav_home:'Home', nav_dames:'Dames', nav_events:'Events', nav_shop:'Shop', nav_meer:'Meer',
+btn_reserve:'Reserveer een avond', subtitle_reserve:'Kies datum, tijd & arrangement',
+welkom_title:'Welkom in de wereld van verwennerij', btn_enter:'Betreed de club',
+dames_title:'Onze dames', dames_subtitle:'Een aantal van onze vaste dames.',
+dames_filter_all:'Alle dames', dames_filter_now:'Nu aanwezig', today_present:'Vandaag aanwezig',
+events_title:'Events', events_subtitle:'Speciale evenementen.',
+shop_title:'Webshop', vacatures_title:'Vacatures', info_title:'Informatie', contact_title:'Contact', fast_to:'Snel naar',
+gate_text:'Deze plek is uitsluitend voor volwassenen. Bevestig je leeftijd om verder te gaan.', gate_yes:'Ik ben 18 jaar of ouder', gate_no:'Ik ben jonger dan 18', gate_deny_title:'Tot ziens', gate_deny_text:'Je moet 18 jaar of ouder zijn om deze app te bekijken. Kom gerust terug wanneer dat zo is.', gate_back:'Terug',
+now_open:'Nu geopend', until:'tot', home_title1:'Een avond van', home_title2:'pure verwennerij', home_subtitle:'Exclusieve saunaclub in Zundert.', step_date:'Datum', step_time:'Tijd', step_package:'Arrangement', step_confirm:'Bevestig', res_close_note:'Reserveringen zijn mogelijk tot 2 uur voor sluiting.', btn_continue:'Doorgaan', today_in_club:'Vandaag in de club', who_is_present:'Wie is er aanwezig', all_ladies:'Alle dames', present:'Aanwezig', view_all:'Bekijk alle', our_wellness:'Onze wellness', facilities:'Faciliteiten', finnish_sauna:'Finse Sauna', finnish_sauna_desc:'Knapperend hout, hete stenen en een rituele opgiet — het hart van de club.', steam_bath:'Stoombad', steam_bath_desc:'Warme, aromatische damp met eucalyptus die de zinnen opent.', jacuzzi:'Jacuzzi', jacuzzi_desc:'Bruisend warm water in een sfeervolle, schemerige setting.', most_chosen:'Meest gekozen', day_entry:'Dagentree', all_day:'Hele dag · all-in', pp:'p.p.', soon:'Binnenkort', all_events:'Alle events', regular_night:'Vaste avond', weekly:'Wekelijks', strippers_night:'Strippers Night', strippers_night_desc:'Onze vaste weekendavond met een live DJ achter de draaitafels en diverse dancers in the club.', outside:'Buiten', on_announcement:'Op aankondiging', bbq_time:'BBQ Time bij Le Grand', bbq_time_desc:'Een heerlijke barbecue op ons verwarmde buitenterras, gecombineerd met alle wellnessfaciliteiten.', theme_night:'Thema-avond', orange_party:'Orange Summer Party', orange_party_desc:'Een uitbundige zomereditie in oranje sferen. Feestelijke cocktails, dansende dames en muziek.', webshop:'Webshop', take_home:'Mee naar huis', to_shop:'Naar winkel', bathrobe:'Le Grand Badjas', slippers:'Badslippers', guest_exp:'Gastervaringen', what_guests_say:'Wat gasten zeggen', based_on_reviews:'Op basis van 280+ Google-reviews', read_all_reviews:'Lees alle reviews op Google', today:'Vandaag', monday:'ma', tuesday:'di', wednesday:'wo', thursday:'do', friday:'vr', saturday:'za', sunday:'zo', ago_weeks:'{n} weken geleden', ago_months:'{n} maanden geleden', ago_week:'1 week geleden', ago_month:'1 maand geleden', review_1:'Een werkelijk stijlvolle club. Smetteloze faciliteiten en een ontvangst die je je meteen welkom laat voelen.', review_2:'De privé suite was fantastisch: discreet, luxe en tot in de puntjes verzorgd. Zeker voor herhaling vatbaar.', review_3:'Warme sfeer, prachtige sauna en vriendelijk personeel. Precies de ontspanning die we zochten.', review_4:'Alles ademt klasse, van de lounge tot de wellness. Het voelt echt als een avondje helemaal weg.', review_5:'Heerlijk verwend met goede drankjes en een gezellige, ontspannen ambiance. Top georganiseerd.', review_6:'Schone, moderne ruimtes en een gastvrij team. Je merkt dat ze hier echt om hun gasten geven.', review_7:'Een aanrader voor wie discreet en in stijl wil genieten. We komen zeker nog een keer terug.', review_8:'De jacuzzi en sauna zijn van topkwaliteit. Een perfecte plek om volledig tot rust te komen.', review_9:'Vriendelijk onthaal, mooie inrichting en een relaxte sfeer. Eigenlijk niets op aan te merken.', review_10:'Professioneel, gastvrij en bijzonder verzorgd. Een avond die we niet snel zullen vergeten.'
+};
+
+T.en={
+nav_home:'Home', nav_dames:'Ladies', nav_events:'Events', nav_shop:'Shop', nav_meer:'More', btn_reserve:'Book an evening', subtitle_reserve:'Choose date, time & package', welkom_title:'Welcome to the world of indulgence', btn_enter:'Enter the club', dames_title:'Our ladies', dames_subtitle:'Some of our regular ladies.', dames_filter_all:'All ladies', dames_filter_now:'Present now', today_present:'Present today', events_title:'Events', events_subtitle:'Special events.', shop_title:'Webshop', vacatures_title:'Jobs', info_title:'Information', contact_title:'Contact', fast_to:'Quick links', gate_text:'This place is for adults only. Please confirm your age to continue.', gate_yes:'I am 18 or older', gate_no:'I am under 18', gate_deny_title:'Goodbye', gate_deny_text:'You must be 18 or older to view this app. Come back when you are.', gate_back:'Back',
+now_open:'Now open', until:'until', home_title1:'An evening of', home_title2:'pure indulgence', home_subtitle:'Exclusive sauna club in Zundert.', step_date:'Date', step_time:'Time', step_package:'Package', step_confirm:'Confirm', res_close_note:'Reservations are possible up to 2 hours before closing.', btn_continue:'Continue', today_in_club:'Today in the club', who_is_present:'Who is present', all_ladies:'All ladies', present:'Present', view_all:'View all', our_wellness:'Our wellness', facilities:'Facilities', finnish_sauna:'Finnish Sauna', finnish_sauna_desc:'Crackling wood, hot stones and a ritual infusion — the heart of the club.', steam_bath:'Steam bath', steam_bath_desc:'Warm, aromatic vapor with eucalyptus that opens the senses.', jacuzzi:'Jacuzzi', jacuzzi_desc:'Bubbling warm water in an atmospheric, dim setting.', most_chosen:'Most chosen', day_entry:'Day entry', all_day:'Full day · all-in', pp:'p.p.', soon:'Soon', all_events:'All events', regular_night:'Regular night', weekly:'Weekly', strippers_night:'Strippers Night', strippers_night_desc:'Our regular weekend night with a live DJ and various dancers.', outside:'Outside', on_announcement:'On announcement', bbq_time:'BBQ Time at Le Grand', bbq_time_desc:'A delicious barbecue on our heated outdoor terrace, combined with all wellness facilities.', theme_night:'Theme night', orange_party:'Orange Summer Party', orange_party_desc:'An exuberant summer edition in orange vibes. Festive cocktails, dancing ladies and music.', webshop:'Webshop', take_home:'Take home', to_shop:'To shop', bathrobe:'Le Grand Bathrobe', slippers:'Bath slippers', guest_exp:'Guest experiences', what_guests_say:'What guests say', based_on_reviews:'Based on 280+ Google reviews', read_all_reviews:'Read all reviews on Google', today:'Today', monday:'Mon', tuesday:'Tue', wednesday:'Wed', thursday:'Thu', friday:'Fri', saturday:'Sat', sunday:'Sun', ago_weeks:'{n} weeks ago', ago_months:'{n} months ago', ago_week:'1 week ago', ago_month:'1 month ago', review_1:'A truly stylish club. Spotless facilities and a welcome that makes you feel right at home.', review_2:'The private suite was fantastic: discreet, luxurious and perfectly organized. Definitely worth repeating.', review_3:'Warm atmosphere, beautiful sauna and friendly staff. Exactly the relaxation we were looking for.', review_4:'Everything breathes class, from the lounge to the wellness. It truly feels like a complete getaway.', review_5:'Wonderfully pampered with good drinks and a cozy, relaxed ambiance. Top organization.', review_6:'Clean, modern spaces and a welcoming team. You can tell they really care about their guests.', review_7:'Highly recommended for those who want to enjoy discreetly and in style. We will definitely be back.', review_8:'The jacuzzi and sauna are of top quality. A perfect place to completely unwind.', review_9:'Friendly welcome, beautiful decor and a relaxed atmosphere. Nothing to complain about really.', review_10:'Professional, welcoming and exceptionally well cared for. An evening we will not easily forget.'
+};
+
+T.de={
+nav_home:'Start', nav_dames:'Damen', nav_events:'Events', nav_shop:'Shop', nav_meer:'Mehr', btn_reserve:'Abend reservieren', subtitle_reserve:'Datum, Zeit & Paket wählen', welkom_title:'Willkommen in der Welt der Verwöhnung', btn_enter:'Club betreten', dames_title:'Unsere Damen', dames_subtitle:'Einige unserer festen Damen.', dames_filter_all:'Alle Damen', dames_filter_now:'Jetzt anwesend', today_present:'Heute anwesend', events_title:'Events', events_subtitle:'Besondere Veranstaltungen.', shop_title:'Webshop', vacatures_title:'Jobs', info_title:'Informationen', contact_title:'Kontakt', fast_to:'Schnell zu', gate_text:'Dieser Ort ist nur für Erwachsene. Bitte bestätigen Sie Ihr Alter.', gate_yes:'Ich bin 18 oder älter', gate_no:'Ich bin jünger als 18', gate_deny_title:'Auf Wiedersehen', gate_deny_text:'Sie müssen 18 oder älter sein, um diese App zu sehen. Kommen Sie wieder, wenn Sie es sind.', gate_back:'Zurück',
+now_open:'Jetzt geöffnet', until:'bis', home_title1:'Ein Abend voller', home_title2:'purer Verwöhnung', home_subtitle:'Exklusiver Saunaclub in Zundert.', step_date:'Datum', step_time:'Zeit', step_package:'Paket', step_confirm:'Bestätigen', res_close_note:'Reservierungen sind bis zu 2 Stunden vor Schließung möglich.', btn_continue:'Weiter', today_in_club:'Heute im Club', who_is_present:'Wer ist anwesend', all_ladies:'Alle Damen', present:'Anwesend', view_all:'Alle ansehen', our_wellness:'Unsere Wellness', facilities:'Einrichtungen', finnish_sauna:'Finnische Sauna', finnish_sauna_desc:'Knisterndes Holz, heiße Steine und ein ritueller Aufguss — das Herz des Clubs.', steam_bath:'Dampfbad', steam_bath_desc:'Warmer, aromatischer Dampf mit Eukalyptus, der die Sinne öffnet.', jacuzzi:'Whirlpool', jacuzzi_desc:'Sprudelndes warmes Wasser in einer stimmungsvollen Umgebung.', most_chosen:'Am häufigsten gewählt', day_entry:'Tageseintritt', all_day:'Ganzer Tag · All-in', pp:'p.P.', soon:'Demnächst', all_events:'Alle Events', regular_night:'Fester Abend', weekly:'Wöchentlich', strippers_night:'Strippers Night', strippers_night_desc:'Unser fester Wochenendabend mit einem Live-DJ und verschiedenen Tänzerinnen.', outside:'Draußen', on_announcement:'Auf Ankündigung', bbq_time:'BBQ Time bei Le Grand', bbq_time_desc:'Ein köstliches Barbecue auf unserer Terrasse, kombiniert mit allen Wellness-Einrichtungen.', theme_night:'Themenabend', orange_party:'Orange Summer Party', orange_party_desc:'Eine ausgelassene Sommeredition in Orange. Festliche Cocktails, tanzende Damen und Musik.', webshop:'Webshop', take_home:'Für zu Hause', to_shop:'Zum Shop', bathrobe:'Le Grand Bademantel', slippers:'Badeschuhe', guest_exp:'Gästeerfahrungen', what_guests_say:'Was Gäste sagen', based_on_reviews:'Basierend auf 280+ Google-Bewertungen', read_all_reviews:'Alle Bewertungen auf Google lesen', today:'Heute', monday:'Mo', tuesday:'Di', wednesday:'Mi', thursday:'Do', friday:'Fr', saturday:'Sa', sunday:'So', ago_weeks:'vor {n} Wochen', ago_months:'vor {n} Monaten', ago_week:'vor 1 Woche', ago_month:'vor 1 Monat', review_1:'Ein wirklich stilvoller Club. Makellose Einrichtungen und ein Empfang, bei dem man sich sofort willkommen fühlt.', review_2:'Die private Suite war fantastisch: diskret, luxuriös und perfekt organisiert.', review_3:'Warme Atmosphäre, schöne Sauna und freundliches Personal. Genau die Entspannung, die wir gesucht haben.', review_4:'Alles atmet Klasse, von der Lounge bis zur Wellness.', review_5:'Wunderbar verwöhnt mit guten Getränken und einem gemütlichen Ambiente.', review_6:'Saubere, moderne Räume und ein gastfreundliches Team. Man merkt, dass sie sich wirklich um ihre Gäste kümmern.', review_7:'Sehr empfehlenswert für alle, die diskret und stilvoll genießen möchten.', review_8:'Der Whirlpool und die Sauna sind von höchster Qualität. Ein perfekter Ort zum Entspannen.', review_9:'Freundlicher Empfang, schöne Einrichtung und eine entspannte Atmosphäre.', review_10:'Professionell, einladend und außergewöhnlich gepflegt. Ein unvergesslicher Abend.'
+};
+
+T.fr={
+nav_home:'Accueil', nav_dames:'Dames', nav_events:'Événements', nav_shop:'Boutique', nav_meer:'Plus', btn_reserve:'Réserver', subtitle_reserve:'Choisissez la date, l\'heure', welkom_title:'Bienvenue dans le monde de l\'indulgence', btn_enter:'Entrez dans le club', dames_title:'Nos dames', dames_subtitle:'Certaines de nos dames.', dames_filter_all:'Toutes les dames', dames_filter_now:'Présentes', today_present:'Présente aujourd\'hui', events_title:'Événements', events_subtitle:'Événements spéciaux.', shop_title:'Boutique', vacatures_title:'Emplois', info_title:'Informations', contact_title:'Contact', fast_to:'Raccourcis', gate_text:'Cet endroit est réservé aux adultes. Confirmez votre âge.', gate_yes:'J\'ai 18 ans ou plus', gate_no:'J\'ai moins de 18 ans', gate_deny_title:'Au revoir', gate_deny_text:'Vous devez avoir 18 ans pour voir cette application.', gate_back:'Retour',
+now_open:'Ouvert', until:'jusqu\'à', home_title1:'Une soirée de', home_title2:'pure indulgence', home_subtitle:'Club de sauna exclusif à Zundert.', step_date:'Date', step_time:'Heure', step_package:'Forfait', step_confirm:'Confirmer', res_close_note:'Réservations possibles jusqu\'à 2 heures avant la fermeture.', btn_continue:'Continuer', today_in_club:'Aujourd\'hui au club', who_is_present:'Qui est présent', all_ladies:'Toutes les dames', present:'Présente', view_all:'Voir tout', our_wellness:'Notre bien-être', facilities:'Installations', finnish_sauna:'Sauna finlandais', finnish_sauna_desc:'Bois crépitant, pierres chaudes et infusion rituelle.', steam_bath:'Bain à vapeur', steam_bath_desc:'Vapeur chaude et aromatique à l\'eucalyptus.', jacuzzi:'Jacuzzi', jacuzzi_desc:'Eau chaude bouillonnante dans un cadre atmosphérique.', most_chosen:'Le plus choisi', day_entry:'Entrée de jour', all_day:'Toute la journée · all-in', pp:'p.p.', soon:'Bientôt', all_events:'Tous les événements', regular_night:'Soirée régulière', weekly:'Hebdomadaire', strippers_night:'Strippers Night', strippers_night_desc:'Notre soirée du week-end avec un DJ live et plusieurs danseuses.', outside:'Dehors', on_announcement:'Sur annonce', bbq_time:'BBQ Time au Le Grand', bbq_time_desc:'Un délicieux barbecue sur notre terrasse.', theme_night:'Soirée à thème', orange_party:'Orange Summer Party', orange_party_desc:'Une édition estivale exubérante aux vibrations orange.', webshop:'Boutique', take_home:'A ramener', to_shop:'Acheter', bathrobe:'Peignoir Le Grand', slippers:'Chaussons de bain', guest_exp:'Expériences des invités', what_guests_say:'Ce que disent les invités', based_on_reviews:'Basé sur plus de 280 avis Google', read_all_reviews:'Lire tous les avis', today:'Aujourd\'hui', monday:'Lu', tuesday:'Ma', wednesday:'Me', thursday:'Je', friday:'Ve', saturday:'Sa', sunday:'Di', ago_weeks:'il y a {n} semaines', ago_months:'il y a {n} mois', ago_week:'il y a 1 semaine', ago_month:'il y a 1 mois', review_1:'Un club vraiment élégant. Des installations impeccables.', review_2:'La suite privée était fantastique : discrète et luxueuse.', review_3:'Ambiance chaleureuse, beau sauna et personnel amical.', review_4:'Tout respire la classe, du salon au bien-être.', review_5:'Merveilleusement choyé avec de bonnes boissons.', review_6:'Espaces propres et modernes.', review_7:'Hautement recommandé pour profiter en toute discrétion.', review_8:'Le jacuzzi et le sauna sont de qualité supérieure.', review_9:'Accueil sympathique et décoration magnifique.', review_10:'Professionnel, accueillant et exceptionnellement soigné.'
+};
+
+T.es={
+nav_home:'Inicio', nav_dames:'Damas', nav_events:'Eventos', nav_shop:'Tienda', nav_meer:'Más', btn_reserve:'Reservar', subtitle_reserve:'Elige fecha y hora', welkom_title:'Bienvenido al mundo de la indulgencia', btn_enter:'Entrar al club', dames_title:'Nuestras damas', dames_subtitle:'Algunas de nuestras damas.', dames_filter_all:'Todas las damas', dames_filter_now:'Presente', today_present:'Presente hoy', events_title:'Eventos', events_subtitle:'Eventos especiales.', shop_title:'Tienda', vacatures_title:'Empleo', info_title:'Información', contact_title:'Contacto', fast_to:'Accesos rápidos', gate_text:'Este lugar es solo para adultos. Confirma tu edad.', gate_yes:'Tengo 18 años o más', gate_no:'Soy menor de 18', gate_deny_title:'Adiós', gate_deny_text:'Debes tener 18 o más para ver esta app.', gate_back:'Atrás',
+now_open:'Abierto', until:'hasta', home_title1:'Una noche de', home_title2:'pura indulgencia', home_subtitle:'Club de sauna exclusivo en Zundert.', step_date:'Fecha', step_time:'Hora', step_package:'Paquete', step_confirm:'Confirmar', res_close_note:'Reservas posibles hasta 2 horas antes del cierre.', btn_continue:'Continuar', today_in_club:'Hoy en el club', who_is_present:'Quién está presente', all_ladies:'Todas las damas', present:'Presente', view_all:'Ver todo', our_wellness:'Nuestro bienestar', facilities:'Instalaciones', finnish_sauna:'Sauna finlandesa', finnish_sauna_desc:'Madera crepitante, piedras calientes e infusión ritual.', steam_bath:'Baño de vapor', steam_bath_desc:'Vapor cálido y aromático con eucalipto.', jacuzzi:'Jacuzzi', jacuzzi_desc:'Agua cálida burbujeante en un entorno atmosférico.', most_chosen:'Más elegido', day_entry:'Entrada de día', all_day:'Todo el día · todo incluido', pp:'p.p.', soon:'Pronto', all_events:'Todos los eventos', regular_night:'Noche regular', weekly:'Semanal', strippers_night:'Strippers Night', strippers_night_desc:'Nuestra noche de fin de semana con DJ en vivo y bailarinas.', outside:'Afuera', on_announcement:'Por anuncio', bbq_time:'BBQ Time en Le Grand', bbq_time_desc:'Una deliciosa barbacoa en nuestra terraza al aire libre.', theme_night:'Noche temática', orange_party:'Orange Summer Party', orange_party_desc:'Una exuberante edición de verano con vibraciones naranjas.', webshop:'Tienda', take_home:'Llevar a casa', to_shop:'Ir a tienda', bathrobe:'Albornoz Le Grand', slippers:'Zapatillas de baño', guest_exp:'Experiencias', what_guests_say:'Lo que dicen los invitados', based_on_reviews:'Basado en 280+ reseñas', read_all_reviews:'Leer reseñas en Google', today:'Hoy', monday:'Lu', tuesday:'Ma', wednesday:'Mi', thursday:'Ju', friday:'Vi', saturday:'Sa', sunday:'Do', ago_weeks:'hace {n} semanas', ago_months:'hace {n} meses', ago_week:'hace 1 semana', ago_month:'hace 1 mes', review_1:'Un club verdaderamente elegante. Instalaciones impecables.', review_2:'La suite privada fue fantástica: discreta y lujosa.', review_3:'Ambiente cálido, hermosa sauna y personal amable.', review_4:'Todo respira clase, desde el salón hasta el bienestar.', review_5:'Maravillosamente mimado con buenas bebidas.', review_6:'Espacios limpios y modernos.', review_7:'Muy recomendable para disfrutar con discreción y estilo.', review_8:'El jacuzzi y la sauna son de primera calidad.', review_9:'Agradable bienvenida, hermosa decoración.', review_10:'Profesional, acogedor y excepcionalmente cuidado.'
+};
+
+const extras = {
   nl: {
-    nav_home: 'Home', nav_dames: 'Dames', nav_events: 'Events', nav_shop: 'Shop', nav_meer: 'Meer',
-    btn_reserve: 'Reserveer een avond', subtitle_reserve: 'Kies datum, tijd & arrangement',
-    welkom_title: 'Welkom in de wereld van verwennerij', btn_enter: 'Betreed de club',
-    dames_title: 'Onze dames', dames_subtitle: 'Een aantal van onze vaste dames.',
-    dames_filter_all: 'Alle dames', dames_filter_now: 'Nu aanwezig', today_present: 'Vandaag aanwezig',
-    events_title: 'Events', events_subtitle: 'Speciale evenementen.',
-    shop_title: 'Webshop', vacatures_title: 'Vacatures', info_title: 'Informatie', contact_title: 'Contact', fast_to: 'Snel naar'
+    dames_subtitle_long: 'Een aantal van onze vaste dames. Om privacyredenen staan niet alle dames online — kom gerust langs om kennis te maken.',
+    events_intro: 'Bij Saunaclub Le Grand organiseren we maandelijks verschillende events. Elke vrijdag en zaterdag is er een vaste avond met een live DJ en diverse dancers in de club.',
+    events_outro: 'Naast onze events ben je tijdens alle reguliere openingstijden van harte welkom. Reserveren is aanbevolen op drukke avonden.',
+    shop_intro: 'Alles voor jouw bezoek aan de club — discreet thuisbezorgd.', in_cart: 'In winkelmand',
+    discrete_shipping_title: 'Discrete verzending', discrete_shipping_desc: 'Je bestelling wordt altijd discreet bij je thuis afgeleverd in een neutrale, blanco doos. Snel, zorgvuldig en volledig vertrouwelijk.', discrete_shipping_short: 'Discreet thuisbezorgd in een neutrale, blanco doos.', anonymous: '100% Anoniem.',
+    c_ro: 'Roemenië', c_fr: 'Frankrijk', c_es: 'Spanje', c_co: 'Colombia', c_md: 'Moldavië', c_tr: 'Turkije', c_bg: 'Bulgarije'
   },
   en: {
-    nav_home: 'Home', nav_dames: 'Ladies', nav_events: 'Events', nav_shop: 'Shop', nav_meer: 'More',
-    btn_reserve: 'Book an evening', subtitle_reserve: 'Choose date, time & package',
-    welkom_title: 'Welcome to the world of indulgence', btn_enter: 'Enter the club',
-    dames_title: 'Our ladies', dames_subtitle: 'Some of our regular ladies.',
-    dames_filter_all: 'All ladies', dames_filter_now: 'Present now', today_present: 'Present today',
-    events_title: 'Events', events_subtitle: 'Special events.',
-    shop_title: 'Webshop', vacatures_title: 'Jobs', info_title: 'Information', contact_title: 'Contact', fast_to: 'Quick links'
+    dames_subtitle_long: 'Some of our regular ladies. For privacy reasons, not all ladies are online — feel free to drop by and meet them.',
+    events_intro: 'At Saunaclub Le Grand we organize various monthly events. Every Friday and Saturday is a regular night with a live DJ and various dancers.',
+    events_outro: 'In addition to our events, you are very welcome during all regular opening hours. Reservations are recommended on busy evenings.',
+    shop_intro: 'Everything for your visit to the club — discreetly delivered to your home.', in_cart: 'Add to cart',
+    discrete_shipping_title: 'Discreet shipping', discrete_shipping_desc: 'Your order is always discreetly delivered to your home in a neutral, blank box. Fast, careful and completely confidential.', discrete_shipping_short: 'Discreetly delivered to your home in a neutral, blank box.', anonymous: '100% Anonymous.',
+    c_ro: 'Romania', c_fr: 'France', c_es: 'Spain', c_co: 'Colombia', c_md: 'Moldova', c_tr: 'Turkey', c_bg: 'Bulgaria'
   },
   de: {
-    nav_home: 'Start', nav_dames: 'Damen', nav_events: 'Events', nav_shop: 'Shop', nav_meer: 'Mehr',
-    btn_reserve: 'Abend reservieren', subtitle_reserve: 'Datum, Zeit & Paket wählen',
-    welkom_title: 'Willkommen in der Welt der Verwöhnung', btn_enter: 'Club betreten',
-    dames_title: 'Unsere Damen', dames_subtitle: 'Einige unserer festen Damen.',
-    dames_filter_all: 'Alle Damen', dames_filter_now: 'Jetzt anwesend', today_present: 'Heute anwesend',
-    events_title: 'Events', events_subtitle: 'Besondere Veranstaltungen.',
-    shop_title: 'Webshop', vacatures_title: 'Jobs', info_title: 'Informationen', contact_title: 'Kontakt', fast_to: 'Schnell zu'
+    dames_subtitle_long: 'Einige unserer festen Damen. Aus Datenschutzgründen sind nicht alle online — kommen Sie gerne vorbei.',
+    events_intro: 'Im Saunaclub Le Grand organisieren wir monatlich verschiedene Events. Jeden Freitag und Samstag gibt es einen festen Abend mit Live-DJ.',
+    events_outro: 'Neben unseren Events sind Sie während der regulären Öffnungszeiten herzlich willkommen. Reservierungen werden empfohlen.',
+    shop_intro: 'Alles für Ihren Besuch im Club — diskret nach Hause geliefert.', in_cart: 'In den Warenkorb',
+    discrete_shipping_title: 'Diskreter Versand', discrete_shipping_desc: 'Ihre Bestellung wird immer diskret in einem neutralen Karton geliefert. Schnell und absolut vertraulich.', discrete_shipping_short: 'Diskret in einem neutralen Karton nach Hause geliefert.', anonymous: '100% Anonym.',
+    c_ro: 'Rumänien', c_fr: 'Frankreich', c_es: 'Spanien', c_co: 'Kolumbien', c_md: 'Moldawien', c_tr: 'Türkei', c_bg: 'Bulgarien'
   },
   fr: {
-    nav_home: 'Accueil', nav_dames: 'Dames', nav_events: 'Événements', nav_shop: 'Boutique', nav_meer: 'Plus',
-    btn_reserve: 'Réserver une soirée', subtitle_reserve: 'Choisissez la date, l\'heure',
-    welkom_title: 'Bienvenue dans le monde de l\'indulgence', btn_enter: 'Entrez dans le club',
-    dames_title: 'Nos dames', dames_subtitle: 'Certaines de nos dames régulières.',
-    dames_filter_all: 'Toutes les dames', dames_filter_now: 'Présentes', today_present: 'Présente aujourd\'hui',
-    events_title: 'Événements', events_subtitle: 'Événements spéciaux.',
-    shop_title: 'Boutique', vacatures_title: 'Emplois', info_title: 'Informations', contact_title: 'Contact', fast_to: 'Raccourcis'
+    dames_subtitle_long: 'Certaines de nos dames régulières. Pour des raisons de confidentialité, toutes ne sont pas en ligne.',
+    events_intro: 'Au Saunaclub Le Grand, nous organisons divers événements. Chaque vendredi et samedi est une soirée régulière avec DJ.',
+    events_outro: 'En plus de nos événements, vous êtes les bienvenus pendant les heures d\'ouverture.',
+    shop_intro: 'Tout pour votre visite au club — livré discrètement.', in_cart: 'Ajouter au panier',
+    discrete_shipping_title: 'Expédition discrète', discrete_shipping_desc: 'Votre commande est toujours livrée discrètement dans une boîte neutre. Rapide et confidentiel.', discrete_shipping_short: 'Livré discrètement dans une boîte neutre.', anonymous: '100% Anonyme.',
+    c_ro: 'Roumanie', c_fr: 'France', c_es: 'Espagne', c_co: 'Colombie', c_md: 'Moldavie', c_tr: 'Turquie', c_bg: 'Bulgarie'
   },
   es: {
-    nav_home: 'Inicio', nav_dames: 'Damas', nav_events: 'Eventos', nav_shop: 'Tienda', nav_meer: 'Más',
-    btn_reserve: 'Reservar', subtitle_reserve: 'Elige fecha y hora',
-    welkom_title: 'Bienvenido al mundo de la indulgencia', btn_enter: 'Entrar al club',
-    dames_title: 'Nuestras damas', dames_subtitle: 'Algunas de nuestras damas habituales.',
-    dames_filter_all: 'Todas las damas', dames_filter_now: 'Presente', today_present: 'Presente hoy',
-    events_title: 'Eventos', events_subtitle: 'Eventos especiales.',
-    shop_title: 'Tienda', vacatures_title: 'Empleo', info_title: 'Información', contact_title: 'Contacto', fast_to: 'Accesos rápidos'
-  },
-  pt: {
-    nav_home: 'Início', nav_dames: 'Damas', nav_events: 'Eventos', nav_shop: 'Loja', nav_meer: 'Mais',
-    btn_reserve: 'Reservar', subtitle_reserve: 'Escolha a data e hora',
-    welkom_title: 'Bem-vindo ao mundo da indulgência', btn_enter: 'Entrar',
-    dames_title: 'Nossas damas', dames_subtitle: 'Algumas de nossas damas.',
-    dames_filter_all: 'Todas as damas', dames_filter_now: 'Presente', today_present: 'Presente hoje',
-    events_title: 'Eventos', events_subtitle: 'Eventos especiais.',
-    shop_title: 'Loja', vacatures_title: 'Emprego', info_title: 'Informação', contact_title: 'Contato', fast_to: 'Acessos rápidos'
-  },
-  it: {
-    nav_home: 'Home', nav_dames: 'Signore', nav_events: 'Eventi', nav_shop: 'Negozio', nav_meer: 'Di più',
-    btn_reserve: 'Prenota', subtitle_reserve: 'Scegli data e ora',
-    welkom_title: 'Benvenuti nel mondo dell\'indulgenza', btn_enter: 'Entra nel club',
-    dames_title: 'Le nostre signore', dames_subtitle: 'Alcune delle nostre signore.',
-    dames_filter_all: 'Tutte le signore', dames_filter_now: 'Presente', today_present: 'Presente oggi',
-    events_title: 'Eventi', events_subtitle: 'Eventi speciali.',
-    shop_title: 'Negozio', vacatures_title: 'Lavoro', info_title: 'Informazioni', contact_title: 'Contatto', fast_to: 'Link rapidi'
-  },
-  da: {
-    nav_home: 'Hjem', nav_dames: 'Damer', nav_events: 'Begivenheder', nav_shop: 'Butik', nav_meer: 'Mere',
-    btn_reserve: 'Book', subtitle_reserve: 'Vælg dato',
-    welkom_title: 'Velkommen', btn_enter: 'Gå ind',
-    dames_title: 'Vores damer', dames_subtitle: 'Vores damer.',
-    dames_filter_all: 'Alle damer', dames_filter_now: 'Nu', today_present: 'Tilstede i dag',
-    events_title: 'Begivenheder', events_subtitle: 'Særlige.',
-    shop_title: 'Butik', vacatures_title: 'Job', info_title: 'Info', contact_title: 'Kontakt', fast_to: 'Hurtig'
-  },
-  sv: {
-    nav_home: 'Hem', nav_dames: 'Damer', nav_events: 'Evenemang', nav_shop: 'Butik', nav_meer: 'Mer',
-    btn_reserve: 'Boka', subtitle_reserve: 'Välj datum',
-    welkom_title: 'Välkommen', btn_enter: 'Stig in',
-    dames_title: 'Våra damer', dames_subtitle: 'Våra damer.',
-    dames_filter_all: 'Alla damer', dames_filter_now: 'Nu', today_present: 'Närvarande idag',
-    events_title: 'Evenemang', events_subtitle: 'Speciella.',
-    shop_title: 'Butik', vacatures_title: 'Jobb', info_title: 'Info', contact_title: 'Kontakt', fast_to: 'Snabbt'
-  },
-  fi: {
-    nav_home: 'Koti', nav_dames: 'Naiset', nav_events: 'Tapahtumat', nav_shop: 'Kauppa', nav_meer: 'Lisää',
-    btn_reserve: 'Varaa', subtitle_reserve: 'Valitse aika',
-    welkom_title: 'Tervetuloa', btn_enter: 'Astu sisään',
-    dames_title: 'Naisemme', dames_subtitle: 'Naisemme.',
-    dames_filter_all: 'Kaikki', dames_filter_now: 'Nyt', today_present: 'Paikalla tänään',
-    events_title: 'Tapahtumat', events_subtitle: 'Erityiset.',
-    shop_title: 'Kauppa', vacatures_title: 'Työ', info_title: 'Info', contact_title: 'Yhteystiedot', fast_to: 'Nopea'
-  },
-  pl: {
-    nav_home: 'Start', nav_dames: 'Panie', nav_events: 'Wydarzenia', nav_shop: 'Sklep', nav_meer: 'Więcej',
-    btn_reserve: 'Rezerwuj', subtitle_reserve: 'Wybierz datę',
-    welkom_title: 'Witamy', btn_enter: 'Wejdź',
-    dames_title: 'Nasze panie', dames_subtitle: 'Nasze panie.',
-    dames_filter_all: 'Wszystkie panie', dames_filter_now: 'Teraz', today_present: 'Obecna dzisiaj',
-    events_title: 'Wydarzenia', events_subtitle: 'Specjalne.',
-    shop_title: 'Sklep', vacatures_title: 'Praca', info_title: 'Info', contact_title: 'Kontakt', fast_to: 'Szybkie'
-  },
-  hu: {
-    nav_home: 'Kezdőlap', nav_dames: 'Hölgyek', nav_events: 'Események', nav_shop: 'Bolt', nav_meer: 'Több',
-    btn_reserve: 'Foglalás', subtitle_reserve: 'Válassz dátumot',
-    welkom_title: 'Üdvözöljük', btn_enter: 'Belépés',
-    dames_title: 'Hölgyeink', dames_subtitle: 'Hölgyeink.',
-    dames_filter_all: 'Minden hölgy', dames_filter_now: 'Most', today_present: 'Ma jelen van',
-    events_title: 'Események', events_subtitle: 'Különleges.',
-    shop_title: 'Bolt', vacatures_title: 'Munka', info_title: 'Info', contact_title: 'Kapcsolat', fast_to: 'Gyors'
-  },
-  bg: {
-    nav_home: 'Начало', nav_dames: 'Дами', nav_events: 'Събития', nav_shop: 'Магазин', nav_meer: 'Още',
-    btn_reserve: 'Резервирай', subtitle_reserve: 'Избери дата',
-    welkom_title: 'Добре дошли', btn_enter: 'Влез',
-    dames_title: 'Нашите дами', dames_subtitle: 'Нашите дами.',
-    dames_filter_all: 'Всички дами', dames_filter_now: 'Сега', today_present: 'Присъства днес',
-    events_title: 'Събития', events_subtitle: 'Специални.',
-    shop_title: 'Магазин', vacatures_title: 'Работа', info_title: 'Инфо', contact_title: 'Контакт', fast_to: 'Бързи'
-  },
-  cs: {
-    nav_home: 'Domů', nav_dames: 'Dámy', nav_events: 'Akce', nav_shop: 'Obchod', nav_meer: 'Více',
-    btn_reserve: 'Rezervovat', subtitle_reserve: 'Vyberte datum',
-    welkom_title: 'Vítejte', btn_enter: 'Vstoupit',
-    dames_title: 'Naše dámy', dames_subtitle: 'Naše dámy.',
-    dames_filter_all: 'Všechny dámy', dames_filter_now: 'Nyní', today_present: 'Dnes přítomna',
-    events_title: 'Akce', events_subtitle: 'Speciální.',
-    shop_title: 'Obchod', vacatures_title: 'Práce', info_title: 'Info', contact_title: 'Kontakt', fast_to: 'Rychle'
-  },
-  hr: {
-    nav_home: 'Početna', nav_dames: 'Dame', nav_events: 'Događaji', nav_shop: 'Trgovina', nav_meer: 'Više',
-    btn_reserve: 'Rezerviraj', subtitle_reserve: 'Odaberi datum',
-    welkom_title: 'Dobrodošli', btn_enter: 'Uđi',
-    dames_title: 'Naše dame', dames_subtitle: 'Naše dame.',
-    dames_filter_all: 'Sve dame', dames_filter_now: 'Sada', today_present: 'Danas prisutna',
-    events_title: 'Događaji', events_subtitle: 'Posebni.',
-    shop_title: 'Trgovina', vacatures_title: 'Posao', info_title: 'Info', contact_title: 'Kontakt', fast_to: 'Brzo'
-  },
-  el: {
-    nav_home: 'Αρχική', nav_dames: 'Κυρίες', nav_events: 'Εκδηλώσεις', nav_shop: 'Κατάστημα', nav_meer: 'Περισσότερα',
-    btn_reserve: 'Κράτηση', subtitle_reserve: 'Επιλέξτε ημερομηνία',
-    welkom_title: 'Καλώς ήρθατε', btn_enter: 'Είσοδος',
-    dames_title: 'Οι κυρίες μας', dames_subtitle: 'Οι κυρίες μας.',
-    dames_filter_all: 'Όλες οι κυρίες', dames_filter_now: 'Τώρα', today_present: 'Παρούσα σήμερα',
-    events_title: 'Εκδηλώσεις', events_subtitle: 'Ειδικές.',
-    shop_title: 'Κατάστημα', vacatures_title: 'Εργασία', info_title: 'Πληροφορίες', contact_title: 'Επικοινωνία', fast_to: 'Γρήγορα'
-  },
-  et: {
-    nav_home: 'Kodu', nav_dames: 'Daamid', nav_events: 'Sündmused', nav_shop: 'Pood', nav_meer: 'Rohkem',
-    btn_reserve: 'Broneeri', subtitle_reserve: 'Vali kuupäev',
-    welkom_title: 'Tere tulemast', btn_enter: 'Sisene',
-    dames_title: 'Meie daamid', dames_subtitle: 'Meie daamid.',
-    dames_filter_all: 'Kõik daamid', dames_filter_now: 'Nüüd', today_present: 'Täna kohal',
-    events_title: 'Sündmused', events_subtitle: 'Spetsiaalsed.',
-    shop_title: 'Pood', vacatures_title: 'Töökohad', info_title: 'Info', contact_title: 'Kontakt', fast_to: 'Kiirelt'
-  },
-  lt: {
-    nav_home: 'Pradžia', nav_dames: 'Damos', nav_events: 'Renginiai', nav_shop: 'Parduotuvė', nav_meer: 'Daugiau',
-    btn_reserve: 'Rezervuoti', subtitle_reserve: 'Pasirinkite datą',
-    welkom_title: 'Sveiki', btn_enter: 'Įeiti',
-    dames_title: 'Mūsų damos', dames_subtitle: 'Mūsų damos.',
-    dames_filter_all: 'Visos damos', dames_filter_now: 'Dabar', today_present: 'Šiandien dirba',
-    events_title: 'Renginiai', events_subtitle: 'Ypatingi.',
-    shop_title: 'Parduotuvė', vacatures_title: 'Darbas', info_title: 'Info', contact_title: 'Kontaktai', fast_to: 'Greitai'
-  },
-  no: {
-    nav_home: 'Hjem', nav_dames: 'Damer', nav_events: 'Arrangementer', nav_shop: 'Butikk', nav_meer: 'Mer',
-    btn_reserve: 'Bestill', subtitle_reserve: 'Velg dato',
-    welkom_title: 'Velkommen', btn_enter: 'Gå inn',
-    dames_title: 'Våre damer', dames_subtitle: 'Våre damer.',
-    dames_filter_all: 'Alle damer', dames_filter_now: 'Nå', today_present: 'Til stede i dag',
-    events_title: 'Arrangementer', events_subtitle: 'Spesielle.',
-    shop_title: 'Butikk', vacatures_title: 'Jobb', info_title: 'Info', contact_title: 'Kontakt', fast_to: 'Rask'
+    dames_subtitle_long: 'Algunas de nuestras damas. Por privacidad, no todas están en línea.',
+    events_intro: 'En Saunaclub Le Grand organizamos varios eventos mensuales. Cada viernes y sábado hay un DJ en vivo.',
+    events_outro: 'Además de nuestros eventos, eres bienvenido durante el horario regular.',
+    shop_intro: 'Todo para tu visita al club — entregado discretamente.', in_cart: 'Añadir a la cesta',
+    discrete_shipping_title: 'Envío discreto', discrete_shipping_desc: 'Tu pedido se entrega siempre de forma discreta en una caja neutral.', discrete_shipping_short: 'Entregado discretamente en una caja neutral.', anonymous: '100% Anónimo.',
+    c_ro: 'Rumania', c_fr: 'Francia', c_es: 'España', c_co: 'Colombia', c_md: 'Moldavia', c_tr: 'Turquía', c_bg: 'Bulgaria'
   }
 };
+Object.keys(extras).forEach(lang => Object.assign(T[lang], extras[lang]));
+
+const extras2 = {
+  nl: {
+    fac_wellness:'Faciliteiten & wellness', fac_wellness_sub:'Sauna, jacuzzi, zwembad, suites',
+    rates:'Tarieven', rates_sub:'All-in entree & arrangementen', opening_hours:'Openingstijden', opening_hours_sub:'Vandaag · 11:00 – 23:00',
+    vacatures_sub:'Kom ons team versterken', dames_sub:'Bekijk wie aanwezig is', events_sub:'Strippers Night, thema-avonden', shop_sub:'Badjas, slippers & meer',
+    preferences:'Voorkeuren / Preferences', choose_lang:'Kies je taal', route_maps:'Route naar de club in Maps', open_maps:'Open in Maps', call_us:'Bel ons',
+    access_18:'Toegang vanaf 18 jaar · Saunaclub Le Grand · Zundert', heated_pool:'Verwarmd Zwembad', heated_pool_desc:'Een rustgevend binnenbad met zacht onderwaterlicht.',
+    bar_lounge:'Bar & Lounge', bar_lounge_desc:'Onbeperkt drankjes, fingerfood en een warme, intieme ambiance.', priv_suites:'Privé Suites',
+    priv_suites_desc:'Discrete, luxueuze suites met eigen jacuzzi en lounge.', six_rooms:'6 kamers', all_in_concept:'All-in concept',
+    recommended:'Aanrader', inc_bathrobe:'Badjas, handdoek & slippers', inc_drinks:'Onbeperkt fris, bier, wijn & buffet', inc_saunas:'Alle sauna’s, jacuzzi & zwembad',
+    happy_hours:'Happy Hours', mo_th_from:'Ma–do vanaf 11:00', full_access:'Volledige toegang faciliteiten', inc_bathrobe_only:'Badjas & handdoek inbegrepen',
+    all_in_drinks:'All-in drankjes', per_2_hours:'Per 2 uur', per_suite:'per suite', own_jacuzzi:'Eigen jacuzzi & lounge', bottle_champagne:'Fles champagne',
+    fully_discreet:'Volledig discreet', open_7_days:'Geopend 7 dagen', find_us:'Vind ons', loc_contact:'Locatie & contact', call_res:'Bel voor reserveringen',
+    send_msg:'Stuur ons een bericht', access_18_short:'Toegang vanaf 18 jaar', id_required:'Geldig legitimatiebewijs verplicht. Wij hechten veel waarde aan discretie, respect en een veilige sfeer voor iedereen.'
+  },
+  en: {
+    fac_wellness:'Facilities & wellness', fac_wellness_sub:'Sauna, jacuzzi, pool, suites',
+    rates:'Rates', rates_sub:'All-in entry & packages', opening_hours:'Opening hours', opening_hours_sub:'Today · 11:00 – 23:00',
+    vacatures_sub:'Join our team', dames_sub:'See who is present', events_sub:'Strippers Night, theme nights', shop_sub:'Bathrobe, slippers & more',
+    preferences:'Preferences', choose_lang:'Choose your language', route_maps:'Route to the club in Maps', open_maps:'Open in Maps', call_us:'Call us',
+    access_18:'Access from 18 years · Saunaclub Le Grand · Zundert', heated_pool:'Heated Pool', heated_pool_desc:'A soothing indoor pool with soft underwater light.',
+    bar_lounge:'Bar & Lounge', bar_lounge_desc:'Unlimited drinks, finger food and a warm, intimate ambiance.', priv_suites:'Private Suites',
+    priv_suites_desc:'Discreet, luxurious suites with private jacuzzi and lounge.', six_rooms:'6 rooms', all_in_concept:'All-in concept',
+    recommended:'Recommended', inc_bathrobe:'Bathrobe, towel & slippers', inc_drinks:'Unlimited soda, beer, wine & buffet', inc_saunas:'All saunas, jacuzzi & pool',
+    happy_hours:'Happy Hours', mo_th_from:'Mon–Thu from 11:00', full_access:'Full access to facilities', inc_bathrobe_only:'Bathrobe & towel included',
+    all_in_drinks:'All-in drinks', per_2_hours:'Per 2 hours', per_suite:'per suite', own_jacuzzi:'Private jacuzzi & lounge', bottle_champagne:'Bottle of champagne',
+    fully_discreet:'Fully discreet', open_7_days:'Open 7 days', find_us:'Find us', loc_contact:'Location & contact', call_res:'Call for reservations',
+    send_msg:'Send us a message', access_18_short:'Access from 18 years', id_required:'Valid ID required. We value discretion, respect and a safe atmosphere for everyone.'
+  },
+  de: {
+    fac_wellness:'Einrichtungen & Wellness', fac_wellness_sub:'Sauna, Whirlpool, Pool, Suiten', rates:'Preise', rates_sub:'All-in Eintritt & Pakete',
+    opening_hours:'Öffnungszeiten', opening_hours_sub:'Heute · 11:00 – 23:00', vacatures_sub:'Komm in unser Team', dames_sub:'Sehen wer anwesend ist',
+    events_sub:'Strippers Night, Themenabende', shop_sub:'Bademantel, Badeschuhe & mehr', preferences:'Einstellungen', choose_lang:'Wähle deine Sprache',
+    route_maps:'Route zum Club in Maps', open_maps:'In Maps öffnen', call_us:'Ruf uns an', access_18:'Zutritt ab 18 Jahren · Saunaclub Le Grand · Zundert',
+    heated_pool:'Beheizter Pool', heated_pool_desc:'Ein beruhigender Innenpool mit weichem Unterwasserlicht.', bar_lounge:'Bar & Lounge',
+    bar_lounge_desc:'Unbegrenzte Getränke, Fingerfood und ein warmes Ambiente.', priv_suites:'Private Suiten', priv_suites_desc:'Diskrete, luxuriöse Suiten mit privatem Whirlpool und Lounge.',
+    six_rooms:'6 Zimmer', all_in_concept:'All-in Konzept', recommended:'Empfohlen', inc_bathrobe:'Bademantel, Handtuch & Badeschuhe', inc_drinks:'Unbegrenzt Softdrinks, Bier, Wein & Buffet',
+    inc_saunas:'Alle Saunen, Whirlpool & Pool', happy_hours:'Happy Hours', mo_th_from:'Mo–Do ab 11:00', full_access:'Voller Zugang zu den Einrichtungen',
+    inc_bathrobe_only:'Bademantel & Handtuch inbegriffen', all_in_drinks:'All-in Getränke', per_2_hours:'Pro 2 Stunden', per_suite:'pro Suite', own_jacuzzi:'Eigener Whirlpool & Lounge',
+    bottle_champagne:'Flasche Champagner', fully_discreet:'Völlig diskret', open_7_days:'7 Tage geöffnet', find_us:'Finde uns', loc_contact:'Standort & Kontakt',
+    call_res:'Anrufen für Reservierungen', send_msg:'Sende uns eine Nachricht', access_18_short:'Zutritt ab 18 Jahren', id_required:'Gültiger Ausweis erforderlich. Wir legen Wert auf Diskretion, Respekt und eine sichere Atmosphäre für alle.'
+  },
+  fr: {
+    fac_wellness:'Installations et bien-être', fac_wellness_sub:'Sauna, jacuzzi, piscine, suites', rates:'Tarifs', rates_sub:'Entrée tout compris & forfaits',
+    opening_hours:'Heures d\'ouverture', opening_hours_sub:'Aujourd\'hui · 11:00 – 23:00', vacatures_sub:'Rejoignez notre équipe', dames_sub:'Voir qui est présent',
+    events_sub:'Strippers Night, soirées à thème', shop_sub:'Peignoir, chaussons & plus', preferences:'Préférences', choose_lang:'Choisissez votre langue',
+    route_maps:'Itinéraire vers le club dans Maps', open_maps:'Ouvrir dans Maps', call_us:'Appelez-nous', access_18:'Accès à partir de 18 ans · Saunaclub Le Grand · Zundert',
+    heated_pool:'Piscine chauffée', heated_pool_desc:'Une piscine intérieure apaisante avec une douce lumière sous-marine.', bar_lounge:'Bar & Lounge',
+    bar_lounge_desc:'Boissons à volonté, amuse-gueules et une ambiance chaleureuse et intime.', priv_suites:'Suites privées', priv_suites_desc:'Suites discrètes et luxueuses avec jacuzzi privé et salon.',
+    six_rooms:'6 chambres', all_in_concept:'Concept tout compris', recommended:'Recommandé', inc_bathrobe:'Peignoir, serviette et chaussons', inc_drinks:'Boissons gazeuses, bière, vin & buffet à volonté',
+    inc_saunas:'Tous les saunas, jacuzzi & piscine', happy_hours:'Happy Hours', mo_th_from:'Lun-Jeu à partir de 11:00', full_access:'Accès complet aux installations',
+    inc_bathrobe_only:'Peignoir & serviette inclus', all_in_drinks:'Boissons tout compris', per_2_hours:'Pour 2 heures', per_suite:'par suite', own_jacuzzi:'Jacuzzi privé & salon',
+    bottle_champagne:'Bouteille de champagne', fully_discreet:'Totalement discret', open_7_days:'Ouvert 7 jours', find_us:'Trouvez-nous', loc_contact:'Lieu & contact',
+    call_res:'Appeler pour réserver', send_msg:'Envoyez-nous un message', access_18_short:'Accès à partir de 18 ans', id_required:'Pièce d\'identité valide requise. Nous valorisons la discrétion, le respect et une atmosphère sûre pour tous.'
+  },
+  es: {
+    fac_wellness:'Instalaciones y bienestar', fac_wellness_sub:'Sauna, jacuzzi, piscina, suites', rates:'Tarifas', rates_sub:'Entrada todo incluido y paquetes',
+    opening_hours:'Horario de apertura', opening_hours_sub:'Hoy · 11:00 – 23:00', vacatures_sub:'Únete a nuestro equipo', dames_sub:'Ver quién está presente',
+    events_sub:'Strippers Night, noches temáticas', shop_sub:'Albornoz, zapatillas y más', preferences:'Preferencias', choose_lang:'Elige tu idioma',
+    route_maps:'Ruta al club en Maps', open_maps:'Abrir en Maps', call_us:'Llámanos', access_18:'Acceso a partir de 18 años · Saunaclub Le Grand · Zundert',
+    heated_pool:'Piscina climatizada', heated_pool_desc:'Una piscina cubierta relajante con suave luz subacuática.', bar_lounge:'Bar y Lounge',
+    bar_lounge_desc:'Bebidas ilimitadas, bocadillos y un ambiente cálido e íntimo.', priv_suites:'Suites privadas', priv_suites_desc:'Suites discretas y lujosas con jacuzzi privado y sala de estar.',
+    six_rooms:'6 habitaciones', all_in_concept:'Concepto todo incluido', recommended:'Recomendado', inc_bathrobe:'Albornoz, toalla y zapatillas', inc_drinks:'Refrescos, cerveza, vino y buffet ilimitados',
+    inc_saunas:'Todas las saunas, jacuzzi y piscina', happy_hours:'Happy Hours', mo_th_from:'Lun-Jue a partir de las 11:00', full_access:'Acceso completo a las instalaciones',
+    inc_bathrobe_only:'Albornoz y toalla incluidos', all_in_drinks:'Bebidas todo incluido', per_2_hours:'Por 2 horas', per_suite:'por suite', own_jacuzzi:'Jacuzzi privado y sala de estar',
+    bottle_champagne:'Botella de champán', fully_discreet:'Totalmente discreto', open_7_days:'Abierto 7 días', find_us:'Encuéntranos', loc_contact:'Ubicación y contacto',
+    call_res:'Llamar para reservar', send_msg:'Envíanos un mensaje', access_18_short:'Acceso a partir de 18 años', id_required:'Identificación válida requerida. Valoramos la discreción, el respeto y un ambiente seguro para todos.'
+  }
+};
+Object.keys(extras2).forEach(lang => Object.assign(T[lang], extras2[lang]));
+
+['pt','it','da','sv','fi','pl','hu','bg','cs','hr','el','et','lt','no'].forEach(lang => {
+  Object.assign(T[lang], extras.en, extras2.en); // Fallback extra keys to English
+});
+
+window.TRANSLATIONS = T;

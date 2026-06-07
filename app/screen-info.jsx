@@ -76,9 +76,10 @@ function InfoScreen({ onBack }) {
         <SectionHead eyebrow="Vind ons" title="Locatie &amp; contact" />
         <Card pad={0} style={{ overflow: 'hidden' }}>
           <a href={VENUE.maps} target="_blank" rel="noreferrer" style={{ textDecoration: 'none', display: 'block' }}>
-            <div className="lg-map">
-              <div className="lg-map-pin"><IcPin size={20} /></div>
-              <span className="lg-glassbtn" style={{ position: 'absolute', right: 12, bottom: 12, width: 'auto', padding: '0 14px', height: 36, fontFamily: 'var(--font-body)', fontSize: 12.5, fontWeight: 600, gap: 6 }}>Open in Maps<IcArrowR size={15} /></span>
+            <div className="lg-map" style={{ position: 'relative', height: 160, overflow: 'hidden' }}>
+              <img src="app/assets/spa-photo.webp" alt="Locatie" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }} />
+              <div className="lg-map-pin" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 1 }}><IcPin size={20} /></div>
+              <span className="lg-glassbtn" style={{ position: 'absolute', right: 12, bottom: 12, width: 'auto', padding: '0 14px', height: 36, fontFamily: 'var(--font-body)', fontSize: 12.5, fontWeight: 600, gap: 6, zIndex: 1 }}>Open in Maps<IcArrowR size={15} /></span>
             </div>
           </a>
           <div style={{ padding: 16 }}>
