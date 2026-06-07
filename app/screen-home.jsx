@@ -60,7 +60,7 @@ function FacRow({ f }) {
 
 }
 
-function GenericSlider({ items, renderItem, itemWidth = 'calc(100vw - 46px)' }) {
+function GenericSlider({ items, renderItem }) {
   const ref = React.useRef(null);
   
   const scrollL = () => {
@@ -74,9 +74,9 @@ function GenericSlider({ items, renderItem, itemWidth = 'calc(100vw - 46px)' }) 
 
   return (
     <div style={{ position: 'relative' }}>
-      <div ref={ref} className="lg-hscroll" style={{ display: 'flex', scrollSnapType: 'x mandatory', gap: 14, margin: '0 -18px', padding: '0 18px', scrollBehavior: 'smooth' }}>
+      <div ref={ref} className="lg-hscroll" style={{ display: 'flex', scrollSnapType: 'x mandatory', gap: 16, scrollBehavior: 'smooth' }}>
         {items.map((item, i) => (
-          <div key={i} style={{ scrollSnapAlign: 'center', flex: `0 0 ${itemWidth}`, boxSizing: 'border-box' }}>
+          <div key={i} style={{ scrollSnapAlign: 'start', flex: '0 0 100%', boxSizing: 'border-box' }}>
             {renderItem(item, i)}
           </div>
         ))}
