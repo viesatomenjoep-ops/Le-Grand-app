@@ -146,12 +146,24 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
           <div style={{ marginBottom: 12 }}>
             <Tag tone="live"><LiveDot />{t('now_open')} · {t('until')} {th.uren.split('–')[1].trim()}</Tag>
           </div>
-          <h1 style={{ margin: 0, fontWeight: 500, fontSize: 34, lineHeight: 1.05, color: 'var(--cream)', letterSpacing: 0.3, fontFamily: 'var(--font-head)' }}>
-            {t('home_title1')}<br /><span style={{ fontStyle: 'italic', color: 'var(--gold-light)', fontFamily: 'var(--font-head)' }}>{t('home_title2')}</span>
-          </h1>
-          <p style={{ margin: '10px 0 0', fontFamily: 'var(--font-body)', fontSize: 14.5, lineHeight: 1.4, color: 'var(--cream-dim)', maxWidth: 320 }}>
-            {t('home_subtitle')}
-          </p>
+          <div style={{
+            background: 'rgba(15, 12, 8, 0.45)',
+            backdropFilter: 'blur(8px)',
+            WebkitBackdropFilter: 'blur(8px)',
+            padding: '20px 24px',
+            borderRadius: '16px',
+            border: '1px solid rgba(255, 255, 255, 0.07)',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
+            maxWidth: 340,
+            marginTop: 10
+          }}>
+            <h1 style={{ margin: 0, fontWeight: 500, fontSize: 32, lineHeight: 1.1, color: 'var(--cream)', letterSpacing: 0.3, fontFamily: 'var(--font-head)' }}>
+              {t('home_title1')}<br /><span style={{ fontStyle: 'italic', color: 'var(--gold-light)', fontFamily: 'var(--font-head)' }}>{t('home_title2')}</span>
+            </h1>
+            <p style={{ margin: '10px 0 0', fontFamily: 'var(--font-body)', fontSize: 14.5, lineHeight: 1.4, color: 'var(--cream-dim)' }}>
+              {t('home_subtitle')}
+            </p>
+          </div>
 
           <div style={{ marginTop: 'auto', marginBottom: 16, display: 'flex', gap: 12, width: '100%' }}>
             <Btn variant="primary" onClick={reserve} size="lg" style={{ flex: 1 }} rightIcon={<IcArrowR size={20} />}>{t('btn_reserve')}</Btn>
