@@ -17,7 +17,7 @@ function MeerRow({ icon, label, sub, onClick, last }) {
   );
 }
 
-function MeerScreen({ go, openInfo, openVacatures, topInset }) {
+function MeerScreen({ go, reserve, openInfo, openVacatures, topInset }) {
   const todayIdx = (new Date().getDay() + 6) % 7;
   const th = OPENING[todayIdx];
   return (
@@ -29,7 +29,7 @@ function MeerScreen({ go, openInfo, openVacatures, topInset }) {
 
       {/* Reserveren highlight */}
       <div style={{ padding: '0 18px' }}>
-        <div className="lg-press" onClick={() => go('reserveren')} style={{ position: 'relative', borderRadius: 'var(--r-lg)', overflow: 'hidden', cursor: 'pointer', background: 'var(--gold-grad)', padding: 18, color: '#231a06', display: 'flex', alignItems: 'center', gap: 14 }}>
+        <div className="lg-press" onClick={reserve} style={{ position: 'relative', borderRadius: 'var(--r-lg)', overflow: 'hidden', cursor: 'pointer', background: 'var(--gold-grad)', padding: 18, color: '#231a06', display: 'flex', alignItems: 'center', gap: 14 }}>
           <div style={{ width: 46, height: 46, borderRadius: 13, background: 'rgba(0,0,0,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><IcCal size={24} /></div>
           <div style={{ flex: 1, position: 'relative', zIndex: 1 }}>
             <div style={{ fontFamily: 'var(--font-head)', fontSize: 19, fontWeight: 700 }}>Reserveer een avond</div>

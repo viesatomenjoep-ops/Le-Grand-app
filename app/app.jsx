@@ -126,7 +126,7 @@ function App() {
           {tab === 'dames' && <DamesScreen openDame={(id) => push({ t: 'dame', id })} topInset={TI} />}
           {tab === 'events' && <EventsScreen openEvent={(id) => push({ t: 'event', id })} topInset={TI} />}
           {tab === 'shop' && <ShopScreen openProduct={(id) => push({ t: 'product', id })} openCart={() => push({ t: 'cart' })} addToCart={addToCart} cartCount={cartCount} topInset={TI} />}
-          {tab === 'meer' && <MeerScreen go={go} openInfo={() => push({ t: 'info' })} openVacatures={() => push({ t: 'vacatures' })} topInset={TI} />}
+          {tab === 'meer' && <MeerScreen go={go} reserve={() => push({ t: 'reserveren' })} openInfo={() => push({ t: 'info' })} openVacatures={() => push({ t: 'vacatures' })} topInset={TI} />}
         </main>
 
         {showTabBar && <TabBar tab={tab} setTab={go} cartCount={cartCount} />}

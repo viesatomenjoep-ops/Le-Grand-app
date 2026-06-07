@@ -53,10 +53,10 @@ const VACATURES = [
   { id: 'kamers', titel: 'Kamers beschikbaar voor dames', type: 'Zelfstandige', icon: 'gift',
     kort: 'Werk als zelfstandige in een veilige, stijlvolle en professionele omgeving.',
     taken: ['Eigen werktijden & volledige vrijheid', 'Luxe, volledig verzorgde kamers', 'Discrete en veilige werkomgeving', 'Vaste, loyale klantenkring'] },
-  { id: 'schoonmaak', titel: 'Schoonmaker (m/v)', type: 'Fulltime', icon: 'spark',
+  { id: 'schoonmaak', titel: 'Schoonmaker (m/v)', type: 'Fulltime', icon: 'users',
     kort: 'Zorg mee voor de onberispelijke uitstraling van de club.',
     taken: ['Dagelijks schoonhouden van faciliteiten', 'Oog voor detail en hygiëne', 'Flexibele inzet in dagdienst', 'Ervaring is een pré'] },
-  { id: 'horeca', titel: 'Horeca Medewerker', type: 'Fulltime', icon: 'drop',
+  { id: 'horeca', titel: 'Horeca Medewerker', type: 'Fulltime', icon: 'spark',
     kort: 'Verzorg onze gasten met drankjes, hapjes en gastvrije service.',
     taken: ['Bar- en bedieningswerk', 'Gastvrij en representatief', 'Werken in avond & weekend', 'Echte teamspeler'] },
 ];
