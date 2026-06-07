@@ -50,8 +50,12 @@ function MeerScreen({ go, reserve, openInfo, openVacatures, topInset }) {
         </Card>
       </div>
 
+      <div style={{ padding: '40px 0 0', display: 'flex', justifyContent: 'center', opacity: 0.6 }}>
+        <img src="app/assets/legrand-logo.webp" alt="Le Grand" style={{ width: 56 }} />
+      </div>
+
       {/* Snel naar */}
-      <div style={{ padding: '24px 18px 0', marginTop: '20vh' }}>
+      <div style={{ padding: '32px 18px 0' }}>
         <SectionHead title="Snel naar" />
         <Card pad={6}>
           <MeerRow icon={<IcHeart size={20} />} label="Onze dames" sub="Bekijk wie aanwezig is" onClick={() => go('dames')} />
