@@ -213,7 +213,9 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
           items={PRODUCTS}
           renderItem={(p) => (
             <button key={p.id} className="lg-press" onClick={() => openProduct(p.id)} style={{ width: '100%', background: 'var(--panel)', border: '1px solid var(--hair)', borderRadius: 'var(--r-lg)', overflow: 'hidden', textAlign: 'left', cursor: 'pointer', padding: 0 }}>
-              <Photo id={`home-prod-${p.slot}`} placeholder={p.naam} radius={0} src={p.img} style={{ width: '100%', height: 260, display: 'block' }} />
+              <div style={{ padding: 12 }}>
+                <Photo id={`home-prod-${p.slot}`} fit="contain" placeholder={p.naam} radius={12} src={p.img} style={{ width: '100%', height: 240, display: 'block' }} />
+              </div>
               <div style={{ padding: 14 }}>
                 <div style={{ fontFamily: 'var(--font-head)', fontSize: 16, fontWeight: 600, color: 'var(--cream)', lineHeight: 1.15, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.naam}</div>
                 <div style={{ fontFamily: 'var(--font-head)', fontSize: 18, fontWeight: 700, color: 'var(--gold)', marginTop: 4 }}>€{p.prijs}</div>

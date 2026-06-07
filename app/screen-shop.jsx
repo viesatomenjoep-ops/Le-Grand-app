@@ -15,7 +15,7 @@ function ProductGridCard({ p, onClick, onAdd }) {
   return (
     <div className="lg-card lg-press" onClick={onClick} style={{ background: 'var(--panel)', borderRadius: 'var(--r-lg)', border: '1px solid var(--hair)', overflow: 'hidden', cursor: 'pointer', display: 'flex', flexDirection: 'column' }}>
       <div style={{ position: 'relative' }}>
-        <Photo id={`grid-${p.slot}`} placeholder={p.naam} radius={0} src={p.img}
+        <Photo id={`grid-${p.slot}`} fit="contain" placeholder={p.naam} radius={0} src={p.img}
           style={{ width: '100%', aspectRatio: '1 / 1', display: 'block' }} />
         {p.deal && <div style={{ position: 'absolute', top: 9, left: 9 }}><Tag tone="solid">Deal</Tag></div>}
       </div>

@@ -6,7 +6,7 @@ function EventCard({ ev, onClick }) {
       width: '100%', textAlign: 'left', background: 'none', border: 'none', padding: 0, cursor: 'pointer',
     }}>
       <div style={{ position: 'relative', borderRadius: 'var(--r-lg)', overflow: 'hidden' }}>
-        <Photo id={`event-${ev.id}`} placeholder={ev.titel} radius={20} src={ev.img}
+        <Photo id={`event-${ev.id}`} fit="contain" placeholder={ev.titel} radius={20} src={ev.img}
           style={{ width: '100%', height: 196, display: 'block' }} />
         <div className="lg-photo-fade" />
         <div style={{ position: 'absolute', top: 12, left: 12, display: 'flex', gap: 8 }}>
