@@ -134,15 +134,15 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
   return (
     <div>
       {/* Full-screen Hero + Quick Actions */}
-      <div style={{ position: 'relative', height: 'calc(100vh - 80px)', minHeight: 480, display: 'flex', flexDirection: 'column', marginBottom: 10 }}>
+      <div style={{ position: 'relative', minHeight: 420, display: 'flex', flexDirection: 'column', marginBottom: 10 }}>
         <div style={{ position: 'absolute', inset: 0 }}>
           <Photo id="home-hero" radius={0} src="app/assets/spa-photo.webp" placeholder="Sfeerbeeld"
-          style={{ width: '100%', height: '100%' }} />
+          style={{ width: '100%', height: '100%', objectPosition: 'top' }} />
           <div className="lg-hero-scrim" />
         </div>
         
-        <div style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '30px 20px 0' }}>
-          <img src="app/assets/legrand-logo.webp" alt="Le Grand" style={{ width: 140, marginBottom: 16, filter: 'drop-shadow(0 4px 18px rgba(0,0,0,0.6))' }} />
+        <div style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '24px 20px 0' }}>
+          <img src="app/assets/legrand-logo.webp" alt="Le Grand" style={{ width: 95, marginBottom: 10, filter: 'drop-shadow(0 4px 18px rgba(0,0,0,0.6))' }} />
           <div style={{ marginBottom: 10 }}>
             <Tag tone="live"><LiveDot />{t('now_open')} · {t('until')} {th.uren.split('–')[1].trim()}</Tag>
           </div>
@@ -165,12 +165,12 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
             </p>
           </div>
 
-          <div style={{ marginTop: 'auto', marginBottom: 14, display: 'flex', gap: 10, width: '100%' }}>
+          <div style={{ marginTop: 24, marginBottom: 14, display: 'flex', gap: 10, width: '100%' }}>
             <Btn variant="primary" onClick={reserve} size="lg" style={{ flex: 1, fontSize: 15 }} rightIcon={<IcArrowR size={18} />}>{t('btn_reserve')}</Btn>
             <Btn variant="glass" onClick={() => go('dames')} size="lg" style={{ flex: 1, fontSize: 15 }}>{t('dames_title')}</Btn>
           </div>
 
-          <div style={{ paddingBottom: '14px', display: 'flex', gap: 8, width: '100%' }}>
+          <div style={{ paddingBottom: '24px', display: 'flex', gap: 8, width: '100%' }}>
             <QuickAction icon={<IcHeart size={21} />} label={t('nav_dames')} onClick={() => go('dames')} />
             <QuickAction icon={<IcCal size={21} />} label={t('btn_reserve')} onClick={reserve} />
             <QuickAction icon={<IcStar size={21} />} label={t('nav_events')} onClick={() => go('events')} />
@@ -247,8 +247,12 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
           items={EVENTS}
           renderItem={(e) => (
             <button key={e.id} className="lg-press" onClick={() => openEvent(e.id)} style={{ width: '100%', background: 'var(--panel)', border: '1px solid var(--hair)', borderRadius: 'var(--r-lg)', overflow: 'hidden', textAlign: 'left', cursor: 'pointer', padding: 0 }}>
-              <div style={{ position: 'relative', height: 160 }}>
-                <Photo id={`home-evt-${e.id}`} src={e.img} placeholder={t(evTitleMap[e.titel] || e.titel)} radius={0} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              <div style={{ position: 'relative', height: 160, width: '100%' }}>
+                {e.img ? (
+                  <img src={e.img} alt={e.titel} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
+                ) : (
+                  <div style={{ width: '100%', height: '100%', background: 'linear-gradient(150deg, #211b12, #14110b)' }} />
+                )}
                 <div style={{ position: 'absolute', top: 12, left: 12 }}>
                   <Tag tone="gold">{t(evTagMap[e.tag] || e.tag)}</Tag>
                 </div>
