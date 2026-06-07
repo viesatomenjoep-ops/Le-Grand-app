@@ -18,6 +18,7 @@ function MeerRow({ icon, label, sub, onClick, last }) {
 }
 
 function MeerScreen({ go, reserve, openInfo, openVacatures, topInset }) {
+  const { t } = useTranslation();
   const todayIdx = (new Date().getDay() + 6) % 7;
   const th = OPENING[todayIdx];
   return (
@@ -31,8 +32,8 @@ function MeerScreen({ go, reserve, openInfo, openVacatures, topInset }) {
         <div className="lg-press" onClick={reserve} style={{ position: 'relative', borderRadius: 'var(--r-lg)', overflow: 'hidden', cursor: 'pointer', background: 'var(--gold-grad)', padding: 18, color: '#231a06', display: 'flex', alignItems: 'center', gap: 14 }}>
           <div style={{ width: 46, height: 46, borderRadius: 13, background: 'rgba(0,0,0,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><IcCal size={24} /></div>
           <div style={{ flex: 1, position: 'relative', zIndex: 1 }}>
-            <div style={{ fontFamily: 'var(--font-head)', fontSize: 19, fontWeight: 700 }}>Reserveer een avond</div>
-            <div style={{ fontFamily: 'var(--font-body)', fontSize: 12.5, opacity: 0.8, marginTop: 1 }}>Kies datum, tijd & arrangement</div>
+            <div style={{ fontFamily: 'var(--font-head)', fontSize: 19, fontWeight: 700 }}>{t('btn_reserve')}</div>
+            <div style={{ fontFamily: 'var(--font-body)', fontSize: 12.5, opacity: 0.8, marginTop: 1 }}>{t('subtitle_reserve')}</div>
           </div>
           <IcArrowR size={20} />
           <div className="lg-gold-sheen" />
@@ -61,6 +62,15 @@ function MeerScreen({ go, reserve, openInfo, openVacatures, topInset }) {
           <MeerRow icon={<IcHeart size={20} />} label="Onze dames" sub="Bekijk wie aanwezig is" onClick={() => go('dames')} />
           <MeerRow icon={<IcStar size={20} />} label="Events" sub="Strippers Night, thema-avonden" onClick={() => go('events')} />
           <MeerRow icon={<IcBag size={20} />} label="Webshop" sub="Badjas, slippers & meer" onClick={() => go('shop')} last />
+        </Card>
+      </div>
+
+      {/* Voorkeuren */}
+      <div style={{ padding: '24px 18px 0' }}>
+        <SectionHead title="Voorkeuren / Preferences" />
+        <Card pad={16} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 600, color: 'var(--cream)' }}>Kies je taal</div>
+          <LanguageSelector />
         </Card>
       </div>
 

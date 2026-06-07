@@ -24,9 +24,10 @@ const TABS = [
 ];
 
 function TabBar({ tab, setTab, cartCount }) {
+  const { t } = useTranslation();
   return (
     <nav className="lg-tabbar">
-      {TABS.map(([id, label, Ic]) => {
+      {TABS.map(([id, label_key, Ic]) => {
         const on = tab === id;
         return (
           <button key={id} className="lg-press" onClick={() => setTab(id)} style={{
@@ -38,7 +39,7 @@ function TabBar({ tab, setTab, cartCount }) {
               <Ic size={23} sw={on ? 2 : 1.7} />
               {id === 'shop' && cartCount > 0 && <span className="lg-cartbadge">{cartCount}</span>}
             </span>
-            <span style={{ fontFamily: 'var(--font-head)', fontSize: 11, fontWeight: on ? 700 : 500, letterSpacing: 0.2 }}>{label}</span>
+            <span style={{ fontFamily: 'var(--font-head)', fontSize: 13, fontWeight: on ? 700 : 500, letterSpacing: 0.3 }}>{t(`nav_${id}`)}</span>
           </button>
         );
       })}
@@ -147,4 +148,8 @@ function App() {
   );
 }
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <LanguageProvider>
+    <App />
+  </LanguageProvider>
+);
