@@ -96,7 +96,7 @@ function CrowdMeter() {
   // We simulate a crowd level (could be dynamic)
   const fill = 65; 
   return (
-    <Card pad={16} style={{ position: 'relative', zIndex: 10, display: 'flex', flexDirection: 'column', gap: 12, marginTop: -32, boxShadow: '0 -8px 32px rgba(0,0,0,0.45)' }}>
+    <Card pad={16} style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 12 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <LiveDot />
