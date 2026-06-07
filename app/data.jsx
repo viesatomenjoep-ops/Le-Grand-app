@@ -70,9 +70,6 @@ const PRODUCTS = [
   { id: 'slippers', naam: 'Badslippers', prijs: 25, cat: 'Textiel', slot: 'shop-slippers',
     kort: 'Comfortabele slippers met antislipzool.',
     desc: 'Stevige, comfortabele badslippers met antislipzool. Ideaal voor in de spa en daarbuiten.' },
-  { id: 'combideal', naam: 'Combideal · Badjas + Slippers', prijs: 70, van: 80, cat: 'Voordeel', slot: 'shop-combi', deal: true,
-    kort: 'Badjas én slippers samen — met voordeel.',
-    desc: 'Onze populaire combideal: de luxe Le Grand-badjas samen met bijpassende badslippers. Samen voordeliger dan los gekocht.' },
 ];
 
 // ── Reviews (representative — vervang met echte Google Reviews) ──
