@@ -54,7 +54,7 @@ function EventDetail({ ev, onBack, go }) {
   return (
     <div>
       <div style={{ position: 'relative', height: 360 }}>
-        <Photo id={`event-hero-${ev.id}`} radius={0} placeholder={ev.titel} src={ev.img}
+        <Photo id={`event-hero-${ev.id}`} fit="contain" radius={0} placeholder={ev.titel} src={ev.img}
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />
         <div className="lg-hero-scrim" />
         <button className="lg-press lg-glassbtn" onClick={onBack} style={{ position: 'absolute', top: 58, left: 16 }}><IcChevL size={20} /></button>

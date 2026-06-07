@@ -74,7 +74,7 @@ function DameDetail({ dame, onBack, reserve }) {
     <div>
       {/* Hero photo */}
       <div style={{ position: 'relative', height: 520 }}>
-        <Photo id={`detail-dame-${dame.id}`} radius={0} placeholder={`Foto van ${dame.name}`} src={dame.img}
+        <Photo id={`detail-dame-${dame.id}`} fit="contain" radius={0} placeholder={`Foto van ${dame.name}`} src={dame.img}
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />
         <div className="lg-hero-scrim" />
         {/* back */}

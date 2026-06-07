@@ -91,7 +91,7 @@ function ProductDetail({ product, onBack, addToCart, openCart, cartCount }) {
   return (
     <div>
       <div style={{ position: 'relative', height: 380 }}>
-        <Photo id={`hero-${p.slot}`} radius={0} placeholder={p.naam} src={p.img}
+        <Photo id={`hero-${p.slot}`} fit="contain" radius={0} placeholder={p.naam} src={p.img}
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />
         <div className="lg-hero-scrim" style={{ background: 'linear-gradient(to bottom, rgba(8,7,5,0.5), rgba(8,7,5,0.1) 40%, rgba(8,7,5,0.85))' }} />
         <button className="lg-press lg-glassbtn" onClick={onBack} style={{ position: 'absolute', top: 58, left: 16 }}><IcChevL size={20} /></button>

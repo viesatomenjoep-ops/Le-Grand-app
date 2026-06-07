@@ -20,7 +20,7 @@ function VacaturesScreen({ openVacature, onBack }) {
     <div>
       <OverlayHeader title="Vacatures" onBack={onBack} />
       <div style={{ position: 'relative', height: 200, margin: '0 0 18px' }}>
-        <Photo id="vac-hero" radius={0} src="app/assets/werken-bij.png" placeholder="Werken bij Le Grand"
+        <Photo id="vac-hero" fit="contain" radius={0} src="app/assets/werken-bij.png" placeholder="Werken bij Le Grand"
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />
         <div className="lg-hero-scrim" />
         <div style={{ position: 'absolute', left: 20, right: 20, bottom: 16 }}>
