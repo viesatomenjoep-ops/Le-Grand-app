@@ -64,17 +64,17 @@ function GenericSlider({ items, renderItem }) {
   const ref = React.useRef(null);
   
   const scrollL = () => {
-    if (ref.current) ref.current.scrollBy({ left: -ref.current.clientWidth, behavior: 'smooth' });
+    if (ref.current) ref.current.scrollBy({ left: -(ref.current.clientWidth + 16), behavior: 'smooth' });
   };
   const scrollR = () => {
-    if (ref.current) ref.current.scrollBy({ left: ref.current.clientWidth, behavior: 'smooth' });
+    if (ref.current) ref.current.scrollBy({ left: ref.current.clientWidth + 16, behavior: 'smooth' });
   };
 
   const navBtn = { width: 34, height: 34, borderRadius: 10, background: 'var(--panel)', border: '1px solid var(--hair)', color: 'var(--cream)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', flexShrink: 0 };
 
   return (
     <div style={{ position: 'relative' }}>
-      <div ref={ref} className="lg-hscroll" style={{ display: 'flex', scrollSnapType: 'x mandatory', gap: 16, scrollBehavior: 'smooth' }}>
+      <div ref={ref} className="lg-hscroll" style={{ display: 'flex', scrollSnapType: 'x mandatory', gap: 16 }}>
         {items.map((item, i) => (
           <div key={i} style={{ scrollSnapAlign: 'start', flex: '0 0 100%', boxSizing: 'border-box' }}>
             {renderItem(item, i)}
@@ -134,47 +134,47 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
   return (
     <div>
       {/* Full-screen Hero + Quick Actions */}
-      <div style={{ position: 'relative', height: 'calc(100vh - 80px)', minHeight: 560, display: 'flex', flexDirection: 'column', marginBottom: 10 }}>
+      <div style={{ position: 'relative', height: 'calc(100vh - 80px)', minHeight: 480, display: 'flex', flexDirection: 'column', marginBottom: 10 }}>
         <div style={{ position: 'absolute', inset: 0 }}>
           <Photo id="home-hero" radius={0} src="app/assets/spa-photo.webp" placeholder="Sfeerbeeld"
           style={{ width: '100%', height: '100%' }} />
           <div className="lg-hero-scrim" />
         </div>
         
-        <div style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '45px 20px 0' }}>
-          <img src="app/assets/legrand-logo.webp" alt="Le Grand" style={{ width: 160, marginBottom: 20, filter: 'drop-shadow(0 4px 18px rgba(0,0,0,0.6))' }} />
-          <div style={{ marginBottom: 12 }}>
+        <div style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '30px 20px 0' }}>
+          <img src="app/assets/legrand-logo.webp" alt="Le Grand" style={{ width: 140, marginBottom: 16, filter: 'drop-shadow(0 4px 18px rgba(0,0,0,0.6))' }} />
+          <div style={{ marginBottom: 10 }}>
             <Tag tone="live"><LiveDot />{t('now_open')} · {t('until')} {th.uren.split('–')[1].trim()}</Tag>
           </div>
           <div style={{
             background: 'rgba(15, 12, 8, 0.45)',
             backdropFilter: 'blur(8px)',
             WebkitBackdropFilter: 'blur(8px)',
-            padding: '20px 24px',
+            padding: '16px 20px',
             borderRadius: '16px',
             border: '1px solid rgba(255, 255, 255, 0.07)',
             boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
             maxWidth: 340,
-            marginTop: 10
+            marginTop: 6
           }}>
-            <h1 style={{ margin: 0, fontWeight: 500, fontSize: 32, lineHeight: 1.1, color: 'var(--cream)', letterSpacing: 0.3, fontFamily: 'var(--font-head)' }}>
+            <h1 style={{ margin: 0, fontWeight: 500, fontSize: 30, lineHeight: 1.1, color: 'var(--cream)', letterSpacing: 0.3, fontFamily: 'var(--font-head)' }}>
               {t('home_title1')}<br /><span style={{ fontStyle: 'italic', color: 'var(--gold-light)', fontFamily: 'var(--font-head)' }}>{t('home_title2')}</span>
             </h1>
-            <p style={{ margin: '10px 0 0', fontFamily: 'var(--font-body)', fontSize: 14.5, lineHeight: 1.4, color: 'var(--cream-dim)' }}>
+            <p style={{ margin: '8px 0 0', fontFamily: 'var(--font-body)', fontSize: 13.5, lineHeight: 1.4, color: 'var(--cream-dim)' }}>
               {t('home_subtitle')}
             </p>
           </div>
 
-          <div style={{ marginTop: 'auto', marginBottom: 16, display: 'flex', gap: 12, width: '100%' }}>
-            <Btn variant="primary" onClick={reserve} size="lg" style={{ flex: 1 }} rightIcon={<IcArrowR size={20} />}>{t('btn_reserve')}</Btn>
-            <Btn variant="glass" onClick={() => go('dames')} size="lg" style={{ flex: 1 }}>{t('dames_title')}</Btn>
+          <div style={{ marginTop: 'auto', marginBottom: 14, display: 'flex', gap: 10, width: '100%' }}>
+            <Btn variant="primary" onClick={reserve} size="lg" style={{ flex: 1, fontSize: 15 }} rightIcon={<IcArrowR size={18} />}>{t('btn_reserve')}</Btn>
+            <Btn variant="glass" onClick={() => go('dames')} size="lg" style={{ flex: 1, fontSize: 15 }}>{t('dames_title')}</Btn>
           </div>
 
-          <div style={{ paddingBottom: '16px', display: 'flex', gap: 10, width: '100%' }}>
-            <QuickAction icon={<IcHeart size={23} />} label={t('nav_dames')} onClick={() => go('dames')} />
-            <QuickAction icon={<IcCal size={23} />} label={t('btn_reserve')} onClick={reserve} />
-            <QuickAction icon={<IcStar size={23} />} label={t('nav_events')} onClick={() => go('events')} />
-            <QuickAction icon={<IcBag size={23} />} label={t('nav_shop')} onClick={() => go('shop')} />
+          <div style={{ paddingBottom: '14px', display: 'flex', gap: 8, width: '100%' }}>
+            <QuickAction icon={<IcHeart size={21} />} label={t('nav_dames')} onClick={() => go('dames')} />
+            <QuickAction icon={<IcCal size={21} />} label={t('btn_reserve')} onClick={reserve} />
+            <QuickAction icon={<IcStar size={21} />} label={t('nav_events')} onClick={() => go('events')} />
+            <QuickAction icon={<IcBag size={21} />} label={t('nav_shop')} onClick={() => go('shop')} />
           </div>
         </div>
       </div>
