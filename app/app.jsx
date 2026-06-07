@@ -46,22 +46,10 @@ function TabBar({ tab, setTab, cartCount }) {
   );
 }
 
-function Stage({ children }) {
-  const [scale, setScale] = useState(1);
-  useEffect(() => {
-    const fit = () => setScale(Math.min((window.innerWidth - 28) / 402, (window.innerHeight - 28) / 874, 1));
-    fit(); window.addEventListener('resize', fit);
-    return () => window.removeEventListener('resize', fit);
-  }, []);
-  return (
-    <div style={{ position: 'fixed', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ transform: `scale(${scale})`, transformOrigin: 'center' }}>{children}</div>
-    </div>
-  );
-}
+
 
 function App() {
-  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  const t = TWEAK_DEFAULTS;
   const [entered, setEntered] = useState(false);
   const [tab, setTab] = useState('home');
   const [overlay, setOverlay] = useState([]);     // stack of route objects
@@ -131,48 +119,30 @@ function App() {
   }
 
   return (
-    <div style={rootStyle}>
-      <Stage>
-        <IOSDevice dark>
-          <div className="lg-app">
-            <main ref={mainRef} className="lg-main">
-              {tab === 'home' && <HomeScreen go={go} openDame={(id) => push({ t: 'dame', id })} reserve={() => push({ t: 'reserveren' })} openEvent={(id) => push({ t: 'event', id })} openProduct={(id) => push({ t: 'product', id })} />}
-              {tab === 'dames' && <DamesScreen openDame={(id) => push({ t: 'dame', id })} topInset={TI} />}
-              {tab === 'events' && <EventsScreen openEvent={(id) => push({ t: 'event', id })} topInset={TI} />}
-              {tab === 'shop' && <ShopScreen openProduct={(id) => push({ t: 'product', id })} openCart={() => push({ t: 'cart' })} addToCart={addToCart} cartCount={cartCount} topInset={TI} />}
-              {tab === 'meer' && <MeerScreen go={go} openInfo={() => push({ t: 'info' })} openVacatures={() => push({ t: 'vacatures' })} topInset={TI} />}
-            </main>
+    <div style={{ ...rootStyle, height: '100dvh', width: '100vw' }}>
+      <div className="lg-app">
+        <main ref={mainRef} className="lg-main">
+          {tab === 'home' && <HomeScreen go={go} openDame={(id) => push({ t: 'dame', id })} reserve={() => push({ t: 'reserveren' })} openEvent={(id) => push({ t: 'event', id })} openProduct={(id) => push({ t: 'product', id })} />}
+          {tab === 'dames' && <DamesScreen openDame={(id) => push({ t: 'dame', id })} topInset={TI} />}
+          {tab === 'events' && <EventsScreen openEvent={(id) => push({ t: 'event', id })} topInset={TI} />}
+          {tab === 'shop' && <ShopScreen openProduct={(id) => push({ t: 'product', id })} openCart={() => push({ t: 'cart' })} addToCart={addToCart} cartCount={cartCount} topInset={TI} />}
+          {tab === 'meer' && <MeerScreen go={go} openInfo={() => push({ t: 'info' })} openVacatures={() => push({ t: 'vacatures' })} topInset={TI} />}
+        </main>
 
-            {showTabBar && <TabBar tab={tab} setTab={go} cartCount={cartCount} />}
+        {showTabBar && <TabBar tab={tab} setTab={go} cartCount={cartCount} />}
 
-            {top && (
-              <div ref={overlayRef} className="lg-overlay">
-                {renderOverlay()}
-              </div>
-            )}
-
-            {!entered && (
-              <div className="lg-open-wrap">
-                <OpeningScreen variant={openVariant} onEnter={() => setEntered(true)} />
-              </div>
-            )}
+        {top && (
+          <div ref={overlayRef} className="lg-overlay">
+            {renderOverlay()}
           </div>
-        </IOSDevice>
-      </Stage>
+        )}
 
-      <TweaksPanel>
-        <TweakSection label="Opening" />
-        <TweakRadio label="Intro-stijl" value={t.openingStyle} options={['Foto', 'Stoom', 'Minimaal']}
-          onChange={(v) => { setTweak('openingStyle', v); }} />
-        <TweakButton label="Toon intro opnieuw" onClick={() => setEntered(false)} />
-
-        <TweakSection label="Huisstijl" />
-        <TweakColor label="Goud-tint" value={t.gold}
-          options={['#C9A24C', '#D8B36A', '#B0863A', '#E0C079']}
-          onChange={(v) => setTweak('gold', v)} />
-        <TweakRadio label="Lettertype" value={t.font} options={['Palatino', 'Georgia', 'Times']}
-          onChange={(v) => setTweak('font', v)} />
-      </TweaksPanel>
+        {!entered && (
+          <div className="lg-open-wrap">
+            <OpeningScreen variant={openVariant} onEnter={() => setEntered(true)} />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
