@@ -18,7 +18,7 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 const TABS = [
   ['home', 'Home', IcHome],
   ['dames', 'Dames', IcHeart],
-  ['events', 'Events', IcMusic],
+  ['events', 'Events', IcStar],
   ['shop', 'Shop', IcBag],
   ['meer', 'Meer', IcMenu],
 ];
@@ -58,7 +58,7 @@ function App() {
   const overlayRef = useRef(null);
 
   const openVariant = OPEN_MAP[t.openingStyle] || 'photo';
-  const TI = 56;
+  const TI = 24;
 
   // ── navigation ──
   const go = (tb) => { setOverlay([]); setTab(tb); };
