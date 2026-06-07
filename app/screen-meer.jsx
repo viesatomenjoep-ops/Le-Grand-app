@@ -52,7 +52,7 @@ function MeerScreen({ go, reserve, openInfo, openVacatures, topInset }) {
       </div>
 
       <div style={{ padding: '16px 0 0', display: 'flex', justifyContent: 'center', opacity: 0.6 }}>
-        <img src="app/assets/legrand-logo.webp" alt="Le Grand" style={{ width: 100 }} />
+        <img src="app/assets/legrand-logo.webp" alt="Le Grand" style={{ width: 75 }} />
       </div>
 
       {/* Snel naar */}
