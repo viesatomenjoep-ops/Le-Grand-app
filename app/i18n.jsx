@@ -105,7 +105,7 @@ function LanguageSelector({ style }) {
               background: l.code === lang ? 'var(--gold-grad)' : 'transparent',
               color: l.code === lang ? '#1c1505' : 'var(--cream)',
               border: 'none', borderRadius: '4px', padding: '8px 12px', textAlign: 'left', cursor: 'pointer',
-              display: 'flex', alignItems: 'center', gap: 8, fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 600
+              display: 'flex', alignItems: 'center', gap: 8, fontFamily: 'var(--font-head)', fontSize: 14, fontWeight: 600
             }}>
               <span style={{ fontSize: 16 }}>{l.flag}</span> {l.name}
             </button>
