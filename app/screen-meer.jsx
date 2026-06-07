@@ -22,9 +22,8 @@ function MeerScreen({ go, reserve, openInfo, openVacatures, topInset }) {
   const th = OPENING[todayIdx];
   return (
     <div>
-      <div style={{ padding: (topInset + 8) + 'px 20px 4px' }}>
-        <div className="lg-eyebrow">Saunaclub Le Grand · Zundert</div>
-        <h1 style={{ margin: '2px 0 18px', fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: 34, color: 'var(--cream)', letterSpacing: 0.3 }}>Meer</h1>
+      <div style={{ padding: (topInset + 8) + 'px 20px 18px', textAlign: 'center' }}>
+        <div className="lg-eyebrow" style={{ fontSize: 16, letterSpacing: 1.5 }}>Saunaclub Le Grand · Zundert</div>
       </div>
 
       {/* Reserveren highlight */}
