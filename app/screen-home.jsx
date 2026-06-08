@@ -114,7 +114,7 @@ function CrowdMeter() {
   );
 }
 
-function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
+function HomeScreen({ go, openDame, reserve, openEvent, openProduct, openChat }) {
   const { t } = useTranslation();
   const th = todayHours();
   const featured = TARIEVEN.find((t) => t.featured) || TARIEVEN[0];
@@ -313,6 +313,21 @@ function HomeScreen({ go, openDame, reserve, openEvent, openProduct }) {
       </div>
 
       <TabSpacer />
+
+      {/* Floating Action Button (Chatbot) */}
+      <button 
+        onClick={openChat}
+        className="lg-press"
+        style={{
+          position: 'fixed', bottom: 84, right: 20, zIndex: 50,
+          width: 58, height: 58, borderRadius: 29,
+          background: 'var(--gold-grad)', color: '#1c1505',
+          border: 'none', boxShadow: '0 6px 24px -4px var(--gold-shadow)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          cursor: 'pointer'
+        }}>
+        <IcMessage size={26} sw={1.8} />
+      </button>
     </div>
   );
 }

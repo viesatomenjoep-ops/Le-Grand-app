@@ -49,9 +49,13 @@ const IcFlame  = (p) => <Icon {...p}><path d="M12 3c1 3.5 5 4.8 5 9a5 5 0 0 1-10
 const IcCrown  = (p) => <Icon {...p}><path d="M3 18h18v2H3v-2Z" /><path d="M4.5 16h15l1.5-9-5 3-4-5-4 5-5-3 1.5 9Z" /></Icon>;
 const IcLady   = (p) => <Icon {...p}><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><path d="M8 10c1-1 2-2 4-3 2 1 3 2 4 3"/><path d="M12 11c-3 2-5 5-4 10h8c1-5-1-8-4-10"/></Icon>;
 const IcDance  = (p) => <Icon {...p}><path d="M3 5l9 10 9-10z"/><path d="M12 15v5M8 20h8"/><circle cx="13" cy="7" r="1.5"/></Icon>;
+const IcMessage = (p) => <Icon {...p}><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></Icon>;
+const IcSend   = (p) => <Icon {...p}><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></Icon>;
+
 Object.assign(window, {
   Icon, IcHome, IcLeaf, IcCal, IcUser, IcClock, IcChevR, IcChevL, IcChevDown, IcArrowR,
   IcStar, IcPin, IcPlus, IcMinus, IcCheck, IcHeart, IcFire, IcDrop, IcSpark, IcX,
   IcBell, IcPhone, IcWaves, IcUsers, IcGift, IcMenu, IcSearch, IcTherm, IcInfo, IcSteam,
   IcBag, IcBriefcase, IcTruck, IcTrash, IcMusic, IcFlame, IcCrown, IcLady, IcDance,
+  IcMessage, IcSend
 });

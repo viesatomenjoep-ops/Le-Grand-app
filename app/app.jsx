@@ -114,6 +114,8 @@ function App() {
       }
       case 'info':
         return <InfoScreen section={top.id} onBack={pop} />;
+      case 'chat':
+        return <ChatbotScreen onBack={pop} />;
       default:
         return null;
     }
@@ -123,7 +125,7 @@ function App() {
     <div style={{ ...rootStyle, height: '100dvh', width: '100vw' }}>
       <div className="lg-app">
         <main ref={mainRef} className="lg-main">
-          {tab === 'home' && <HomeScreen go={go} openDame={(id) => push({ t: 'dame', id })} reserve={() => push({ t: 'reserveren' })} openEvent={(id) => push({ t: 'event', id })} openProduct={(id) => push({ t: 'product', id })} />}
+          {tab === 'home' && <HomeScreen go={go} openDame={(id) => push({ t: 'dame', id })} reserve={() => push({ t: 'reserveren' })} openEvent={(id) => push({ t: 'event', id })} openProduct={(id) => push({ t: 'product', id })} openChat={() => push({ t: 'chat' })} />}
           {tab === 'dames' && <DamesScreen openDame={(id) => push({ t: 'dame', id })} topInset={TI} />}
           {tab === 'events' && <EventsScreen openEvent={(id) => push({ t: 'event', id })} topInset={TI} />}
           {tab === 'shop' && <ShopScreen openProduct={(id) => push({ t: 'product', id })} openCart={() => push({ t: 'cart' })} addToCart={addToCart} cartCount={cartCount} topInset={TI} />}
